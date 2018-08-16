@@ -5,9 +5,9 @@ sudo: false
 cache:
   directories:
   - node_modules
-on:
-  tags: true
 deploy:
+  on:
+    tags: true
   email: koike.takayuki0907@gmail.com
   provider: npm
   api_key:
