@@ -1,0 +1,17 @@
+
+language: node_js
+node_js:
+- stable
+sudo: false
+cache:
+  directories:
+  - node_modules
+deploy:
+  email: koike.takayuki0907@gmail.com
+  provider: npm
+  api_key:
+    secure: lNKklS8gyn6EjpX3vyx/zX8jZCfTuKRT3n1WZeZdX1pIrTNniioq3WQ50ysF2tXHLQWCrtko4EsodOYLYvVN0o3LeDoyp5rmMVum+6kZbhsjSxRJE2/lcNvTb6RBET+NXvJemMjb2Ol5wkofliIn2pav6i9QvusyyNdI6lJTzB5zQH1EGshLx6ikynHIa4Tmn2km9IBWPOGWTYzk/2wRYP9bMbTdlmV+/qpLLQoUTMkA2+8oPpmDDxK4DyQVC8NlwYUY7X/c4K8DXLU4VrPmvK0HkGVPZyuA4abOFLn931tZu/6dfGhoP8RccU8jtn708a1PXs99C5hI2NCS2Z7yaPdd2/6jCs2XwVe0kxfxaqIsr4AIhGl2tT3xATKicJD1r7thVVqBvFGB5IjzxUUFiBk5c750dJpBKlp5RgwjWaAzTUpE4+a9vW96B4ppwGT7/bjVBGYmYJJSYHo0yJU0onPyak9bwSNjS4K7rXY0fssoA8dCfd0+phemz1aPtF58veDmlIImj8OWDimbPdqmdvocyxQXyG5eyo91imR62a0Cu1BJOUdTnf2oeG4XC75nKLxp0l0HCVSXBupIniK4uWLnncFaTEalnoQFG7iTZKsxCEFekPFZU+1QaHAAzqEuQIAdkN6y68SB6r5kj0ZuvP6ewETriglEzCUgBztwcpY=
+  on:
+    tags: true
+script:
+- npm run build
