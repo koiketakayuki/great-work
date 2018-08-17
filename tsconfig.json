@@ -1,13 +1,19 @@
 {
   "compilerOptions": {
       "outDir": "./dist/",
+      "rootDirs": ["src", "stories"],
       "sourceMap": true,
       "noImplicitAny": true,
       "module": "commonjs",
+      "moduleResolution": "node",
       "target": "es5",
-      "jsx": "react"
+      "lib": ["es5", "es6", "dom"],
+      "strict": true,
+      "jsx": "react",
+      "allowSyntheticDefaultImports": false
   },
   "include": [
-      "./src/**/*"
-  ]
+      "src"
+  ],
+  "exclude": ["node_modules", "dist"]
 }

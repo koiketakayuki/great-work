@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Welcome to test 1`] = `
+<h1>
+  GreatWork 
+  Ryutaro
+  !
+</h1>
+`;
