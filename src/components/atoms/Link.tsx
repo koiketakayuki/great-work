@@ -23,6 +23,7 @@ function getLinkStyle(config: StyleConfig, href: string, target?: string, disabl
 
 function getDisabledStyle(config: StyleConfig): TextProp {
   return {
+    config,
     tag: 'div',
     fontSize: config.fontSizeMedium,
     lineHeight: 1.0,
@@ -35,6 +36,7 @@ function getDisabledStyle(config: StyleConfig): TextProp {
 
 function getDefaultStyle(config: StyleConfig, href: string, target?: string): TextProp {
   return {
+    config,
     href,
     target,
     tag: 'a',

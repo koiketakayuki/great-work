@@ -8,18 +8,20 @@ import {
   TextDecorationProperty,
   CursorProperty,
 } from 'csstype';
+import { StyleConfig } from '../../config/StyleConfig';
 
 export interface TextProp {
   tag?: 'div' | 'a' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
-  fontSize: FontSizeProperty<string>;
-  lineHeight: LineHeightProperty<string>;
-  fontWeight: FontWeightProperty;
-  decoration: TextDecorationProperty;
-  cursor: CursorProperty;
-  color: Color;
+  fontSize?: FontSizeProperty<string>;
+  lineHeight?: LineHeightProperty<string>;
+  fontWeight?: FontWeightProperty;
+  decoration?: TextDecorationProperty;
+  cursor?: CursorProperty;
+  color?: Color;
   href?: string;
   target?: string;
   hover?: object;
+  config: StyleConfig;
 }
 
 export const Text = radium(class extends React.Component<TextProp> {
@@ -29,14 +31,15 @@ export const Text = radium(class extends React.Component<TextProp> {
   }
 
   get style () {
+    const config = this.props.config;
     const style = {
       display: 'block',
-      fontSize: this.props.fontSize,
+      fontSize: this.props.fontSize || config.fontSizeMedium,
       fontWeight: this.props.fontWeight,
-      lineHeight: this.props.lineHeight,
-      textDecoration: this.props.decoration,
-      cursor: this.props.cursor,
-      color: this.props.color,
+      lineHeight: this.props.lineHeight || 1.0,
+      textDecoration: this.props.decoration || 'none',
+      cursor: this.props.cursor || 'default',
+      color: this.props.color || config.fontColor,
       margin: '0',
       ':hover': this.props.hover,
     };

@@ -35,6 +35,7 @@ function getHeadingStyle(config: StyleConfig, level: HeadingLevel): TextProp {
 
 function getHeading1Style(config: StyleConfig): TextProp {
   return {
+    config,
     tag: 'h1',
     fontSize: config.heading1,
     lineHeight: 1.0,
@@ -47,6 +48,7 @@ function getHeading1Style(config: StyleConfig): TextProp {
 
 function getHeading2Style(config: StyleConfig): TextProp {
   return {
+    config,
     tag: 'h2',
     fontSize: config.heading2,
     lineHeight: 1.0,
@@ -59,6 +61,7 @@ function getHeading2Style(config: StyleConfig): TextProp {
 
 function getHeading3Style(config: StyleConfig): TextProp {
   return {
+    config,
     tag: 'h3',
     fontSize: config.heading3,
     lineHeight: 1.0,
@@ -71,6 +74,7 @@ function getHeading3Style(config: StyleConfig): TextProp {
 
 function getHeading4Style(config: StyleConfig): TextProp {
   return {
+    config,
     tag: 'h4',
     fontSize: config.heading4,
     lineHeight: 1.0,
@@ -83,6 +87,7 @@ function getHeading4Style(config: StyleConfig): TextProp {
 
 function getHeading5Style(config: StyleConfig): TextProp {
   return {
+    config,
     tag: 'h5',
     fontSize: config.heading5,
     lineHeight: 1.0,
