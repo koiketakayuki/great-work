@@ -1,15 +1,10 @@
 module.exports = {
-  mode: "development",
-  entry: "./src/dev.tsx",
+  mode: "production",
+  entry: "./src/components/GreatWork.ts",
   output: {
       filename: "bundle.js",
       path: __dirname + "/dist"
   },
-  devServer: {
-    contentBase: __dirname + "/dist",
-    port: 3000
-  },
-
   // Enable sourcemaps for debugging webpack's output.
   devtool: "source-map",
 

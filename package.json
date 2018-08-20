@@ -2,9 +2,9 @@
   "name": "great-work",
   "version": "0.0.3",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/bundle.js",
   "scripts": {
-    "build": "webpack --config=webpack-production.config.js",
+    "build": "webpack",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
@@ -50,7 +50,8 @@
     "tslint-loader": "^3.6.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.0.1",
-    "webpack": "^4.16.5"
+    "webpack": "^4.16.5",
+    "webpack-command": "^0.4.1"
   },
   "dependencies": {
     "@types/react": "^16.4.11",
