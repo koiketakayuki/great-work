@@ -5,14 +5,14 @@ import { Container } from '../layout/Container';
 import { FloatLevel } from '../../lib/getFloatStyle';
 import { PaddingProperty } from 'csstype';
 
-export type ButtonProps = {
+export interface ButtonProps {
   padding?: PaddingProperty<string>;
-  onClick?: React.MouseEventHandler
+  onClick?: React.MouseEventHandler;
   disabled?: boolean;
   float?: FloatLevel;
   type?: ColorType;
-  config: StyleConfig
-};
+  config: StyleConfig;
+}
 
 export class Button extends React.Component<ButtonProps> {
   render() {
