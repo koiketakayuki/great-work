@@ -10,7 +10,7 @@ import {
 } from 'csstype';
 import { StyleConfig } from '../../config/StyleConfig';
 
-export interface TextProp {
+export interface TextProps {
   tag?: 'div' | 'a' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
   fontSize?: FontSizeProperty<string>;
   lineHeight?: LineHeightProperty<string>;
@@ -24,7 +24,7 @@ export interface TextProp {
   config: StyleConfig;
 }
 
-export const Text = radium(class extends React.Component<TextProp> {
+export const Text = radium(class extends React.Component<TextProps> {
 
   get Tag(): string {
     return this.props.tag || 'div';
@@ -38,8 +38,8 @@ export const Text = radium(class extends React.Component<TextProp> {
       fontWeight: this.props.fontWeight,
       lineHeight: this.props.lineHeight || 1.0,
       textDecoration: this.props.decoration || 'none',
-      cursor: this.props.cursor || 'default',
-      color: this.props.color || config.fontColor,
+      cursor: this.props.cursor || 'inherit',
+      color: this.props.color || 'inherit',
       margin: '0',
       ':hover': this.props.hover,
     };
