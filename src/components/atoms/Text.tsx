@@ -10,8 +10,10 @@ import {
 } from 'csstype';
 import { StyleConfig } from '../../config/StyleConfig';
 
+export type TextTag = 'div' | 'a' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
+
 export interface TextProps {
-  tag?: 'div' | 'a' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
+  tag?: TextTag;
   fontSize?: FontSizeProperty<string>;
   lineHeight?: LineHeightProperty<string>;
   fontWeight?: FontWeightProperty;
