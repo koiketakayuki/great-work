@@ -6,6 +6,7 @@ import { Row } from '../layout/Row';
 import { Paper } from './Paper';
 import { Container } from '../layout/Container';
 import { Color } from 'csstype';
+import { find } from '../../lib/util';
 
 /**
  * Form Components props
@@ -45,6 +46,12 @@ const createIconToggle = (activeIcon: string, inactiveIcon: string) =>
       }
     }
 
+    onKeyDown = (e: React.KeyboardEvent) => {
+      if (e.key === 'Enter') {
+        this.onClick();
+      }
+    }
+
     render() {
       return (
         <IconText
@@ -53,7 +60,9 @@ const createIconToggle = (activeIcon: string, inactiveIcon: string) =>
           text={this.props.label}
           color={this.getColor()}
           onClick={this.onClick}
+          onKeyDown={this.onKeyDown}
           hover={this.props.disabled ? {} : { color: this.props.config.getColor(this.props.type) }}
+          tabIndex={this.props.disabled ? undefined : 0}
           config={this.props.config}
         />
       );
@@ -69,10 +78,42 @@ export const CheckBox = createIconToggle('check_box', 'check_box_outline_blank')
 export type SelectOption<T> = { label: string, value: T };
 type HasSelectOptions<T> = { options: SelectOption<T>[] };
 
-export type SingleSelectFormProps<T> = FormProps<T> & HasSelectOptions<T>;
-export type MultipleSelectFormProps<T> = FormProps<T[]> & HasSelectOptions<T>;
+export class SelectBox<T> extends React.Component<FormProps<T | undefined> & HasSelectOptions<T>> {
+  private onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const label = e.target.value;
+    const selectedOption: SelectOption<T> | undefined = find(this.props.options, o => o.label === label);
 
-export class RadioButtons<T> extends React.Component<SingleSelectFormProps<T>> {
+    const newValue: T | undefined = selectedOption !== undefined ? selectedOption.value : undefined;
+    if (this.props.onChange) {
+      this.props.onChange(newValue);
+    }
+  }
+
+  private getRadioButtons() {
+    return this.props.options.map((o: SelectOption<T | undefined>) => {
+      return (
+        <option
+          key={o.label}
+          value={o.label}
+          disabled={this.props.disabled}
+        >{o.label}
+        </option>
+      );
+    });
+  }
+
+  render() {
+    const currentOption: SelectOption<T> | undefined = find(this.props.options, o => o.value === this.props.value);
+
+    return (
+      <select onChange={this.onChange} value={currentOption ? currentOption.label : undefined}>
+        {this.getRadioButtons()}
+      </select>
+    );
+  }
+}
+
+export class RadioButtons<T> extends React.Component<FormProps<T> & HasSelectOptions<T>> {
 
   private onChange = (newValue: T) => {
     if (this.props.onChange) {
@@ -108,7 +149,7 @@ export class RadioButtons<T> extends React.Component<SingleSelectFormProps<T>> {
   }
 }
 
-export class CheckList<T> extends React.Component<MultipleSelectFormProps<T>> {
+export class CheckList<T> extends React.Component<FormProps<T[]> & HasSelectOptions<T>> {
 
   private onChange = (targetValue: T) => {
     const currentValue = this.props.value;

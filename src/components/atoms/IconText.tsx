@@ -14,11 +14,13 @@ export interface IconTextProps {
   cursor?: CursorProperty;
   hover?: object;
   onClick?: React.MouseEventHandler;
+  onKeyDown?: React.KeyboardEventHandler;
+  tabIndex?: number;
   config: StyleConfig;
 }
 
 export const IconText = (props: IconTextProps) => (
-  <Row hover={props.hover} cursor={props.cursor} onClick={props.onClick}>
+  <Row hover={props.hover} cursor={props.cursor} onClick={props.onClick} tabIndex={props.tabIndex} onKeyDown={props.onKeyDown}>
     <FixedCell>
       <Row>
         <Icon name={props.icon} config={props.config} color={props.color}/>
