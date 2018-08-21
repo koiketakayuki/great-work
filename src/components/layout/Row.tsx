@@ -1,11 +1,12 @@
 import * as React from 'react';
 import radium from 'radium';
-import { CursorProperty } from 'csstype';
+import { CursorProperty, FlexWrapProperty } from 'csstype';
 
 export interface RowProps {
   children: React.ReactNode;
   cursor?: CursorProperty;
   hover?: object;
+  wrap?: FlexWrapProperty;
   onClick?: React.MouseEventHandler;
 }
 
@@ -22,6 +23,7 @@ function getStyle(props: RowProps) {
     display: 'flex',
     alignItems: 'center',
     cursor: props.cursor,
+    'flex-wrap': props.wrap || 'nowrap',
     ':hover': props.hover,
   };
 }
