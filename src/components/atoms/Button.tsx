@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { StyleConfig, ColorType } from '../../config/StyleConfig';
-import { Paper } from '../atoms/Paper';
+import { Paper } from './Paper';
 import { Container } from '../layout/Container';
 import { FloatLevel } from '../../lib/getFloatStyle';
 import { PaddingProperty } from 'csstype';

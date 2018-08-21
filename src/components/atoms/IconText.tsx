@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Row } from '../layout/Row';
 import { FixedCell, FlexCell } from '../layout/Cell';
-import { Icon } from '../atoms/Icon';
-import { Text } from '../atoms/Text';
+import { Icon } from './Icon';
+import { Text } from './Text';
 import { StyleConfig } from '../../config/StyleConfig';
 import { Container } from '../layout/Container';
 import { CursorProperty, Color } from 'csstype';

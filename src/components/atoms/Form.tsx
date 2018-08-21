@@ -1,7 +1,7 @@
 import * as React from 'react';
 import radium from 'radium';
 import { StyleConfig, ColorType } from '../../config/StyleConfig';
-import { IconText } from '../molecules/IconText';
+import { IconText } from './IconText';
 import { Row } from '../layout/Row';
 import { Paper } from './Paper';
 import { Container } from '../layout/Container';
