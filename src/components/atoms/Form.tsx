@@ -5,6 +5,7 @@ import { IconText } from '../molecules/IconText';
 import { Row } from '../layout/Row';
 import { Paper } from './Paper';
 import { Container } from '../layout/Container';
+import { Color } from 'csstype';
 
 /**
  * Form Components props
@@ -159,7 +160,10 @@ export class CheckList<T> extends React.Component<MultipleSelectFormProps<T>> {
 /**
  * TextForm components
  */
-export type TextFormProps = FormProps<string>;
+export interface TextFormProps extends FormProps<string> {
+  placeholder?: string;
+}
+
 type TextType = 'text' | 'password' | 'longText';
 
 /**
@@ -167,9 +171,17 @@ type TextType = 'text' | 'password' | 'longText';
  */
 const TextFormInner = radium(class extends React.Component<TextFormProps & { textType: TextType }> {
 
+  getColor(): Color {
+    if (this.props.disabled) {
+      return this.props.config.getColor('disabled');
+    }
+
+    return this.props.config.getColor(this.props.type || 'default');
+  }
+
   get style() {
     return {
-      color: this.props.config.getColor(this.props.type || 'default'),
+      color: this.getColor(),
       display: 'block',
       border: 'none',
       padding: '0',
@@ -187,21 +199,33 @@ const TextFormInner = radium(class extends React.Component<TextFormProps & { tex
   onChange = (e: React.ChangeEvent<any>) => {
     const value: string = e.target.value;
 
-    if (this.props.onChange !== undefined) {
+    if (this.props.onChange && !this.props.disabled) {
       this.props.onChange(value);
     }
   }
 
   render() {
-    if (this.props.textType === 'text') {
-      return <input type="text" value={this.props.value} style={this.style} onChange={this.onChange}/>;
+    if (this.props.textType === 'text' || this.props.textType === 'password') {
+      return (
+        <input
+          type={this.props.textType}
+          value={this.props.value}
+          style={this.style}
+          onChange={this.onChange}
+          disabled={this.props.disabled}
+          placeholder={this.props.placeholder}
+        />
+      );
     }
-
-    if (this.props.textType === 'password') {
-      return <input type="password" value={this.props.value} style={this.style} onChange={this.onChange}/>;
-    }
-
-    return <textarea value={this.props.value} style={this.style} onChange={this.onChange}/>;
+    return (
+      <textarea
+        value={this.props.value}
+        style={this.style}
+        onChange={this.onChange}
+        disabled={this.props.disabled}
+        placeholder={this.props.placeholder}
+      />
+    );
   }
 });
 
@@ -213,7 +237,10 @@ const createTextForm = (textType: TextType) =>
       }
 
       return (
-        <Paper config={this.props.config}>
+        <Paper
+          type={this.props.disabled ? 'disabled' : this.props.type}
+          config={this.props.config}
+        >
           <Container>
             <TextFormInner
               textType={textType}
@@ -221,6 +248,7 @@ const createTextForm = (textType: TextType) =>
               onChange={this.props.onChange}
               type={this.props.type}
               disabled={this.props.disabled}
+              placeholder={this.props.placeholder}
               config={this.props.config}
             />
           </Container>
