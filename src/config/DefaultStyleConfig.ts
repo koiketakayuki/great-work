@@ -5,7 +5,7 @@ export const DefaultStyleConfig: StyleConfig = {
   primary: '#00A5E1',
   secondary: '#47c747',
   white: '#ffffff',
-  disabled: '#ababab',
+  disabled: '#e8e8e8',
   error: '#ffedf2',
   fontColor: '#333333',
   disabledFontColor: '#888888',
@@ -34,7 +34,7 @@ export const DefaultStyleConfig: StyleConfig = {
     }
 
     if (type === 'disabled') {
-      return this.disabled;
+      return this.disabledFontColor;
     }
 
     return this.primary;
