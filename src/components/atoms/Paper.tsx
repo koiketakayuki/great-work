@@ -10,11 +10,13 @@ export interface PaperProps {
   cursor?: CursorProperty;
   type?: ColorType;
   onClick?: React.MouseEventHandler;
+  onKeyDown?: React.KeyboardEventHandler;
+  tabIndex?: number;
   config: StyleConfig;
 }
 
 export const Paper = (props: PaperProps) =>
-  <div style={getStyle(props)} onClick={props.onClick}>{props.children}</div>;
+  <div style={getStyle(props)} tabIndex={props.tabIndex} onClick={props.onClick} onKeyDown={props.onKeyDown}>{props.children}</div>;
 
 function getStyle(props: PaperProps): object {
   return Object.assign(
