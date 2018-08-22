@@ -22,18 +22,25 @@ export function validatable<T, S extends FormProps<T>>(
 
     onChange = (newValue: T) => {
       if (this.props.onChange) {
-        let errorMessage: string | undefined = undefined;
-        if (this.props.validator) {
-          errorMessage = this.props.validator(newValue);
-
-          this.setState({ errorMessage });
-        }
+        const errorMessage: string | undefined = this.validate(newValue);
         this.props.onChange(newValue, errorMessage);
       }
     }
 
     onBlur = (e: React.FocusEvent) => {
       this.setState({ validationActive: true });
+      this.validate(this.props.value);
+      if (this.props.onBlur) {
+        this.props.onBlur(e);
+      }
+    }
+
+    validate = (value: T) => {
+      if (this.props.validator) {
+        const errorMessage = this.props.validator(value);
+        this.setState({ errorMessage });
+        return errorMessage;
+      }
     }
 
     getErrorMessage() {
