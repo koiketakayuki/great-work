@@ -25,5 +25,5 @@ function getStyle(props: PaperProps): object {
       cursor: props.cursor,
       display: props.display || 'block',
     },
-    getFloatStyle(props.float || '2'));
+    getFloatStyle(props.float === undefined ? 2 : props.float));
 }

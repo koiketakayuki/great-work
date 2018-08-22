@@ -1,4 +1,4 @@
-export type FloatLevel = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8';
+export type FloatLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
 const LEVEL1_STYLE = {
   boxShadow: '0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12)',
@@ -33,35 +33,35 @@ const LEVEL8_STYLE = {
 };
 
 export function getFloatStyle(level: FloatLevel): object {
-  if (level === '1') {
+  if (level === 1) {
     return LEVEL1_STYLE;
   }
 
-  if (level === '2') {
+  if (level === 2) {
     return LEVEL2_STYLE;
   }
 
-  if (level === '3') {
+  if (level === 3) {
     return LEVEL3_STYLE;
   }
 
-  if (level === '4') {
+  if (level === 4) {
     return LEVEL4_STYLE;
   }
 
-  if (level === '5') {
+  if (level === 5) {
     return LEVEL5_STYLE;
   }
 
-  if (level === '6') {
+  if (level === 6) {
     return LEVEL6_STYLE;
   }
 
-  if (level === '7') {
+  if (level === 7) {
     return LEVEL7_STYLE;
   }
 
-  if (level === '8') {
+  if (level === 8) {
     return LEVEL8_STYLE;
   }
 
