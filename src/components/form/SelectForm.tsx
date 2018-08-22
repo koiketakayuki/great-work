@@ -42,7 +42,7 @@ class SelectBoxBase<T> extends React.Component<SelectBoxProps<T>> {
     const currentOption: SelectOption<T> | undefined = find(this.props.options, o => o.value === this.props.value);
 
     return (
-      <select onChange={this.onChange} value={currentOption ? currentOption.label : undefined}>
+      <select onChange={this.onChange} value={currentOption ? currentOption.label : undefined} disabled={this.props.disabled}>
         {this.getRadioButtons()}
       </select>
     );
