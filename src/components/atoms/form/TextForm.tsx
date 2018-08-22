@@ -39,6 +39,7 @@ const TextInput = radium(class extends React.Component<TextFormProps & { textTyp
       outline: 'none',
       width: '100%',
       background: 'transparent',
+      cursor: this.props.disabled ? 'not-allowed' : undefined,
       fontSize: this.props.config.fontSizeMedium,
       ':focus': {
         opacity: 0.8,
@@ -90,7 +91,8 @@ const createTextFormBase = (textType: TextType) =>
 
       return (
         <Paper
-          type={this.props.disabled ? 'disabled' : this.props.type}
+          type={this.props.disabled ? 'disabled' : (this.props.type === 'error' ? 'error' : undefined)}
+          cursor={this.props.disabled ? 'not-allowed' : undefined}
           config={this.props.config}
         >
           <Container>
