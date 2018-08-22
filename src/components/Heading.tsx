@@ -9,7 +9,6 @@ export interface HeadingProps {
   tag?: TextTag;
   level: HeadingLevel;
   children: React.ReactNode;
-  config: StyleConfig;
 }
 
 export const Heading = (props: HeadingProps) => (
