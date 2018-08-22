@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { FormEntryProps, formEntry } from './CompositeForm';
-import { TextForm } from './TextForm';
+import { PasswordForm } from './TextForm';
 import { FormItem } from './FormItem';
 
-export const TextFormEntry = formEntry<string, FormEntryProps<string>>((props, onChange, context) => {
+export const PasswordFormEntry = formEntry<string, FormEntryProps<string>>((props, onChange, context) => {
   return (
     <FormItem label={props.label}>
-      <TextForm
+      <PasswordForm
         value={props.value}
         validator={props.validator}
         onChange={onChange}

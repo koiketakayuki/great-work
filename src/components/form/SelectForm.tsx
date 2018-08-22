@@ -131,7 +131,7 @@ class CheckListBase<T> extends React.Component<CheckListProps<T>> {
 }
 
 export const SelectBox = <T extends any>(props: SelectBoxProps<T>) =>
-  validatable<T, SelectBoxProps<T>>((props, onChange, onBlur, hasError) => (
+  new (validatable<T, SelectBoxProps<T>>((props, onChange, onBlur, hasError) => (
     <SelectBoxBase
       value={props.value}
       disabled={props.disabled}
@@ -141,10 +141,10 @@ export const SelectBox = <T extends any>(props: SelectBoxProps<T>) =>
       onBlur={onBlur}
       type={hasError ? 'error' : props.type}
     />
-  ));
+  )))(props);
 
 export const RadioButtons = <T extends any>(props: RadioButtonsProps<T>) =>
-  validatable<T, RadioButtonsProps<T>>((props, onChange, onBlur, hasError) => (
+  new (validatable<T, RadioButtonsProps<T>>((props, onChange, onBlur, hasError) => (
     <RadioButtonsBase
       value={props.value}
       disabled={props.disabled}
@@ -154,10 +154,10 @@ export const RadioButtons = <T extends any>(props: RadioButtonsProps<T>) =>
       onBlur={onBlur}
       type={hasError ? 'error' : props.type}
     />
-  ));
+  )))(props);
 
 export const CheckList = <T extends any>(props: CheckListProps<T>) =>
-  validatable<T[], CheckListProps<T>>((props, onChange, onBlur, hasError) => (
+  new (validatable<T[], CheckListProps<T>>((props, onChange, onBlur, hasError) => (
     <CheckListBase
       value={props.value}
       disabled={props.disabled}
@@ -167,4 +167,4 @@ export const CheckList = <T extends any>(props: CheckListProps<T>) =>
       onBlur={onBlur}
       type={hasError ? 'error' : props.type}
     />
-  ));
+  )))(props);
