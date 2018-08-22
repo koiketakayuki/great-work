@@ -11,7 +11,6 @@ import { validatable } from './validatable';
  */
 export interface TextFormProps extends FormProps<string> {
   placeholder?: string;
-  onBlur?: React.FocusEventHandler;
 }
 
 export type TextType = 'text' | 'password' | 'longText';
