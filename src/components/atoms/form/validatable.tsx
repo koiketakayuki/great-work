@@ -45,7 +45,7 @@ export function validatable<T, S extends FormProps<T>>(
 
     getErrorMessage() {
       if (this.state.errorMessage && this.state.validationActive) {
-        return <Container padding="10px 0"><ErrorMessage config={this.props.config}>{this.state.errorMessage}</ErrorMessage></Container>;
+        return <Container padding="10px 0"><ErrorMessage>{this.state.errorMessage}</ErrorMessage></Container>;
       }
     }
 

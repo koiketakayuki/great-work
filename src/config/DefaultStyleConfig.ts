@@ -20,9 +20,9 @@ export const DefaultStyleConfig: StyleConfig = {
   fontSizeMedium: '1.2rem',
   fontSizeSmall: '1.0rem',
 
-  getColor(type: ColorType): Color {
-    if (type === 'default') {
-      return this.fontColor;
+  getColor(type?: ColorType): Color {
+    if (type === 'primary') {
+      return this.primary;
     }
 
     if (type === 'secondary') {
@@ -37,7 +37,11 @@ export const DefaultStyleConfig: StyleConfig = {
       return this.disabledFontColor;
     }
 
-    return this.primary;
+    if (type === 'default') {
+      return this.fontColor;
+    }
+
+    return 'inherit';
   },
   getColorContext(type: ColorType): ColorContext {
     if (type === 'default') {

@@ -3,32 +3,32 @@ import { Row } from '../layout/Row';
 import { FixedCell, FlexCell } from '../layout/Cell';
 import { Icon } from './Icon';
 import { Text } from './Text';
-import { StyleConfig } from '../../config/StyleConfig';
+import { StyleConfig, ColorType } from '../../config/StyleConfig';
 import { Container } from '../layout/Container';
 import { CursorProperty, Color } from 'csstype';
 
 export interface IconTextProps {
   icon: string;
   text: string;
-  color?: Color;
+  type?: ColorType;
   cursor?: CursorProperty;
   hover?: object;
   onClick?: React.MouseEventHandler;
   onKeyDown?: React.KeyboardEventHandler;
   tabIndex?: number;
-  config: StyleConfig;
+  left?: boolean;
 }
 
 export const IconText = (props: IconTextProps) => (
   <Row hover={props.hover} cursor={props.cursor} onClick={props.onClick} tabIndex={props.tabIndex} onKeyDown={props.onKeyDown}>
     <FixedCell>
       <Row>
-        <Icon name={props.icon} config={props.config} color={props.color}/>
+        <Icon name={props.icon} type={props.type}/>
       </Row>
     </FixedCell>
     <FlexCell>
       <Container padding="0 4px">
-        <Text config={props.config} color={props.color}>{props.text}</Text>
+        <Text type={props.type}>{props.text}</Text>
       </Container>
     </FlexCell>
   </Row>

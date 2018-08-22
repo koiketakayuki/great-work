@@ -1,23 +1,28 @@
 import * as React from 'react';
-import { StyleConfig } from '../../config/StyleConfig';
+import { StyleConfig, ColorType } from '../../config/StyleConfig';
 import radium from 'radium';
 import { Color } from 'csstype';
+import { StyleContext } from '../../config/StyleContext';
 
 export interface IconProps {
   name: string;
-  color?: Color;
+  type?: ColorType;
   hover?: React.CSSProperties;
-  config: StyleConfig;
+}
+
+function getIcon(config: StyleConfig, props: IconProps) {
+  const style = {
+    fontSize: config.fontSizeSmall,
+    color: config.getColor(props.type),
+    ':hover': props.hover,
+  };
+  return (
+    <i className="material-icons" style={style}>{props.name}</i>
+  );
 }
 
 export const Icon = radium((props: IconProps) => (
-  <i className="material-icons" style={getStyle(props)}>{props.name}</i>
+  <StyleContext.Consumer>
+    {config => getIcon(config, props)}
+  </StyleContext.Consumer>
 ));
-
-function getStyle(props: IconProps) {
-  return {
-    fontSize: props.config.fontSizeSmall,
-    color: props.color,
-    ':hover': props.hover,
-  };
-}

@@ -1,10 +1,12 @@
 import * as React from 'react';
 import radium from 'radium';
-import { FormProps, FormState } from './Form';
+import { FormProps } from './Form';
 import { Color } from 'csstype';
 import { Paper } from '../Paper';
 import { Container } from '../../layout/Container';
 import { validatable } from './validatable';
+import { StyleConfig } from '../../../config/StyleConfig';
+import { StyleContext } from '../../../config/StyleContext';
 
 /**
  * TextForm components
@@ -20,32 +22,6 @@ export type TextType = 'text' | 'password' | 'longText';
  */
 const TextInput = radium(class extends React.Component<TextFormProps & { textType: TextType }> {
 
-  getColor(): Color {
-    if (this.props.disabled) {
-      return this.props.config.getColor('disabled');
-    }
-
-    return this.props.config.getColor(this.props.type || 'default');
-  }
-
-  get style() {
-    return {
-      color: this.getColor(),
-      display: 'block',
-      border: 'none',
-      padding: '0',
-      margin: '0',
-      outline: 'none',
-      width: '100%',
-      background: 'transparent',
-      cursor: this.props.disabled ? 'not-allowed' : undefined,
-      fontSize: this.props.config.fontSizeMedium,
-      ':focus': {
-        opacity: 0.8,
-      },
-    };
-  }
-
   onChange = (e: React.ChangeEvent<any>) => {
     const value: string = e.target.value;
 
@@ -54,13 +30,39 @@ const TextInput = radium(class extends React.Component<TextFormProps & { textTyp
     }
   }
 
-  render() {
+  getColor(config: StyleConfig): Color {
+    if (this.props.disabled) {
+      return config.getColor('disabled');
+    }
+
+    return config.getColor(this.props.type || 'default');
+  }
+
+  getStyle(config: StyleConfig) {
+    return {
+      color: this.getColor(config),
+      display: 'block',
+      border: 'none',
+      padding: '0',
+      margin: '0',
+      outline: 'none',
+      width: '100%',
+      background: 'transparent',
+      cursor: this.props.disabled ? 'not-allowed' : undefined,
+      fontSize: config.fontSizeMedium,
+      ':focus': {
+        opacity: 0.8,
+      },
+    };
+  }
+
+  getForm(config: StyleConfig) {
     if (this.props.textType === 'text' || this.props.textType === 'password') {
       return (
         <input
           type={this.props.textType}
           value={this.props.value}
-          style={this.style}
+          style={this.getStyle(config)}
           onChange={this.onChange}
           onBlur={this.props.onBlur}
           disabled={this.props.disabled}
@@ -71,12 +73,20 @@ const TextInput = radium(class extends React.Component<TextFormProps & { textTyp
     return (
       <textarea
         value={this.props.value}
-        style={this.style}
+        style={this.getStyle(config)}
         onChange={this.onChange}
         onBlur={this.props.onBlur}
         disabled={this.props.disabled}
         placeholder={this.props.placeholder}
       />
+    );
+  }
+
+  render() {
+    return (
+      <StyleContext.Consumer>
+        {config => this.getForm(config)}
+      </StyleContext.Consumer>
     );
   }
 });
@@ -92,7 +102,6 @@ const createTextFormBase = (textType: TextType) =>
         <Paper
           type={this.props.disabled ? 'disabled' : (this.props.type === 'error' ? 'error' : undefined)}
           cursor={this.props.disabled ? 'not-allowed' : undefined}
-          config={this.props.config}
         >
           <Container>
             <TextInput
@@ -103,7 +112,6 @@ const createTextFormBase = (textType: TextType) =>
               type={this.props.type}
               disabled={this.props.disabled}
               placeholder={this.props.placeholder}
-              config={this.props.config}
             />
           </Container>
         </Paper>
@@ -128,7 +136,6 @@ export const TextForm = validatable<string, TextFormProps>((props, onChange, onB
       onChange={onChange}
       onBlur={onBlur}
       type={hasError ? 'error' : props.type}
-      config={props.config}
     />
   );
 });
@@ -142,7 +149,6 @@ export const PasswordForm = validatable<string, TextFormProps>((props, onChange,
       onChange={onChange}
       onBlur={onBlur}
       type={hasError ? 'error' : props.type}
-      config={props.config}
     />
   );
 });
@@ -156,7 +162,6 @@ export const TextArea = validatable<string, TextFormProps>((props, onChange, onB
       onChange={onChange}
       onBlur={onBlur}
       type={hasError ? 'error' : props.type}
-      config={props.config}
     />
   );
 });

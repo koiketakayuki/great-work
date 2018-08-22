@@ -6,7 +6,6 @@ import { StyleConfig, ColorType } from '../../../config/StyleConfig';
  */
 export interface FormBaseProps<T> {
   value: T;
-  config: StyleConfig;
   type?: ColorType;
   disabled?: boolean;
   readonly?: boolean;
@@ -21,7 +20,6 @@ export interface FormBaseProps<T> {
  */
 export interface FormProps<T> {
   value: T;
-  config: StyleConfig;
   type?: ColorType;
   disabled?: boolean;
   readonly?: boolean;

@@ -58,7 +58,6 @@ class RadioButtonsBase<T> extends React.Component<RadioButtonsProps<T>> {
   }
 
   private getRadioButtons() {
-    const config = this.props.config;
     const currentValue = this.props.value;
 
     return this.props.options.map((o: SelectOption<T>) => {
@@ -70,7 +69,6 @@ class RadioButtonsBase<T> extends React.Component<RadioButtonsProps<T>> {
           label={o.label}
           onChange={onChange}
           disabled={this.props.disabled}
-          config={config}
         />
       );
     });
@@ -107,7 +105,6 @@ class CheckListBase<T> extends React.Component<CheckListProps<T>> {
   }
 
   private getCheckBoxes() {
-    const config = this.props.config;
     const currentValue = this.props.value;
 
     return this.props.options.map((o: SelectOption<T>) => {
@@ -119,7 +116,6 @@ class CheckListBase<T> extends React.Component<CheckListProps<T>> {
           label={o.label}
           onChange={onChange}
           disabled={this.props.disabled}
-          config={config}
         />
       );
     });
@@ -144,7 +140,6 @@ export const SelectBox = <T extends any>(props: SelectBoxProps<T>) =>
       onChange={onChange}
       onBlur={onBlur}
       type={hasError ? 'error' : props.type}
-      config={props.config}
     />
   ));
 
@@ -158,7 +153,6 @@ export const RadioButtons = <T extends any>(props: RadioButtonsProps<T>) =>
       onChange={onChange}
       onBlur={onBlur}
       type={hasError ? 'error' : props.type}
-      config={props.config}
     />
   ));
 
@@ -172,6 +166,5 @@ export const CheckList = <T extends any>(props: CheckListProps<T>) =>
       onChange={onChange}
       onBlur={onBlur}
       type={hasError ? 'error' : props.type}
-      config={props.config}
     />
   ));

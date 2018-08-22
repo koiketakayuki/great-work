@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleConfig, ColorType } from '../../config/StyleConfig';
+import { ColorType } from '../../config/StyleConfig';
 import { Paper } from './Paper';
 import { Container } from '../layout/Container';
 import { FloatLevel } from '../../lib/getFloatStyle';
@@ -11,7 +11,6 @@ export interface ButtonProps {
   disabled?: boolean;
   float?: FloatLevel;
   type?: ColorType;
-  config: StyleConfig;
 }
 
 export class Button extends React.Component<ButtonProps> {
@@ -38,7 +37,6 @@ export class Button extends React.Component<ButtonProps> {
         cursor={this.props.disabled ? 'not-allowed' : 'pointer'}
         type={this.props.disabled ? 'disabled' : (this.props.type || 'primary')}
         tabIndex={0}
-        config={this.props.config}
       >
         <Container padding={this.props.padding || '8px'}>
           {this.props.children}

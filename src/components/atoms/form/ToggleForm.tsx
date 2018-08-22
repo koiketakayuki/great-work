@@ -2,19 +2,21 @@ import * as React from 'react';
 import { FormBaseProps, HasLabel } from './Form';
 import { IconText } from '../IconText';
 import { validatable } from './validatable';
+import { StyleConfig } from '../../../config/StyleConfig';
+import { StyleContext } from '../../../config/StyleContext';
 
 export type ToggleFormProps = FormBaseProps<boolean> & HasLabel;
 
 const createIconToggle = (activeIcon: string, inactiveIcon: string) =>
   class extends React.Component<ToggleFormProps> {
 
-    getColor() {
+    getColorType() {
       if (this.props.disabled) {
-        return this.props.config.disabledFontColor;
+        return 'disabled';
       }
 
       if (this.props.value) {
-        return this.props.config.getColor(this.props.type);
+        return this.props.type;
       }
     }
 
@@ -31,19 +33,26 @@ const createIconToggle = (activeIcon: string, inactiveIcon: string) =>
       }
     }
 
-    render() {
+    getForm(config: StyleConfig) {
       return (
         <IconText
           icon={this.props.value ? activeIcon : inactiveIcon}
           cursor={this.props.disabled ? 'not-allowed' : 'pointer'}
           text={this.props.label}
-          color={this.getColor()}
+          type={this.getColorType()}
           onClick={this.onClick}
           onKeyDown={this.onKeyDown}
-          hover={this.props.disabled ? {} : { color: this.props.config.getColor(this.props.type) }}
+          hover={this.props.disabled ? {} : { color: config.getColor(this.props.type) }}
           tabIndex={this.props.disabled ? undefined : 0}
-          config={this.props.config}
         />
+      );
+    }
+
+    render() {
+      return (
+        <StyleContext.Consumer>
+          {config => this.getForm(config)}
+        </StyleContext.Consumer>
       );
     }
   };
@@ -61,7 +70,6 @@ export const CheckBox = validatable<boolean, ToggleFormProps>((props, onChange, 
       onChange={onChange}
       onBlur={onBlur}
       type={hasError ? 'error' : props.type}
-      config={props.config}
     />
   );
 });

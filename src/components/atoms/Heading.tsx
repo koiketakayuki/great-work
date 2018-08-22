@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Text, TextProps, TextTag } from './Text';
 import { StyleConfig } from '../../config/StyleConfig';
+import { StyleContext } from '../../config/StyleContext';
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5;
 
@@ -11,8 +12,11 @@ export interface HeadingProps {
   config: StyleConfig;
 }
 
-export const Heading = (props: HeadingProps) =>
-  <Text {...(getHeadingStyle(props.config, props))}>{props.children}</Text>;
+export const Heading = (props: HeadingProps) => (
+  <StyleContext.Consumer>
+    {config => <Text {...(getHeadingStyle(config, props))}>{props.children}</Text>}
+  </StyleContext.Consumer>
+);
 
 function getHeadingStyle(config: StyleConfig, props: HeadingProps): TextProps {
   if (props.level === 2) {
@@ -36,7 +40,6 @@ function getHeadingStyle(config: StyleConfig, props: HeadingProps): TextProps {
 
 function getHeading1Style(config: StyleConfig, props: HeadingProps): TextProps {
   return {
-    config,
     tag: props.tag || 'h1',
     fontSize: config.heading1,
     fontWeight: 'bold',
@@ -46,7 +49,6 @@ function getHeading1Style(config: StyleConfig, props: HeadingProps): TextProps {
 
 function getHeading2Style(config: StyleConfig, props: HeadingProps): TextProps {
   return {
-    config,
     tag: props.tag || 'h2',
     fontSize: config.heading2,
     fontWeight: 'bold',
@@ -56,7 +58,6 @@ function getHeading2Style(config: StyleConfig, props: HeadingProps): TextProps {
 
 function getHeading3Style(config: StyleConfig, props: HeadingProps): TextProps {
   return {
-    config,
     tag: props.tag || 'h3',
     fontSize: config.heading3,
     fontWeight: 'bold',
@@ -66,7 +67,6 @@ function getHeading3Style(config: StyleConfig, props: HeadingProps): TextProps {
 
 function getHeading4Style(config: StyleConfig, props: HeadingProps): TextProps {
   return {
-    config,
     tag: props.tag || 'h4',
     fontSize: config.heading4,
     fontWeight: 'bold',
@@ -76,13 +76,11 @@ function getHeading4Style(config: StyleConfig, props: HeadingProps): TextProps {
 
 function getHeading5Style(config: StyleConfig, props: HeadingProps): TextProps {
   return {
-    config,
     tag: props.tag || 'h5',
     fontSize: config.heading5,
     lineHeight: 1.0,
     fontWeight: 'bold',
     decoration: 'none',
     cursor: 'default',
-    color: config.fontColor,
   };
 }

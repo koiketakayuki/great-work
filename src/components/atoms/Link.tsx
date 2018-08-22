@@ -1,17 +1,20 @@
 import * as React from 'react';
 import { Text, TextProps } from './Text';
 import { StyleConfig } from '../../config/StyleConfig';
+import { StyleContext } from '../../config/StyleContext';
 
 export interface LinkProps {
   href: string;
   target?: string;
   disabled?: boolean;
   children: React.ReactNode;
-  config: StyleConfig;
 }
 
-export const Link = (props: LinkProps) =>
-  <Text {...(getLinkStyle(props.config, props.href, props.target, props.disabled))}>{props.children}</Text>;
+export const Link = (props: LinkProps) => (
+  <StyleContext.Consumer>
+    {config => <Text {...(getLinkStyle(config, props.href, props.target, props.disabled))}>{props.children}</Text>}
+  </StyleContext.Consumer>
+);
 
 function getLinkStyle(config: StyleConfig, href: string, target?: string, disabled?: boolean): TextProps {
   if (disabled) {
@@ -23,19 +26,17 @@ function getLinkStyle(config: StyleConfig, href: string, target?: string, disabl
 
 function getDisabledStyle(config: StyleConfig): TextProps {
   return {
-    config,
     tag: 'div',
     fontSize: config.fontSizeMedium,
     fontWeight: 'normal',
     decoration: 'none',
     cursor: 'not-allowed',
-    color: config.disabledFontColor,
+    type: 'disabled',
   };
 }
 
 function getDefaultStyle(config: StyleConfig, href: string, target?: string): TextProps {
   return {
-    config,
     href,
     target,
     tag: 'a',
@@ -43,7 +44,7 @@ function getDefaultStyle(config: StyleConfig, href: string, target?: string): Te
     fontWeight: 'normal',
     decoration: 'underline',
     cursor: 'pointer',
-    color: config.fontColor,
+    type: 'default',
     hover: {
       opacity: 0.8,
     },
