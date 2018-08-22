@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleConfig, ColorType } from '../../../config/StyleConfig';
+import { ColorType } from '../../config/StyleConfig';
 
 /**
  * Props of primitive Form component which doesn't have validator

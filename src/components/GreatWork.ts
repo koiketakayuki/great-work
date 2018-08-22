@@ -1,5 +1,5 @@
-import { Button } from './atoms/Button';
+import { Button } from './Button';
 
-export {
+export const GreatWork = {
   Button,
 };

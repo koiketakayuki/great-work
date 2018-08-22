@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { TextForm } from '../src/components/atoms/form/TextForm';
+import { TextForm } from '../src/components/form/TextForm';
 
 const story = storiesOf('TextForm', module);
 const lengthValidator = (value: string) => value.length < 10 ? 'value must be greater than 10 characters' : undefined;

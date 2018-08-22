@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { FormBaseProps, FormProps } from './Form';
-import { find } from '../../../lib/util';
+import { FormProps } from './Form';
+import { find } from '../../lib/util';
 import { RadioButtonBase, CheckBoxBase } from './ToggleForm';
-import { Row } from '../../layout/Row';
+import { Row } from '../layout/Row';
 import { validatable } from './validatable';
 
 /**

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { getFloatStyle, FloatLevel } from '../../lib/getFloatStyle';
-import { Color, DisplayProperty, CursorProperty } from 'csstype';
-import { StyleConfig, ColorType } from '../../config/StyleConfig';
-import { StyleContext } from '../../config/StyleContext';
+import { getFloatStyle, FloatLevel } from '../lib/getFloatStyle';
+import { DisplayProperty, CursorProperty } from 'csstype';
+import { StyleConfig, ColorType } from '../config/StyleConfig';
+import { StyleContext } from '../config/StyleContext';
 
 export interface PaperProps {
   display?: DisplayProperty;

@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { StyleConfig } from '../../../config/StyleConfig';
 import { Text } from '../Text';
-import { StyleContext } from '../../../config/StyleContext';
+import { StyleContext } from '../../config/StyleContext';
 
 export interface ErrorMessageProps {
   onChange?: (value: string, errorMessage?: string) => void;

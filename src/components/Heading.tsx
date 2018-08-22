@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, TextProps, TextTag } from './Text';
-import { StyleConfig } from '../../config/StyleConfig';
-import { StyleContext } from '../../config/StyleContext';
+import { StyleConfig } from '../config/StyleConfig';
+import { StyleContext } from '../config/StyleContext';
 
 export type HeadingLevel = 1 | 2 | 3 | 4 | 5;
 

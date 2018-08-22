@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Container } from './Container';
-import { Heading } from '../atoms/Heading';
+import { Heading } from '../Heading';
 import { StyleConfig } from '../../config/StyleConfig';
 
 export interface SectionProps {

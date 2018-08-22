@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FormProps, FormState } from './Form';
-import { Container } from '../../layout/Container';
+import { Container } from '../layout/Container';
 import { ErrorMessage } from './ErrorMessage';
 
 export function validatable<T, S extends FormProps<T>>(

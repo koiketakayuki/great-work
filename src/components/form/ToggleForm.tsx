@@ -2,8 +2,8 @@ import * as React from 'react';
 import { FormBaseProps, HasLabel } from './Form';
 import { IconText } from '../IconText';
 import { validatable } from './validatable';
-import { StyleConfig } from '../../../config/StyleConfig';
-import { StyleContext } from '../../../config/StyleContext';
+import { StyleConfig } from '../../config/StyleConfig';
+import { StyleContext } from '../../config/StyleContext';
 
 export type ToggleFormProps = FormBaseProps<boolean> & HasLabel;
 

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Row } from '../layout/Row';
-import { FixedCell, FlexCell } from '../layout/Cell';
+import { Row } from './layout/Row';
+import { FixedCell, FlexCell } from './layout/Cell';
 import { Icon } from './Icon';
 import { Text } from './Text';
-import { StyleConfig, ColorType } from '../../config/StyleConfig';
-import { Container } from '../layout/Container';
-import { CursorProperty, Color } from 'csstype';
+import { ColorType } from '../config/StyleConfig';
+import { Container } from './layout/Container';
+import { CursorProperty } from 'csstype';
 
 export interface IconTextProps {
   icon: string;

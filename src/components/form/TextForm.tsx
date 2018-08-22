@@ -3,10 +3,10 @@ import radium from 'radium';
 import { FormProps } from './Form';
 import { Color } from 'csstype';
 import { Paper } from '../Paper';
-import { Container } from '../../layout/Container';
+import { Container } from '../layout/Container';
 import { validatable } from './validatable';
-import { StyleConfig } from '../../../config/StyleConfig';
-import { StyleContext } from '../../../config/StyleContext';
+import { StyleConfig } from '../../config/StyleConfig';
+import { StyleContext } from '../../config/StyleContext';
 
 /**
  * TextForm components

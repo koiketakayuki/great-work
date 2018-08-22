@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Text, TextProps } from './Text';
-import { StyleConfig } from '../../config/StyleConfig';
-import { StyleContext } from '../../config/StyleContext';
+import { StyleConfig } from '../config/StyleConfig';
+import { StyleContext } from '../config/StyleContext';
 
 export interface LinkProps {
   href: string;

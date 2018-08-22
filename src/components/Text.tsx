@@ -2,14 +2,13 @@ import * as React from 'react';
 import radium from 'radium';
 import {
   FontSizeProperty,
-  Color,
   LineHeightProperty,
   FontWeightProperty,
   TextDecorationProperty,
   CursorProperty,
 } from 'csstype';
-import { StyleConfig, ColorType } from '../../config/StyleConfig';
-import { StyleContext } from '../../config/StyleContext';
+import { StyleConfig, ColorType } from '../config/StyleConfig';
+import { StyleContext } from '../config/StyleContext';
 
 export type TextTag = 'div' | 'a' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
 

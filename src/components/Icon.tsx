@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { StyleConfig, ColorType } from '../../config/StyleConfig';
+import { StyleConfig, ColorType } from '../config/StyleConfig';
 import radium from 'radium';
-import { Color } from 'csstype';
-import { StyleContext } from '../../config/StyleContext';
+import { StyleContext } from '../config/StyleContext';
 
 export interface IconProps {
   name: string;

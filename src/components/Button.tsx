@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { ColorType } from '../../config/StyleConfig';
+import { ColorType } from '../config/StyleConfig';
 import { Paper } from './Paper';
-import { Container } from '../layout/Container';
-import { FloatLevel } from '../../lib/getFloatStyle';
+import { Container } from './layout/Container';
+import { FloatLevel } from '../lib/getFloatStyle';
 import { PaddingProperty } from 'csstype';
 
 export interface ButtonProps {
