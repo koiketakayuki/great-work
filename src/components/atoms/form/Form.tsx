@@ -6,12 +6,12 @@ import { StyleConfig, ColorType } from '../../../config/StyleConfig';
  */
 export interface FormBaseProps<T> {
   value: T;
+  config: StyleConfig;
+  type?: ColorType;
   disabled?: boolean;
   readonly?: boolean;
   onChange?: (value: T) => void;
   onBlur?: React.FocusEventHandler;
-  type?: ColorType;
-  config: StyleConfig;
 }
 
 /**
@@ -21,13 +21,13 @@ export interface FormBaseProps<T> {
  */
 export interface FormProps<T> {
   value: T;
+  config: StyleConfig;
+  type?: ColorType;
   disabled?: boolean;
   readonly?: boolean;
   onChange?: (value: T, errorMessage?: string) => void;
   onBlur?: React.FocusEventHandler;
   validator?: Validator<T>;
-  type?: ColorType;
-  config: StyleConfig;
 }
 
 /**
