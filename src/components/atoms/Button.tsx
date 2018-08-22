@@ -17,7 +17,7 @@ export interface ButtonProps {
 export class Button extends React.Component<ButtonProps> {
 
   onClick = (e: React.MouseEvent) => {
-    if (this.props.onClick) {
+    if (this.props.onClick && !this.props.disabled) {
       this.props.onClick();
     }
   }
