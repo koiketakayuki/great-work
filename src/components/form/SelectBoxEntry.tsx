@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { formEntry, SelectFormEntryProps } from './CompositeForm';
-import { SelectBox } from './SelectForm';
+import { formEntry, FormEntryProps } from './CompositeForm';
+import { SelectBox, HasSelectOptions } from './SelectForm';
 import { FormItem } from './FormItem';
 
-export const SelectBoxEntry = <T extends any>(props: SelectFormEntryProps<T>) =>
-  new (formEntry<T, SelectFormEntryProps<T>>((props, onChange, context) => {
+type SelectBoxEntryProps<T> = FormEntryProps<T> & HasSelectOptions<T>;
+
+export const SelectBoxEntry = <T extends any>(props: SelectBoxEntryProps<T>) =>
+  new (formEntry<T, SelectBoxEntryProps<T>>((props, onChange, context) => {
     return (
       <FormItem label={props.label}>
         <SelectBox

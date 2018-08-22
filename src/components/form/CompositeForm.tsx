@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Validator } from './Form';
-import { HasSelectOptions } from './SelectForm';
+import { Container } from '../layout/Container';
 
 export interface FormEntryProps<T> {
   id: string;
@@ -10,8 +10,6 @@ export interface FormEntryProps<T> {
   disabled?: boolean;
   readonly?: boolean;
 }
-
-export type SelectFormEntryProps<T> = FormEntryProps<T> & HasSelectOptions<T>;
 
 export type UpdateValue<T> = (id: string, entryValue: T, hasError: boolean) => void;
 export type ContextValue<T> = {
@@ -52,7 +50,11 @@ export class CompositeForm<T> extends React.Component<CompositeFormProps<T>> {
   }
 
   render() {
-    return <FormContext.Provider value={this.getContextValue()}>{this.props.children}</FormContext.Provider>;
+    return (
+      <FormContext.Provider value={this.getContextValue()}>
+        <Container>{this.props.children}</Container>
+      </FormContext.Provider>
+    );
   }
 }
 
