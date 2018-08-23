@@ -16,7 +16,7 @@ export function validatable<T, S extends FormProps<T>>(
       super(props);
       this.state = {
         errorMessage: undefined,
-        validationActive: false,
+        validationActive: true,
       };
     }
 

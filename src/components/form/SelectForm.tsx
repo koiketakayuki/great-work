@@ -68,6 +68,7 @@ class RadioButtonsBase<T> extends React.Component<RadioButtonsProps<T>> {
           value={currentValue === o.value}
           label={o.label}
           onChange={onChange}
+          type={this.props.type}
           disabled={this.props.disabled}
         />
       );
@@ -115,6 +116,7 @@ class CheckListBase<T> extends React.Component<CheckListProps<T>> {
           value={currentValue.indexOf(o.value) > -1}
           label={o.label}
           onChange={onChange}
+          type={this.props.type}
           disabled={this.props.disabled}
         />
       );
