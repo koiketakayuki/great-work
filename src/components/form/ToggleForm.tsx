@@ -39,10 +39,10 @@ const createIconToggle = (activeIcon: string, inactiveIcon: string) =>
           icon={this.props.value ? activeIcon : inactiveIcon}
           cursor={this.props.disabled ? 'not-allowed' : 'pointer'}
           text={this.props.label}
-          type={this.getColorType()}
           onClick={this.onClick}
           onKeyDown={this.onKeyDown}
-          hover={this.props.disabled ? {} : { color: config.getColor(this.props.type) }}
+          type={this.props.value ? (this.props.type || 'primary') : undefined}
+          hover={this.props.disabled ? {} : { color: config.getColor(this.props.type || 'primary') }}
           tabIndex={this.props.disabled ? undefined : 0}
         />
       );
