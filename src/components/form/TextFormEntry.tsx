@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { FormEntryProps, createFormEntry } from './CompositeForm';
 import { TextForm } from './TextForm';
 import { FormItem } from './FormItem';
+import { createFormEntry, FormEntryProps } from './FormEntry';
 
 export const TextFormEntry = createFormEntry<string, FormEntryProps<string>>((props, onChange, context) => {
   return (

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { createFormEntry, FormEntryProps } from './CompositeForm';
 import { SelectBox, HasSelectOptions } from './SelectForm';
 import { FormItem } from './FormItem';
+import { FormEntryProps, createFormEntry } from './FormEntry';
 
 type SelectBoxEntryProps<T> = FormEntryProps<T> & HasSelectOptions<T>;
 

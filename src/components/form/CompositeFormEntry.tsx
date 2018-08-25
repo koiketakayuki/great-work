@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { FormEntryProps, FormContext, ContextValue, UpdateValue, createFormEntry } from './CompositeForm';
 import { FormItem } from './FormItem';
 import { Paper } from '../Paper';
-import { ErrorMessage } from './ErrorMessage';
+import { FormEntryProps, createFormEntry } from './FormEntry';
+import { FormContext } from './FormContext';
 
 export const CompositeFormEntry = <T extends any>(props: FormEntryProps<T>) =>
   new (createFormEntry<T, FormEntryProps<T>>((props, onChange, hasError) => {
