@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { FormEntryProps, FormContext, ContextValue, UpdateValue, formEntry } from './CompositeForm';
+import { FormEntryProps, FormContext, ContextValue, UpdateValue, createFormEntry } from './CompositeForm';
 import { FormItem } from './FormItem';
 import { Paper } from '../Paper';
+import { ErrorMessage } from './ErrorMessage';
 
 export const CompositeFormEntry = <T extends any>(props: FormEntryProps<T>) =>
-  new (formEntry<T, FormEntryProps<T>>((props, onChange, hasError) => {
+  new (createFormEntry<T, FormEntryProps<T>>((props, onChange, hasError) => {
     const context = {
       update: (_: string, newValue: T, hasError: boolean) => {
         onChange(newValue);

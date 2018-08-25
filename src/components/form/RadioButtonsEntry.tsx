@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { formEntry, FormEntryProps } from './CompositeForm';
+import { createFormEntry, FormEntryProps } from './CompositeForm';
 import { RadioButtons, HasSelectOptions } from './SelectForm';
 import { FormItem } from './FormItem';
 
 type RadioButtonsEntryProps<T> = FormEntryProps<T> & HasSelectOptions<T>;
 
 export const RadioButtonsEntry = <T extends any>(props: RadioButtonsEntryProps<T>) =>
-  new (formEntry<T, RadioButtonsEntryProps<T>>((props, onChange, context) => {
+  new (createFormEntry<T, RadioButtonsEntryProps<T>>((props, onChange, context) => {
     return (
       <FormItem label={props.label}>
         <RadioButtons
