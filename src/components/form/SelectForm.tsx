@@ -41,6 +41,10 @@ class SelectBoxBase<T> extends React.Component<SelectBoxProps<T>> {
   render() {
     const currentOption: SelectOption<T> | undefined = find(this.props.options, o => o.value === this.props.value);
 
+    if (this.props.readonly && !this.props.disabled) {
+      return <div>{currentOption ? currentOption.label : undefined}</div>;
+    }
+
     return (
       <select onChange={this.onChange} value={currentOption ? currentOption.label : undefined} disabled={this.props.disabled}>
         {this.getRadioButtons()}
@@ -76,6 +80,12 @@ class RadioButtonsBase<T> extends React.Component<RadioButtonsProps<T>> {
   }
 
   render() {
+    const currentOption: SelectOption<T> | undefined = find(this.props.options, o => o.value === this.props.value);
+
+    if (this.props.readonly && !this.props.disabled) {
+      return <div>{currentOption ? currentOption.label : undefined}</div>;
+    }
+
     return (
       <Row wrap="wrap">
         {this.getRadioButtons()}
@@ -124,6 +134,17 @@ class CheckListBase<T> extends React.Component<CheckListProps<T>> {
   }
 
   render() {
+    if (this.props.readonly && !this.props.disabled) {
+      const selectedLabels = this.props.value.map((v: T) => {
+        const option = find(this.props.options, (o: SelectOption<T>) => o.value === v);
+
+        return option ? option.label : '';
+      });
+      return (
+        <div>{selectedLabels.join(', ')}</div>
+      );
+    }
+
     return (
       <Row wrap="wrap">
         {this.getCheckBoxes()}
