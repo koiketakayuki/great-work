@@ -1,73 +1,94 @@
 import * as React from 'react';
-import { FormItem } from './FormItem';
-import { FormContext, ContextValue } from './FormContext';
-import { Row } from '../layout/Row';
-import { FlexCell, FixedCell } from '../layout/Cell';
+import { FormEntryProps, FormEntry, ValueChangeHandler } from './FormEntry';
+import { ContextValue, FormContext } from './FormContext';
+import { Right } from '../layout/Right';
 import { Button } from '../Button';
+import { IconButton } from '../IconButton';
 
-interface ListFormEntryProps<T> {
-  id: string;
-  value: T[];
-  label: string;
+interface ListFormEntryProps<T> extends FormEntryProps<T[]> {
   default: T;
-  disabled?: boolean;
-  readonly?: boolean;
-  children: (element: T, onChange: (value: T) => void, disabled?: boolean, readonly?: boolean)
-    => React.ReactNode;
+  children: (element: T, onChange: ValueChangeHandler<T>) => React.ReactNode;
 }
 
-export class ListFormEntry<T> extends React.Component<ListFormEntryProps<T>> {
+function getForm<T>(
+  index: number,
+  element: T,
+  props: ListFormEntryProps<T>,
+  onChange: ValueChangeHandler<T[]>,
+) {
+  const form =  props.children(element, (newElement: T) => {
+    const newValue = [];
+    for (let i = 0; i < props.value.length; i = i + 1) {
+      if (i === index) {
+        newValue.push(newElement);
+      } else {
+        newValue.push(props.value[i]);
+      }
+    }
 
-  getMappingFunction = (context: ContextValue<T[]>) => {
-    return (value: T) => {
-      const index = this.props.value.indexOf(value);
-      const onChange = (newValue: T) => {
-        const length = this.props.value.length;
-        const newList = [];
+    onChange(newValue);
+  });
 
-        for (let i = 0; i < length; i = i + 1) {
-          if (i !== index) {
-            newList.push(this.props.value[i]);
-          } else {
-            newList.push(newValue);
-          }
-        }
-        context.update(this.props.id, newList, false);
-      };
-      return (
-        <Row>
-          <FlexCell>
-            {this.props.children(value, onChange, this.props.disabled, this.props.readonly)}
-          </FlexCell>
-          <FixedCell>
-            <Button type="error">Delete</Button>
-          </FixedCell>
-        </Row>
-      );
-    };
+  const onDelete = () => {
+    const newValue = [];
+    for (let i = 0; i < props.value.length; i = i + 1) {
+      if (i !== index) {
+        newValue.push(props.value[i]);
+      }
+    }
+
+    onChange(newValue);
+  };
+
+  return (
+    <div style={{ position: 'relative' }}>
+      {form}
+      <div style={{ position: 'absolute', right: '5px', top: '5px' }}>
+        <IconButton name="highlight_off" type="error" onClick={onDelete}/>
+      </div>
+    </div>
+  );
+}
+
+function getListForm<T>(
+  props: ListFormEntryProps<T>,
+  context: ContextValue<T[]>,
+  onChange: ValueChangeHandler<T[]>,
+) {
+  const value: T[] = props.value;
+  const length = value.length;
+  const forms: React.ReactNode[] = [];
+
+  for (let i = 0; i < length; i = i + 1) {
+    const form = getForm(i, value[i], props, onChange);
+    forms.push(form);
   }
 
-  onAdd (context: ContextValue<T[]>): () => void {
-    return () => {
-      const newList: T[] = this.props.value.concat([this.props.default]);
-      context.update(this.props.id, newList, false);
-    };
-  }
+  const onAdd = () => {
+    onChange(props.value.concat([props.default]));
+  };
 
-  getListForm(context: ContextValue<T[]>) {
-    return (
-      <FormItem label={this.props.label}>
-        {this.props.value.map(this.getMappingFunction(context))}
-        <Button type="primary" onClick={this.onAdd(context)}>Add</Button>
-      </FormItem>
-    );
-  }
+  const newContext = {
+    update: context.update,
+    disabled: props.disabled || context.disabled,
+    readonly: props.readonly || context.readonly,
+    type:  props.type || context.type,
+  };
 
-  render() {
-    return (
-      <FormContext.Consumer>
-        {context => this.getListForm(context)}
-      </FormContext.Consumer>
-    );
-  }
+  return (
+    <div>
+      <FormContext.Provider value={newContext}>
+        {forms}
+        <Right><Button onClick={onAdd} disabled={newContext.disabled}>Add</Button></Right>
+      </FormContext.Provider>
+    </div>
+  );
+}
+
+export function ListFormEntry<T>(props: ListFormEntryProps<T>) {
+  return (
+    <FormEntry<T[], FormEntryProps<T[]>> {...props}>
+      {(context, onChange) => getListForm(props, context, onChange)}
+    </FormEntry>
+  );
 }
