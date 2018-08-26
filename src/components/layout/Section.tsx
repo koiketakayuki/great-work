@@ -8,10 +8,10 @@ export interface SectionProps {
 }
 
 export const Section = (props: SectionProps) => (
-  <div>
+  <Container>
     <Heading level={5} tag="div">{props.label}</Heading>
     <Container padding="10px 0">
       {props.children}
     </Container>
-  </div>
+  </Container>
 );
