@@ -4,6 +4,8 @@ import { ContextValue, FormContext } from './FormContext';
 import { Right } from '../layout/Right';
 import { Button } from '../Button';
 import { IconButton } from '../IconButton';
+import { Container } from '../layout/Container';
+import { IconText } from '../IconText';
 
 interface ListFormEntryProps<T> extends FormEntryProps<T[]> {
   default: T;
@@ -43,7 +45,7 @@ function getForm<T>(
   return (
     <div style={{ position: 'relative' }}>
       {form}
-      <div style={{ position: 'absolute', right: '5px', top: '5px' }}>
+      <div style={{ position: 'absolute', right: '6px', top: '12px' }}>
         <IconButton name="highlight_off" type="error" onClick={onDelete}/>
       </div>
     </div>
@@ -79,7 +81,15 @@ function getListForm<T>(
     <div>
       <FormContext.Provider value={newContext}>
         {forms}
-        <Right><Button onClick={onAdd} disabled={newContext.disabled}>Add</Button></Right>
+        <Right>
+          <Container>
+            <Button
+              onClick={onAdd}
+              disabled={newContext.disabled}
+            ><IconText icon="add" text="add"/>
+            </Button>
+          </Container>
+        </Right>
       </FormContext.Provider>
     </div>
   );
