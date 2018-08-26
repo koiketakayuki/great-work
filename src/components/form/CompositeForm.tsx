@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { Container } from '../layout/Container';
 import { ContextValue, UpdateValue, FormContext } from './FormContext';
+import { ColorType } from '../../config/StyleConfig';
 
 export type CompositeFormProps<T> = {
   value: T;
   onChange?: (value: T, hasError: boolean) => void;
   disabled?: boolean;
   readonly?: boolean;
+  type?: ColorType;
 };
 
 export class CompositeForm<T> extends React.Component<CompositeFormProps<T>> {
@@ -28,6 +30,7 @@ export class CompositeForm<T> extends React.Component<CompositeFormProps<T>> {
       update: this.getUpdateFunction(context),
       disabled: this.props.disabled || context.disabled,
       readonly: this.props.readonly || context.readonly,
+      type: this.props.type || context.type,
     };
   }
 
