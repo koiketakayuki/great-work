@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { FormEntryProps, FormEntry, ValueChangeHandler } from './FormEntry';
 import { ContextValue, FormContext } from './FormContext';
+import { Paper } from '../Paper';
 
 export type CompositeFormEntryProps<T> = FormEntryProps<T> & {
   children: React.ReactNode;
@@ -15,13 +16,16 @@ function getForm<T>(
     update: (_: string, value: T) => {
       onChange(value);
     },
-    disabled: context.disabled,
-    readonly: context.readonly,
+    disabled:props.disabled ||  context.disabled,
+    readonly: props.readonly || context.readonly,
+    type: props.type || context.type,
   };
   return (
-    <FormContext.Provider value={newContext}>
-      {props.children}
-    </FormContext.Provider>
+    <Paper>
+      <FormContext.Provider value={newContext}>
+        {props.children}
+      </FormContext.Provider>
+    </Paper>
   );
 }
 

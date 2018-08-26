@@ -11,6 +11,7 @@ function getPasswordForm(
   return (
     <PasswordForm
       value={props.value}
+      type={props.type || context.type}
       validator={props.validator}
       onChange={onChange}
       disabled={props.disabled || context.disabled}

@@ -26,8 +26,8 @@ export class CompositeForm<T> extends React.Component<CompositeFormProps<T>> {
   getCurrentContext(context: ContextValue<T>) {
     return {
       update: this.getUpdateFunction(context),
-      disabled: this.props.disabled,
-      readonly: this.props.readonly,
+      disabled: this.props.disabled || context.disabled,
+      readonly: this.props.readonly || context.readonly,
     };
   }
 

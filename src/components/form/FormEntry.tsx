@@ -3,12 +3,14 @@ import { Validator } from './Form';
 import { ContextValue, FormContext } from './FormContext';
 import { FormItem } from './FormItem';
 import { HasSelectOptions } from './SelectForm';
+import { ColorType } from '../../config/StyleConfig';
 
 export type ValueChangeHandler<T> = (value: T) => void;
 
 export interface FormEntryProps<T> {
   id: string;
   value: T;
+  type?: ColorType;
   label: string;
   validator?: Validator<T>;
   disabled?: boolean;

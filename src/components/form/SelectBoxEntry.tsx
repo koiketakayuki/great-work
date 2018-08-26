@@ -11,6 +11,7 @@ function getSelectBox<T>(
   return (
     <SelectBox
       value={props.value}
+      type={props.type || context.type}
       validator={props.validator}
       onChange={onChange}
       options={props.options}
