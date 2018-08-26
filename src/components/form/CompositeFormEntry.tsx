@@ -1,26 +1,34 @@
 import * as React from 'react';
-import { FormItem } from './FormItem';
-import { Paper } from '../Paper';
-import { FormEntryProps, createFormEntry } from './FormEntry';
-import { FormContext } from './FormContext';
+import { FormEntryProps, FormEntry, ValueChangeHandler } from './FormEntry';
+import { ContextValue, FormContext } from './FormContext';
 
-export const CompositeFormEntry = <T extends any>(props: FormEntryProps<T>) =>
-  new (createFormEntry<T, FormEntryProps<T>>((props, onChange, hasError) => {
-    const context = {
-      update: (_: string, newValue: T, hasError: boolean) => {
-        onChange(newValue);
-      },
-      readonly: props.readonly,
-      disabled: props.disabled,
-    };
+export type CompositeFormEntryProps<T> = FormEntryProps<T> & {
+  children: React.ReactNode;
+};
 
-    return (
-      <FormItem label={props.label}>
-        <Paper>
-          <FormContext.Provider value={context}>
-            {props.children}
-          </FormContext.Provider>
-        </Paper>
-      </FormItem>
-    );
-  }))(props);
+function getForm<T>(
+  props: CompositeFormEntryProps<T>,
+  context: ContextValue<T>,
+  onChange: ValueChangeHandler<T>,
+) {
+  const newContext = {
+    update: (_: string, value: T) => {
+      onChange(value);
+    },
+    disabled: context.disabled,
+    readonly: context.readonly,
+  };
+  return (
+    <FormContext.Provider value={newContext}>
+      {props.children}
+    </FormContext.Provider>
+  );
+}
+
+export function CompositeFormEntry<T>(props: CompositeFormEntryProps<T>) {
+  return (
+    <FormEntry<T, CompositeFormEntryProps<T>> {...props}>
+      {(context, onChange) => getForm(props, context, onChange)}
+    </FormEntry>
+  );
+}

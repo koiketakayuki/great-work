@@ -1,18 +1,28 @@
 import * as React from 'react';
 import { PasswordForm } from './TextForm';
-import { FormItem } from './FormItem';
-import { createFormEntry, FormEntryProps } from './FormEntry';
+import { FormEntryProps, FormEntry, ValueChangeHandler } from './FormEntry';
+import { ContextValue } from './FormContext';
 
-export const PasswordFormEntry = createFormEntry<string, FormEntryProps<string>>((props, onChange, context) => {
+function getPasswordForm(
+  props: FormEntryProps<string>,
+  context: ContextValue<string>,
+  onChange: ValueChangeHandler<string>,
+) {
   return (
-    <FormItem label={props.label}>
-      <PasswordForm
-        value={props.value}
-        validator={props.validator}
-        onChange={onChange}
-        disabled={props.disabled || context.disabled}
-        readonly={props.readonly || context.readonly}
-      />
-    </FormItem>
+    <PasswordForm
+      value={props.value}
+      validator={props.validator}
+      onChange={onChange}
+      disabled={props.disabled || context.disabled}
+      readonly={props.readonly || context.readonly}
+    />
   );
-});
+}
+
+export function PasswordFormEntry(props: FormEntryProps<string>) {
+  return (
+    <FormEntry<string, FormEntryProps<string>> {...props}>
+      {(context, onChange) => getPasswordForm(props, context, onChange)}
+    </FormEntry>
+  );
+}

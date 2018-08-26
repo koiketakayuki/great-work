@@ -1,18 +1,28 @@
 import * as React from 'react';
 import { TextForm } from './TextForm';
-import { FormItem } from './FormItem';
-import { createFormEntry, FormEntryProps } from './FormEntry';
+import { FormEntryProps, FormEntry, ValueChangeHandler } from './FormEntry';
+import { ContextValue } from './FormContext';
 
-export const TextFormEntry = createFormEntry<string, FormEntryProps<string>>((props, onChange, context) => {
+function getTextForm(
+  props: FormEntryProps<string>,
+  context: ContextValue<string>,
+  onChange: ValueChangeHandler<string>,
+) {
   return (
-    <FormItem label={props.label}>
-      <TextForm
-        value={props.value}
-        validator={props.validator}
-        onChange={onChange}
-        disabled={props.disabled || context.disabled}
-        readonly={props.readonly || context.readonly}
-      />
-    </FormItem>
+    <TextForm
+      value={props.value}
+      validator={props.validator}
+      onChange={onChange}
+      disabled={props.disabled || context.disabled}
+      readonly={props.readonly || context.readonly}
+    />
   );
-});
+}
+
+export function TextFormEntry(props: FormEntryProps<string>) {
+  return (
+    <FormEntry<string, FormEntryProps<string>> {...props}>
+      {(context, onChange) => getTextForm(props, context, onChange)}
+    </FormEntry>
+  );
+}

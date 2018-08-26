@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { Validator } from './Form';
 import { ContextValue, FormContext } from './FormContext';
+import { FormItem } from './FormItem';
+import { HasSelectOptions } from './SelectForm';
+
+export type ValueChangeHandler<T> = (value: T) => void;
 
 export interface FormEntryProps<T> {
   id: string;
@@ -9,38 +13,33 @@ export interface FormEntryProps<T> {
   validator?: Validator<T>;
   disabled?: boolean;
   readonly?: boolean;
-  children?: React.ReactNode;
 }
 
-export class FormEntry<T, S extends FormEntryProps<T>> extends React.Component<S> {}
+export type SelectFormEntryProps<T> = FormEntryProps<T> & HasSelectOptions<T>;
+export type MultipleSelectFormEntryProps<T> = FormEntryProps<T[]> & HasSelectOptions<T>;
 
-type OnEntryValueChange<T> = (value: T) => void;
+function getChangeHandler<T>(props: FormEntryProps<T>, context: ContextValue<T>): ValueChangeHandler<T> {
+  return (value: T) => {
+    let hasError = false;
 
-type CreateEntry<T, S extends FormEntryProps<T>> =
-  (props: S, update: OnEntryValueChange<T>, context: ContextValue<T>) => React.ReactNode;
-
-export function createFormEntry<T, S extends FormEntryProps<T>>(createEntry: CreateEntry<T, S>) {
-  return class extends FormEntry<T, S> {
-    validate(value: T) {
-      if (this.props.validator) {
-        return this.props.validator(value);
-      }
+    if (props.validator) {
+      hasError = !!props.validator(value);
     }
 
-    getEntry(context: ContextValue<T>) {
-      const onEntryValueChange = (entryValue: T) => {
-        const errorMessage: string | undefined = this.validate(entryValue);
-        context.update(this.props.id, entryValue, !!errorMessage);
-      };
-      return createEntry(this.props, onEntryValueChange, context);
-    }
-
-    render() {
-      return (
-        <FormContext.Consumer>
-          {context => this.getEntry(context)}
-        </FormContext.Consumer>
-      );
-    }
+    context.update(props.id, value, hasError);
   };
 }
+
+export type FormGenerator<T> = {
+  children: (context: ContextValue<T>, onChange: ValueChangeHandler<T>) => React.ReactNode;
+};
+
+export const FormEntry = <T extends any, S extends FormEntryProps<T>>(props: S & FormGenerator<T>) => {
+  return (
+    <FormItem label={props.label}>
+      <FormContext.Consumer>
+        {context  => props.children(context, getChangeHandler(props, context))}
+      </FormContext.Consumer>
+    </FormItem>
+  );
+};

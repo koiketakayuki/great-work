@@ -1,22 +1,27 @@
 import * as React from 'react';
-import { CheckList, HasSelectOptions } from './SelectForm';
-import { FormItem } from './FormItem';
-import { FormEntryProps, createFormEntry } from './FormEntry';
+import { FormEntry, ValueChangeHandler, MultipleSelectFormEntryProps } from './FormEntry';
+import { ContextValue } from './FormContext';
+import { CheckList } from './SelectForm';
 
-type CheckListEntryProps<T> = FormEntryProps<T[]> & HasSelectOptions<T>;
+function getCheckList<T>(
+  props: MultipleSelectFormEntryProps<T>,
+  context: ContextValue<T[]>,
+  onChange: ValueChangeHandler<T[]>,
+) {
+  return (
+    <CheckList
+      value={props.value}
+      validator={props.validator}
+      onChange={onChange}
+      options={props.options}
+      disabled={props.disabled || context.disabled}
+      readonly={props.readonly || context.readonly}
+    />
+  );
+}
 
-export const CheckListEntry = <T extends any>(props: CheckListEntryProps<T>) =>
-  new (createFormEntry<T[], CheckListEntryProps<T>>((props, onChange, context) => {
-    return (
-      <FormItem label={props.label}>
-        <CheckList
-          value={props.value}
-          validator={props.validator}
-          onChange={onChange}
-          options={props.options}
-          disabled={props.disabled || context.disabled}
-          readonly={props.readonly || context.readonly}
-        />
-      </FormItem>
-    );
-  }))(props);
+export const CheckListEntry = <T extends any>(props: MultipleSelectFormEntryProps<T>) => (
+  <FormEntry<T[], MultipleSelectFormEntryProps<T>> {...props}>
+    {(context, onChange) => getCheckList(props, context, onChange)}
+  </FormEntry>
+);
