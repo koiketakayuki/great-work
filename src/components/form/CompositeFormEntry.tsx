@@ -30,7 +30,7 @@ function getForm<T, C>(
   );
 }
 
-export function CompositeFormEntry<T, C>(props: CompositeFormEntryProps<T, C>) {
+export function CompositeFormEntry<C, T>(props: CompositeFormEntryProps<T, C>) {
   return (
     <FormEntry<T, C, CompositeFormEntryProps<T, C>> {...props}>
       {(context, onChange) => getForm(props, context, onChange)}
