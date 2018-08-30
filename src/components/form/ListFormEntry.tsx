@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { FormEntryProps, FormEntry, ValueChangeHandler } from './FormEntry';
-import { ContextValue, FormContext } from './FormContext';
+import { ContextValue } from './FormContext';
 import { Right } from '../layout/Right';
 import { Button } from '../Button';
-import { IconButton } from '../IconButton';
 import { Container } from '../layout/Container';
 import { IconText } from '../IconText';
+import { ListItem } from './ListItem';
 
 type DefaultValueGenerator<T> = () => T;
 
@@ -13,27 +13,6 @@ interface ListFormEntryProps<T, C> extends FormEntryProps<T[], C> {
   default: T | DefaultValueGenerator<T>;
   children: (element: T, onChange: ValueChangeHandler<T>) => React.ReactNode;
   keyParameter?: keyof T;
-}
-
-interface ListItemProps<C> {
-  key: string;
-  context: ContextValue<C>;
-  onDelete: () => void;
-}
-
-export class ListItem<C> extends React.Component<ListItemProps<C>, { uniqueKey: string }> {
-  render() {
-    return (
-      <div style={{ position: 'relative' }}>
-        <FormContext.Provider value={this.props.context}>
-          {this.props.children}
-          <div style={{ position: 'absolute', right: '6px', top: '12px' }}>
-            <IconButton name="highlight_off" type="error" onClick={this.props.onDelete}/>
-          </div>
-        </FormContext.Provider>
-      </div>
-    );
-  }
 }
 
 function getListItem<T, C>(
