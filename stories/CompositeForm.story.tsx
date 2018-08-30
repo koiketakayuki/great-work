@@ -8,17 +8,19 @@ import { TextAreaEntry } from '../src/components/form/TextAreaEntry';
 import { RadioButtonsEntry } from '../src/components/form/RadioButtonsEntry';
 import { SelectBoxEntry } from '../src/components/form/SelectBoxEntry';
 import { CheckListEntry } from '../src/components/form/CheckListEntry';
+import { ListFormEntry } from '../src/components/form/ListFormEntry';
+import { Paper } from '../src/components/Paper';
+import { ValueChangeHandler } from '../src/components/form/FormEntry';
+import { TextForm } from '../src/components/form/TextForm';
 
 const story = storiesOf('CompositeForm', module);
 story.addDecorator(withInfo({ inline: true }));
 const lengthValidator = () => 'Hello!';
 
-type TestType = {
+type User = {
   id: number,
   name: string;
-  password: string;
-  content: string;
-  checks: number[];
+  address: string;
 };
 
 const options = [
@@ -39,37 +41,61 @@ const checkOptions = [
   { label: '9', value: 9 },
 ];
 
-class CompositeFormDemo extends React.Component<{}, { value: TestType}> {
+class UserForm extends React.Component<{ user: User, onChange?: ValueChangeHandler<User> }> {
 
+  render() {
+    const user = this.props.user;
+
+    return (
+      <CompositeForm<User> value={user} onChange={this.props.onChange}>
+        <TextFormEntry<User> id="name" label="Name" value={user.name}/>
+        <TextAreaEntry<User> id="address" label="Address" value={user.address}/>
+      </CompositeForm>
+    );
+  }
+}
+
+class CompositeFormDemo extends React.Component<{ onChange?: ValueChangeHandler<User> }, { users: User[], names: string[] }> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      value: {
-        id: 1,
-        name: 'test',
-        password: 'test',
-        content: 'test',
-        checks: [],
-      },
+      users: [
+        {
+          id: 1,
+          name: 'test',
+          address: 'string',
+        },
+      ],
+      names: ['test'],
     };
   }
 
-  onChange = (value: TestType) => {
-    console.log(value);
-    this.setState({ value });
+  onChange = (result: { users: User[], names: string[] }) => {
+    this.setState(result);
   }
 
   render() {
-    const value = this.state.value;
+    const users = this.state.users;
+    const names = this.state.names;
     return (
-      <CompositeForm value={value} onChange={this.onChange}>
-        <TextFormEntry id="name" value={value.name} label="氏名" validator={lengthValidator}/>
-        <TextFormEntry id="password" value={value.password} label="パスワード" validator={lengthValidator}/>
-        <PasswordFormEntry id="password" value={value.password} label="パスワード" validator={lengthValidator}/>
-        <RadioButtonsEntry id="password" value={value.password} options={options} label="パスワード" validator={lengthValidator}/>
-        <SelectBoxEntry id="password" value={value.password} options={options} label="パスワード" validator={lengthValidator}/>
-        <CheckListEntry id="checks" value={value.checks} options={checkOptions} label="チェック" validator={lengthValidator}/>
-        <TextAreaEntry id="content" value={value.content} label="本文" validator={lengthValidator}/>
+      <CompositeForm value={{ users, names }} onChange={this.onChange}>
+        <ListFormEntry
+          id="users"
+          label="Users"
+          value={users}
+          default={{ id: 2, name: '', address: '' }}
+          keyParameter="id"
+        >
+          {user => <Paper><UserForm user={user}/></Paper>}
+        </ListFormEntry>
+        <ListFormEntry
+          id="names"
+          label="Names"
+          value={names}
+          default="John"
+        >
+          {(name, onChange) => <TextForm value={name} onChange={onChange} validator={lengthValidator}/>}
+        </ListFormEntry>
       </CompositeForm>
     );
   }
