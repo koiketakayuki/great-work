@@ -36,7 +36,7 @@ export type FormGenerator<T> = {
   children: (context: ContextValue<T>, onChange: ValueChangeHandler<T>) => React.ReactNode;
 };
 
-export const FormEntry = <T extends any, S extends FormEntryProps<T>>(props: S & FormGenerator<T>) => {
+export const FormEntry = <T, S extends FormEntryProps<T>>(props: S & FormGenerator<T>) => {
   return (
     <FormItem label={props.label}>
       <FormContext.Consumer>
