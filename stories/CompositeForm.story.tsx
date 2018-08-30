@@ -11,7 +11,7 @@ import { CheckListEntry } from '../src/components/form/CheckListEntry';
 
 const story = storiesOf('CompositeForm', module);
 story.addDecorator(withInfo({ inline: true }));
-const lengthValidator = (value: any) => 'Hello!';
+const lengthValidator = () => 'Hello!';
 
 type TestType = {
   id: number,

@@ -4,8 +4,6 @@ import { withInfo } from '@storybook/addon-info';
 import { CheckBox } from '../src/components/form/ToggleForm';
 
 const story = storiesOf('CheckBox', module);
-const lengthValidator = (value: string) => value.length < 10 ? 'value must be greater than 10 characters' : undefined;
-const onBlur = (e: React.FocusEvent<Element>) => window.alert('Blur');
 
 const sayHello = () => window.alert('Hello');
 
