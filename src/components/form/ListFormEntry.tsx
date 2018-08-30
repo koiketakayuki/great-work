@@ -12,9 +12,31 @@ type DefaultValueGenerator<T> = () => T;
 interface ListFormEntryProps<T, C> extends FormEntryProps<T[], C> {
   default: T | DefaultValueGenerator<T>;
   children: (element: T, onChange: ValueChangeHandler<T>) => React.ReactNode;
+  keyParameter?: keyof T;
 }
 
-function getForm<T, C>(
+interface ListItemProps<C> {
+  key: string;
+  context: ContextValue<C>;
+  onDelete: () => void;
+}
+
+export class ListItem<C> extends React.Component<ListItemProps<C>, { uniqueKey: string }> {
+  render() {
+    return (
+      <div style={{ position: 'relative' }}>
+        <FormContext.Provider value={this.props.context}>
+          {this.props.children}
+          <div style={{ position: 'absolute', right: '6px', top: '12px' }}>
+            <IconButton name="highlight_off" type="error" onClick={this.props.onDelete}/>
+          </div>
+        </FormContext.Provider>
+      </div>
+    );
+  }
+}
+
+function getListItem<T, C>(
   index: number,
   element: T,
   props: ListFormEntryProps<T, C>,
@@ -53,15 +75,12 @@ function getForm<T, C>(
     context.update(Object.assign({}, context.value, { [props.id]: newValue }), true);
   };
 
+  const key = props.keyParameter ? String(element[props.keyParameter]) : String(index);
+
   return (
-    <FormContext.Provider value={newContext}>
-      <div style={{ position: 'relative' }} key={`ListForm-${index}`}>
-        {form}
-        <div style={{ position: 'absolute', right: '6px', top: '12px' }}>
-          <IconButton name="highlight_off" type="error" onClick={onDelete}/>
-        </div>
-      </div>
-    </FormContext.Provider>
+    <ListItem key={key} context={newContext} onDelete={onDelete}>
+      {form}
+    </ListItem>
   );
 }
 
@@ -75,7 +94,7 @@ function getListForm<T, C>(
   const forms: React.ReactNode[] = [];
 
   for (let i = 0; i < length; i = i + 1) {
-    const form = getForm(i, value[i], props, context);
+    const form = getListItem(i, value[i], props, context);
     forms.push(form);
   }
 
