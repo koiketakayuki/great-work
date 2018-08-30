@@ -7,8 +7,10 @@ import { IconButton } from '../IconButton';
 import { Container } from '../layout/Container';
 import { IconText } from '../IconText';
 
+type DefaultValueGenerator<T> = () => T;
+
 interface ListFormEntryProps<T, C> extends FormEntryProps<T[], C> {
-  default: T;
+  default: T | DefaultValueGenerator<T>;
   children: (element: T, onChange: ValueChangeHandler<T>) => React.ReactNode;
 }
 
@@ -78,7 +80,12 @@ function getListForm<T, C>(
   }
 
   const onAdd = () => {
-    onChange(props.value.concat([props.default]));
+    const defaultValue = props.default;
+    if (typeof defaultValue === 'function') {
+      onChange(props.value.concat([defaultValue()]));
+    } else {
+      onChange(props.value.concat([defaultValue]));
+    }
   };
 
   const newContext: ContextValue<C> = {
