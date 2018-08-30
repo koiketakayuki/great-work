@@ -16,20 +16,29 @@ function getForm<T, C>(
   index: number,
   element: T,
   props: ListFormEntryProps<T, C>,
-  onChange: ValueChangeHandler<T[]>,
+  context: ContextValue<C>,
 ) {
-  const form =  props.children(element, (newElement: T) => {
-    const newValue = [];
-    for (let i = 0; i < props.value.length; i = i + 1) {
-      if (i === index) {
-        newValue.push(newElement);
-      } else {
-        newValue.push(props.value[i]);
-      }
-    }
 
-    onChange(newValue);
-  });
+  const newContext: ContextValue<T> = {
+    value: element,
+    update: (newElementValue: T) => {
+      const newValue: T[] = [];
+      for (let i = 0; i < props.value.length; i = i + 1) {
+        if (i !== index) {
+          newValue.push(props.value[i]);
+        } else {
+          newValue.push(newElementValue);
+        }
+      }
+
+      context.update(Object.assign({}, context.value, { [props.id]: newValue }), true);
+    },
+    disabled: props.disabled || context.disabled,
+    readonly: props.readonly || context.readonly,
+    type:  props.type || context.type,
+  };
+
+  const form =  props.children(element, value => newContext.update(value, true));
 
   const onDelete = () => {
     const newValue = [];
@@ -39,16 +48,18 @@ function getForm<T, C>(
       }
     }
 
-    onChange(newValue);
+    context.update(Object.assign({}, context.value, { [props.id]: newValue }), true);
   };
 
   return (
-    <div style={{ position: 'relative' }}>
-      {form}
-      <div style={{ position: 'absolute', right: '6px', top: '12px' }}>
-        <IconButton name="highlight_off" type="error" onClick={onDelete}/>
+    <FormContext.Provider value={newContext}>
+      <div style={{ position: 'relative' }} key={`ListForm-${index}`}>
+        {form}
+        <div style={{ position: 'absolute', right: '6px', top: '12px' }}>
+          <IconButton name="highlight_off" type="error" onClick={onDelete}/>
+        </div>
       </div>
-    </div>
+    </FormContext.Provider>
   );
 }
 
@@ -62,7 +73,7 @@ function getListForm<T, C>(
   const forms: React.ReactNode[] = [];
 
   for (let i = 0; i < length; i = i + 1) {
-    const form = getForm(i, value[i], props, onChange);
+    const form = getForm(i, value[i], props, context);
     forms.push(form);
   }
 
@@ -80,18 +91,16 @@ function getListForm<T, C>(
 
   return (
     <div>
-      <FormContext.Provider value={newContext}>
-        {forms}
-        <Right>
-          <Container>
-            <Button
-              onClick={onAdd}
-              disabled={newContext.disabled}
-            ><IconText icon="add" text="add"/>
-            </Button>
-          </Container>
-        </Right>
-      </FormContext.Provider>
+      {forms}
+      <Right>
+        <Container>
+          <Button
+            onClick={onAdd}
+            disabled={newContext.disabled}
+          ><IconText icon="add" text="add"/>
+          </Button>
+        </Container>
+      </Right>
     </div>
   );
 }
