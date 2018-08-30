@@ -3,9 +3,9 @@ import { FormEntry, ValueChangeHandler, SelectFormEntryProps } from './FormEntry
 import { ContextValue } from './FormContext';
 import { SelectBox } from './SelectForm';
 
-function getSelectBox<T>(
-  props: SelectFormEntryProps<T>,
-  context: ContextValue<T>,
+function getSelectBox<T, C>(
+  props: SelectFormEntryProps<T, C>,
+  context: ContextValue<C>,
   onChange: ValueChangeHandler<T>,
 ) {
   return (
@@ -21,9 +21,9 @@ function getSelectBox<T>(
   );
 }
 
-export function SelectBoxEntry<T>(props: SelectFormEntryProps<T>) {
+export function SelectBoxEntry<C, T>(props: SelectFormEntryProps<T, C>) {
   return (
-    <FormEntry<T, SelectFormEntryProps<T>> {...props}>
+    <FormEntry<T, C, SelectFormEntryProps<T, C>> {...props}>
       {(context, onChange) => getSelectBox(props, context, onChange)}
     </FormEntry>
   );

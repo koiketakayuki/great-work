@@ -7,8 +7,8 @@ import { ColorType } from '../../config/StyleConfig';
 
 export type ValueChangeHandler<T> = (value: T) => void;
 
-export interface FormEntryProps<T> {
-  id: string;
+export interface FormEntryProps<T, C> {
+  id: keyof C;
   value: T;
   type?: ColorType;
   label: string;
@@ -17,10 +17,10 @@ export interface FormEntryProps<T> {
   readonly?: boolean;
 }
 
-export type SelectFormEntryProps<T> = FormEntryProps<T> & HasSelectOptions<T>;
-export type MultipleSelectFormEntryProps<T> = FormEntryProps<T[]> & HasSelectOptions<T>;
+export type SelectFormEntryProps<T, C> = FormEntryProps<T, C> & HasSelectOptions<T>;
+export type MultipleSelectFormEntryProps<T, C> = FormEntryProps<T[], C> & HasSelectOptions<T>;
 
-function getChangeHandler<T>(props: FormEntryProps<T>, context: ContextValue<T>): ValueChangeHandler<T> {
+function getChangeHandler<T, C>(props: FormEntryProps<T, C>, context: ContextValue<C>): ValueChangeHandler<T> {
   return (value: T) => {
     let hasError = false;
 
@@ -28,15 +28,16 @@ function getChangeHandler<T>(props: FormEntryProps<T>, context: ContextValue<T>)
       hasError = !!props.validator(value);
     }
 
-    context.update(props.id, value, hasError);
+    const newValue = Object.assign({}, context.value, { [props.id]: value });
+    context.update(newValue, hasError);
   };
 }
 
-export type FormGenerator<T> = {
-  children: (context: ContextValue<T>, onChange: ValueChangeHandler<T>) => React.ReactNode;
+export type FormGenerator<T, C> = {
+  children: (context: ContextValue<C>, onChange: ValueChangeHandler<T>) => React.ReactNode;
 };
 
-export const FormEntry = <T, S extends FormEntryProps<T>>(props: S & FormGenerator<T>) => {
+export function FormEntry<T, C, S extends FormEntryProps<T, C>>(props: S & FormGenerator<T, C>) {
   return (
     <FormItem label={props.label}>
       <FormContext.Consumer>
@@ -44,4 +45,4 @@ export const FormEntry = <T, S extends FormEntryProps<T>>(props: S & FormGenerat
       </FormContext.Consumer>
     </FormItem>
   );
-};
+}

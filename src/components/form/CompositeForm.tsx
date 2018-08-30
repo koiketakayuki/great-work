@@ -13,20 +13,19 @@ export type CompositeFormProps<T> = {
 
 export class CompositeForm<T> extends React.Component<CompositeFormProps<T>> {
 
-  getUpdateFunction(context: ContextValue<T>): UpdateValue<T> {
-    return (id: string, entryValue: any, hasError: boolean) => {
-      const newValue = Object.assign({}, this.props.value, { [id]: entryValue });
-
+  getUpdateFunction(context: ContextValue<any>): UpdateValue<T> {
+    return (newValue: T, hasError: boolean) => {
       if (this.props.onChange) {
         this.props.onChange(newValue, hasError);
       }
 
-      context.update('', newValue, hasError);
+      context.update(newValue, hasError);
     };
   }
 
-  getCurrentContext(context: ContextValue<T>) {
+  getCurrentContext(context: ContextValue<any>): ContextValue<T> {
     return {
+      value: this.props.value,
       update: this.getUpdateFunction(context),
       disabled: this.props.disabled || context.disabled,
       readonly: this.props.readonly || context.readonly,
@@ -34,7 +33,7 @@ export class CompositeForm<T> extends React.Component<CompositeFormProps<T>> {
     };
   }
 
-  getCompositeForm(context: ContextValue<T>) {
+  getCompositeForm(context: ContextValue<any>) {
     return (
       <FormContext.Provider value={this.getCurrentContext(context)}>
         <Container>{this.props.children}</Container>

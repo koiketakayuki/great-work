@@ -3,9 +3,9 @@ import { FormEntry, ValueChangeHandler, MultipleSelectFormEntryProps } from './F
 import { ContextValue } from './FormContext';
 import { CheckList } from './SelectForm';
 
-function getCheckList<T>(
-  props: MultipleSelectFormEntryProps<T>,
-  context: ContextValue<T[]>,
+function getCheckList<T, C>(
+  props: MultipleSelectFormEntryProps<T, C>,
+  context: ContextValue<C>,
   onChange: ValueChangeHandler<T[]>,
 ) {
   return (
@@ -20,8 +20,10 @@ function getCheckList<T>(
   );
 }
 
-export const CheckListEntry = <T extends any>(props: MultipleSelectFormEntryProps<T>) => (
-  <FormEntry<T[], MultipleSelectFormEntryProps<T>> {...props}>
-    {(context, onChange) => getCheckList(props, context, onChange)}
-  </FormEntry>
-);
+export function CheckListEntry<C, T>(props: MultipleSelectFormEntryProps<T, C>) {
+  return (
+    <FormEntry<T[], C, MultipleSelectFormEntryProps<T, C>> {...props}>
+      {(context, onChange) => getCheckList(props, context, onChange)}
+    </FormEntry>
+  );
+}

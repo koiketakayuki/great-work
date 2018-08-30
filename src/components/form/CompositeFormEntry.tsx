@@ -3,17 +3,18 @@ import { FormEntryProps, FormEntry, ValueChangeHandler } from './FormEntry';
 import { ContextValue, FormContext } from './FormContext';
 import { Paper } from '../Paper';
 
-export type CompositeFormEntryProps<T> = FormEntryProps<T> & {
+export type CompositeFormEntryProps<T, C> = FormEntryProps<T, C> & {
   children: React.ReactNode;
 };
 
-function getForm<T>(
-  props: CompositeFormEntryProps<T>,
-  context: ContextValue<T>,
+function getForm<T, C>(
+  props: CompositeFormEntryProps<T, C>,
+  context: ContextValue<C>,
   onChange: ValueChangeHandler<T>,
 ) {
-  const newContext = {
-    update: (_: string, value: T) => {
+  const newContext: ContextValue<T> = {
+    value: props.value,
+    update: (value: T) => {
       onChange(value);
     },
     disabled:props.disabled ||  context.disabled,
@@ -29,9 +30,9 @@ function getForm<T>(
   );
 }
 
-export function CompositeFormEntry<T>(props: CompositeFormEntryProps<T>) {
+export function CompositeFormEntry<T, C>(props: CompositeFormEntryProps<T, C>) {
   return (
-    <FormEntry<T, CompositeFormEntryProps<T>> {...props}>
+    <FormEntry<T, C, CompositeFormEntryProps<T, C>> {...props}>
       {(context, onChange) => getForm(props, context, onChange)}
     </FormEntry>
   );

@@ -7,15 +7,15 @@ import { IconButton } from '../IconButton';
 import { Container } from '../layout/Container';
 import { IconText } from '../IconText';
 
-interface ListFormEntryProps<T> extends FormEntryProps<T[]> {
+interface ListFormEntryProps<T, C> extends FormEntryProps<T[], C> {
   default: T;
   children: (element: T, onChange: ValueChangeHandler<T>) => React.ReactNode;
 }
 
-function getForm<T>(
+function getForm<T, C>(
   index: number,
   element: T,
-  props: ListFormEntryProps<T>,
+  props: ListFormEntryProps<T, C>,
   onChange: ValueChangeHandler<T[]>,
 ) {
   const form =  props.children(element, (newElement: T) => {
@@ -52,9 +52,9 @@ function getForm<T>(
   );
 }
 
-function getListForm<T>(
-  props: ListFormEntryProps<T>,
-  context: ContextValue<T[]>,
+function getListForm<T, C>(
+  props: ListFormEntryProps<T, C>,
+  context: ContextValue<C>,
   onChange: ValueChangeHandler<T[]>,
 ) {
   const value: T[] = props.value;
@@ -70,7 +70,8 @@ function getListForm<T>(
     onChange(props.value.concat([props.default]));
   };
 
-  const newContext = {
+  const newContext: ContextValue<C> = {
+    value: context.value,
     update: context.update,
     disabled: props.disabled || context.disabled,
     readonly: props.readonly || context.readonly,
@@ -95,9 +96,9 @@ function getListForm<T>(
   );
 }
 
-export function ListFormEntry<T>(props: ListFormEntryProps<T>) {
+export function ListFormEntry<T, C>(props: ListFormEntryProps<T, C>) {
   return (
-    <FormEntry<T[], FormEntryProps<T[]>> {...props}>
+    <FormEntry<T[], C, FormEntryProps<T[], C>> {...props}>
       {(context, onChange) => getListForm(props, context, onChange)}
     </FormEntry>
   );
