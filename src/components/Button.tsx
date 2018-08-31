@@ -7,7 +7,7 @@ import { PaddingProperty } from 'csstype';
 
 export interface ButtonProps {
   padding?: PaddingProperty<string>;
-  onClick?: Function;
+  onClick?: () => void;
   disabled?: boolean;
   float?: FloatLevel;
   type?: ColorType;
@@ -15,7 +15,7 @@ export interface ButtonProps {
 
 export class Button extends React.Component<ButtonProps> {
 
-  onClick = (e: React.MouseEvent) => {
+  onClick = () => {
     if (this.props.onClick && !this.props.disabled) {
       this.props.onClick();
     }
@@ -23,7 +23,7 @@ export class Button extends React.Component<ButtonProps> {
 
   onKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && this.props.onClick) {
-      this.props.onClick();
+      this.onClick();
     }
   }
 
