@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { FormProps } from './Form';
 import { find } from '../../lib/util';
-import { RadioButtonBase, CheckBoxBase } from './ToggleForm';
 import { Row } from '../layout/Row';
 import { validatable } from './validatable';
+import { RadioButton } from './RadioButton';
+import { CheckBox } from './CheckBox';
 
 /**
  * Select components
@@ -67,7 +68,7 @@ class RadioButtonsBase<T> extends React.Component<RadioButtonsProps<T>> {
     return this.props.options.map((o: SelectOption<T>) => {
       const onChange = () => this.onChange(o.value);
       return (
-        <RadioButtonBase
+        <RadioButton
           key={o.label}
           value={currentValue === o.value}
           label={o.label}
@@ -121,7 +122,7 @@ class CheckListBase<T> extends React.Component<CheckListProps<T>> {
     return this.props.options.map((o: SelectOption<T>) => {
       const onChange = () => this.onChange(o.value);
       return (
-        <CheckBoxBase
+        <CheckBox
           key={o.label}
           value={currentValue.indexOf(o.value) > -1}
           label={o.label}

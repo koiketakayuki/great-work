@@ -1,16 +1,14 @@
 import * as React from 'react';
 import { FormBaseProps, HasLabel } from './Form';
+import { ColorType, StyleConfig } from '../../config/StyleConfig';
 import { IconText } from '../IconText';
-import { validatable } from './validatable';
-import { StyleConfig, ColorType } from '../../config/StyleConfig';
-import { StyleContext } from '../../config/StyleContext';
-import { Text } from '../Text';
 import { Icon } from '../Icon';
-
+import { Text } from '../Text';
+import { StyleContext } from '../../config/StyleContext';
 export type ToggleFormProps = FormBaseProps<boolean> & HasLabel;
 
-const createIconToggle = (activeIcon: string, inactiveIcon: string) =>
-  class extends React.Component<ToggleFormProps> {
+export function createIconToggle(activeIcon: string, inactiveIcon: string) {
+  return class extends React.Component<ToggleFormProps> {
 
     getColorType(): ColorType {
       if (this.props.disabled) {
@@ -60,20 +58,4 @@ const createIconToggle = (activeIcon: string, inactiveIcon: string) =>
       );
     }
   };
-
-export const RadioButtonBase = createIconToggle('radio_button_checked', 'radio_button_unchecked');
-export const CheckBoxBase = createIconToggle('check_box', 'check_box_outline_blank');
-
-export const CheckBox = validatable<boolean, ToggleFormProps>((props, onChange, onBlur, hasError) => {
-  return (
-    <CheckBoxBase
-      label={props.label}
-      value={props.value}
-      disabled={props.disabled}
-      readonly={props.readonly}
-      onChange={onChange}
-      onBlur={onBlur}
-      type={hasError ? 'error' : props.type}
-    />
-  );
-});
+}

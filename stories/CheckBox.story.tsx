@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { CheckBox } from '../src/components/form/ToggleForm';
+import { CheckBox } from '../src/components/form/CheckBox';
 
 const story = storiesOf('CheckBox', module);
 
