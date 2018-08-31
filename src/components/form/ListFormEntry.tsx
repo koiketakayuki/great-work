@@ -6,6 +6,8 @@ import { Button } from '../Button';
 import { Container } from '../layout/Container';
 import { IconText } from '../IconText';
 import { ListItem } from './ListItem';
+import { Icon } from '../Icon';
+import { Text } from '../Text';
 
 type DefaultValueGenerator<T> = () => T;
 
@@ -102,7 +104,7 @@ function getListForm<T, C>(
           <Button
             onClick={onAdd}
             disabled={newContext.disabled}
-          ><IconText icon="add" text="add"/>
+          ><IconText icon={<Icon name="add"/>} text={<Text>add</Text>}/>
           </Button>
         </Container>
       </Right>

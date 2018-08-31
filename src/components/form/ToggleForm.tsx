@@ -4,6 +4,8 @@ import { IconText } from '../IconText';
 import { validatable } from './validatable';
 import { StyleConfig, ColorType } from '../../config/StyleConfig';
 import { StyleContext } from '../../config/StyleContext';
+import { Text } from '../Text';
+import { Icon } from '../Icon';
 
 export type ToggleFormProps = FormBaseProps<boolean> & HasLabel;
 
@@ -38,9 +40,9 @@ const createIconToggle = (activeIcon: string, inactiveIcon: string) =>
     getForm(config: StyleConfig) {
       return (
         <IconText
-          icon={this.props.value ? activeIcon : inactiveIcon}
+          icon={<Icon name={this.props.value ? activeIcon : inactiveIcon}/>}
           cursor={this.props.disabled ? 'not-allowed' : (this.props.readonly ? 'default' : 'pointer')}
-          text={this.props.label}
+          text={<Text>{this.props.label}</Text>}
           onClick={this.onClick}
           onKeyDown={this.onKeyDown}
           type={this.getColorType()}
