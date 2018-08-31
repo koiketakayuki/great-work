@@ -37,16 +37,18 @@ export function createIconToggle(activeIcon: string, inactiveIcon: string) {
 
     getForm(config: StyleConfig) {
       return (
-        <IconText
-          icon={<Icon name={this.props.value ? activeIcon : inactiveIcon}/>}
-          cursor={this.props.disabled ? 'not-allowed' : (this.props.readonly ? 'default' : 'pointer')}
-          text={<Text>{this.props.label}</Text>}
-          onClick={this.onClick}
-          onKeyDown={this.onKeyDown}
-          type={this.getColorType()}
-          hover={(this.props.disabled || this.props.readonly) ? {} : { color: config.getColor(this.props.type || 'primary') }}
-          tabIndex={this.props.disabled ? undefined : 0}
-        />
+        <div style={{ display: 'inline-block' }}>
+          <IconText
+            icon={<Icon name={this.props.value ? activeIcon : inactiveIcon}/>}
+            cursor={this.props.disabled ? 'not-allowed' : (this.props.readonly ? 'default' : 'pointer')}
+            text={<Text>{this.props.label}</Text>}
+            onClick={this.onClick}
+            onKeyDown={this.onKeyDown}
+            type={this.getColorType()}
+            hover={(this.props.disabled || this.props.readonly) ? {} : { color: config.getColor(this.props.type || 'primary') }}
+            tabIndex={this.props.disabled ? undefined : 0}
+          />
+        </div>
       );
     }
 
