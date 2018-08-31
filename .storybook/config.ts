@@ -10,6 +10,7 @@ function loadStories() {
   require('../stories/PasswordForm.story');
   require('../stories/TextArea.story');
   require('../stories/RadioButtons.story');
+  require('../stories/ImageForm.story');
   require('../stories/CompositeForm.story');
 }
 
