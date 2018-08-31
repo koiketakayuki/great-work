@@ -6,6 +6,7 @@ function loadStories() {
   require('../stories/TextForm.story');
   require('../stories/PasswordForm.story');
   require('../stories/TextArea.story');
+  require('../stories/RadioButtons.story');
   require('../stories/CompositeForm.story');
 }
 
