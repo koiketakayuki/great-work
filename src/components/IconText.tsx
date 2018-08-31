@@ -16,20 +16,35 @@ export interface IconTextProps {
   onClick?: React.MouseEventHandler;
   onKeyDown?: React.KeyboardEventHandler;
   tabIndex?: number;
-  left?: boolean;
+  right?: boolean;
 }
 
-export const IconText = (props: IconTextProps) => (
-  <Row hover={props.hover} cursor={props.cursor} onClick={props.onClick} tabIndex={props.tabIndex} onKeyDown={props.onKeyDown}>
+export const IconText = (props: IconTextProps) => {
+  const iconCell = (
     <FixedCell>
       <Row>
         {props.icon}
       </Row>
     </FixedCell>
-    <FlexCell>
-      <Container padding="0 4px">
-        {props.text}
-      </Container>
-    </FlexCell>
-  </Row>
-);
+  );
+
+  return (
+    <Row
+      display="inline-flex"
+      type={props.type}
+      hover={props.hover}
+      cursor={props.cursor}
+      onClick={props.onClick}
+      tabIndex={props.tabIndex}
+      onKeyDown={props.onKeyDown}
+    >
+      {props.right ? undefined : iconCell}
+      <FlexCell>
+        <Container padding="0 4px">
+          {props.text}
+        </Container>
+      </FlexCell>
+      {props.right ? iconCell : undefined}
+    </Row>
+  );
+};

@@ -44,10 +44,10 @@ export const DefaultStyleConfig: StyleConfig = {
     return 'inherit';
   },
   getColorContext(type: ColorType): ColorContext {
-    if (type === 'default') {
+    if (type === 'primary') {
       return {
-        color: this.fontColor,
-        backgroundColor: 'transparent',
+        color: this.white,
+        backgroundColor: this.primary,
       };
     }
 
@@ -73,8 +73,8 @@ export const DefaultStyleConfig: StyleConfig = {
     }
 
     return {
-      color: this.white,
-      backgroundColor: this.primary,
+      color: 'inherit',
+      backgroundColor: 'transparent',
     };
   },
 };

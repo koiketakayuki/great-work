@@ -2,6 +2,7 @@ import { configure } from '@storybook/react';
 
 function loadStories() {
   require('../stories/Paper.story');
+  require('../stories/IconText.story');
   require('../stories/Button.story');
   require('../stories/CheckBox.story');
   require('../stories/TextForm.story');
