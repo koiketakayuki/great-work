@@ -135,6 +135,7 @@ export const TextForm = validatable<string, TextFormProps>((props, onChange, onB
       readonly={props.readonly}
       onChange={onChange}
       onBlur={onBlur}
+      placeholder={props.placeholder}
       type={hasError ? 'error' : props.type}
     />
   );
@@ -148,6 +149,7 @@ export const PasswordForm = validatable<string, TextFormProps>((props, onChange,
       readonly={props.readonly}
       onChange={onChange}
       onBlur={onBlur}
+      placeholder={props.placeholder}
       type={hasError ? 'error' : props.type}
     />
   );
@@ -161,6 +163,7 @@ export const TextArea = validatable<string, TextFormProps>((props, onChange, onB
       readonly={props.readonly}
       onChange={onChange}
       onBlur={onBlur}
+      placeholder={props.placeholder}
       type={hasError ? 'error' : props.type}
     />
   );

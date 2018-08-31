@@ -10,6 +10,7 @@ const onBlur = () => window.alert('Blur');
 
 story.addDecorator(withInfo({ inline: true }));
 story.add('normal', () => <PasswordForm value="Test"/>);
+story.add('placeholder', () => <PasswordForm value="" placeholder="Input here..."/>);
 story.add('color', () => <PasswordForm value="Test" type="primary"/>);
 story.add('disabled', () => <PasswordForm value="Test" disabled={true}/>);
 story.add('readonly', () => <PasswordForm value="Test" readonly={true}/>);

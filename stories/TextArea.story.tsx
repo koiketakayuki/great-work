@@ -10,6 +10,7 @@ const onBlur = () => window.alert('Blur');
 
 story.addDecorator(withInfo({ inline: true }));
 story.add('normal', () => <TextArea value="Test"/>);
+story.add('placeholder', () => <TextArea value="" placeholder="Input here..."/>);
 story.add('color', () => <TextArea value="Test" type="primary"/>);
 story.add('disabled', () => <TextArea value="Test" disabled={true}/>);
 story.add('readonly', () => <TextArea value="Test" readonly={true}/>);
