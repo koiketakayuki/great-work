@@ -1,12 +1,12 @@
 import * as React from 'react';
 import radium from 'radium';
-import { CursorProperty, FlexWrapProperty } from 'csstype';
+import { CursorProperty, FlexWrapProperty, Color } from 'csstype';
 import { ColorType, StyleConfig } from '../../config/StyleConfig';
-import { StyleContext } from '../../config/StyleContext';
 
 export interface RowProps {
   display?: 'flex' | 'inline-flex';
-  type?: ColorType;
+  color?: Color;
+  background?: Color;
   children: React.ReactNode;
   cursor?: CursorProperty;
   hover?: object;
@@ -16,11 +16,10 @@ export interface RowProps {
   onKeyDown?: React.KeyboardEventHandler;
 }
 
-function getStyle(config: StyleConfig, props: RowProps) {
-  const colorContext = config.getColorContext(props.type);
+function getStyle(props: RowProps) {
   return {
-    color: colorContext.color,
-    background: colorContext.backgroundColor,
+    color: props.color,
+    background: props.background,
     display: props.display || 'flex',
     alignItems: 'center',
     cursor: props.cursor,
@@ -29,20 +28,12 @@ function getStyle(config: StyleConfig, props: RowProps) {
   };
 }
 
-function getRow(config: StyleConfig, props: RowProps) {
-  return (
-    <div
-      style={getStyle(config, props)}
-      tabIndex={props.tabIndex}
-      onClick={props.onClick}
-      onKeyDown={props.onKeyDown}
-    >{props.children}
-    </div>
-  );
-}
-
 export const Row = radium((props: RowProps) => (
-  <StyleContext.Consumer>
-    {config => getRow(config, props)}
-  </StyleContext.Consumer>
+  <div
+    style={getStyle(props)}
+    tabIndex={props.tabIndex}
+    onClick={props.onClick}
+    onKeyDown={props.onKeyDown}
+  >{props.children}
+  </div>
 ));

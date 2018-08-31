@@ -3,9 +3,10 @@ import { Row } from './layout/Row';
 import { FixedCell, FlexCell } from './layout/Cell';
 import { IconProps } from './Icon';
 import { TextProps } from './Text';
-import { ColorType } from '../config/StyleConfig';
+import { ColorType, StyleConfig } from '../config/StyleConfig';
 import { Container } from './layout/Container';
 import { CursorProperty } from 'csstype';
+import { StyleContext } from '../config/StyleContext';
 
 export interface IconTextProps {
   icon: React.ReactElement<IconProps>;
@@ -19,7 +20,7 @@ export interface IconTextProps {
   right?: boolean;
 }
 
-export const IconText = (props: IconTextProps) => {
+function getIconText(config: StyleConfig, props: IconTextProps) {
   const iconCell = (
     <FixedCell>
       <Row>
@@ -31,7 +32,7 @@ export const IconText = (props: IconTextProps) => {
   return (
     <Row
       display="inline-flex"
-      type={props.type}
+      color={config.getColor(props.type)}
       hover={props.hover}
       cursor={props.cursor}
       onClick={props.onClick}
@@ -47,4 +48,12 @@ export const IconText = (props: IconTextProps) => {
       {props.right ? iconCell : undefined}
     </Row>
   );
-};
+}
+
+export function IconText(props: IconTextProps) {
+  return (
+    <StyleContext.Consumer>
+      {config => getIconText(config, props)}
+    </StyleContext.Consumer>
+  );
+}
