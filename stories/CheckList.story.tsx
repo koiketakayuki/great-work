@@ -1,7 +1,7 @@
 import * as React from 'react';
+import { CheckList } from '../src/components/form/CheckList';
 import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
-import { CheckList } from '../src/components/form/SelectForm';
 
 const story = storiesOf('CheckList', module);
 const onChange = (value: string[]) => window.alert(value);
@@ -31,4 +31,3 @@ story.add('color', () => <CheckList<string> value={value} options={options} type
 story.add('disabled', () => <CheckList<string> value={value} options={options} disabled={true}/>);
 story.add('readonly', () => <CheckList<string> value={value} options={options} readonly={true}/>);
 story.add('onChange', () => <CheckList<string> value={value} options={options} onChange={onChange}/>);
-story.add('onBlur', () => <CheckList<string> value={value} options={options} onBlur={onBlur}/>);

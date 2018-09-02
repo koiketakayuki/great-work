@@ -1,30 +1,9 @@
 import * as React from 'react';
-import { FormEntry, ValueChangeHandler, SelectFormEntryProps } from './FormEntry';
-import { ContextValue } from './FormContext';
-import { SelectBox } from './SelectForm';
+import { createFormEntry, FormEntryProps } from './createFormEntry';
+import { SelectBoxProps, SelectBox } from './SelectBox';
 
-function getSelectBox<T, C>(
-  props: SelectFormEntryProps<T, C>,
-  context: ContextValue<C>,
-  onChange: ValueChangeHandler<T>,
-) {
-  return (
-    <SelectBox
-      value={props.value}
-      type={props.type || context.type}
-      validator={props.validator}
-      onChange={onChange}
-      options={props.options}
-      disabled={props.disabled || context.disabled}
-      readonly={props.readonly || context.readonly}
-    />
-  );
-}
+export type SelectBoxEntryProps<C, T> = FormEntryProps<T, C, SelectBoxProps<T>>;
 
-export function SelectBoxEntry<C, T>(props: SelectFormEntryProps<T, C>) {
-  return (
-    <FormEntry<T, C, SelectFormEntryProps<T, C>> {...props}>
-      {(context, onChange) => getSelectBox(props, context, onChange)}
-    </FormEntry>
-  );
+export function SelectBoxEntry<C, T>(entryProps: SelectBoxEntryProps<C, T>) {
+  return createFormEntry<T, C, SelectBoxProps<T>>(props => <SelectBox<T> {...props}/>)(entryProps);
 }

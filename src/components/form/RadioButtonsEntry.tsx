@@ -1,30 +1,9 @@
 import * as React from 'react';
-import { FormEntry, ValueChangeHandler, SelectFormEntryProps } from './FormEntry';
-import { ContextValue } from './FormContext';
-import { RadioButtons } from './SelectForm';
+import { createFormEntry, FormEntryProps } from './createFormEntry';
+import { RadioButtonsProps, RadioButtons } from './RadioButtons';
 
-function getSelectBox<T, C>(
-  props: SelectFormEntryProps<T, C>,
-  context: ContextValue<C>,
-  onChange: ValueChangeHandler<T>,
-) {
-  return (
-    <RadioButtons
-      value={props.value}
-      type={props.type || context.type}
-      validator={props.validator}
-      onChange={onChange}
-      options={props.options}
-      disabled={props.disabled || context.disabled}
-      readonly={props.readonly || context.readonly}
-    />
-  );
-}
+export type RadioButtonsEntryProps<C, T> = FormEntryProps<T, C, RadioButtonsProps<T>>;
 
-export function RadioButtonsEntry<C, T>(props: SelectFormEntryProps<T, C>) {
-  return (
-    <FormEntry<T, C, SelectFormEntryProps<T, C>> {...props}>
-      {(context, onChange) => getSelectBox(props, context, onChange)}
-    </FormEntry>
-  );
+export function RadioButtonsEntry<C, T>(entryProps: RadioButtonsEntryProps<C, T>) {
+  return createFormEntry<T, C, RadioButtonsProps<T>>(props => <RadioButtons<T> {...props}/>)(entryProps);
 }

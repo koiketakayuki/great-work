@@ -1,39 +1,14 @@
 import { ColorType } from '../../config/StyleConfig';
 
-/**
- * Props of primitive Form component which doesn't have validator
- */
-export interface FormBaseProps<T> {
-  value: T;
-  type?: ColorType;
-  disabled?: boolean;
-  readonly?: boolean;
-  onChange?: (value: T) => void;
-  onBlur?: React.FocusEventHandler;
-}
-
-/**
- * Props of Form component which can have validator
- *
- * Typically, form is composed of FormBase + Validator
- */
 export interface FormProps<T> {
   value: T;
   type?: ColorType;
   disabled?: boolean;
   readonly?: boolean;
-  onChange?: (value: T, errorMessage?: string) => void;
-  onBlur?: React.FocusEventHandler;
-  validator?: Validator<T>;
+  onChange?: ValueChangeHandler<T>;
 }
 
-/**
- * State of Form
- */
-export interface FormState {
-  errorMessage: string | undefined;
-  validationActive: boolean;
-}
+export type ValueChangeHandler<T> = (value: T) => void;
 
 /**
  * Validation function
@@ -44,3 +19,9 @@ export type Validator<T> = (value: T) => string | undefined;
  * Used when component has its label
  */
 export type HasLabel = { label: string };
+
+/**
+ * Select components
+ */
+export type SelectOption<T> = { label: string, value: T };
+export type HasSelectOptions<T> = { options: SelectOption<T>[] };

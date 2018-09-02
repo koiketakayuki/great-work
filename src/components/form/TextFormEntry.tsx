@@ -1,29 +1,10 @@
 import * as React from 'react';
+import { createFormEntry, FormEntryProps } from './createFormEntry';
 import { TextForm } from './TextForm';
-import { FormEntryProps, FormEntry, ValueChangeHandler } from './FormEntry';
-import { ContextValue } from './FormContext';
+import { TextFormProps } from './createTextForm';
 
-function getTextForm<C>(
-  props: FormEntryProps<string, C>,
-  context: ContextValue<C>,
-  onChange: ValueChangeHandler<string>,
-) {
-  return (
-    <TextForm
-      value={props.value}
-      type={props.type || context.type}
-      validator={props.validator}
-      onChange={onChange}
-      disabled={props.disabled || context.disabled}
-      readonly={props.readonly || context.readonly}
-    />
-  );
-}
+export type TextFormEntryProps<C> = FormEntryProps<string, C, TextFormProps>;
 
-export function TextFormEntry<C>(props: FormEntryProps<string, C>) {
-  return (
-    <FormEntry<string, C, FormEntryProps<string, C>> {...props}>
-      {(context, onChange) => getTextForm(props, context, onChange)}
-    </FormEntry>
-  );
+export function TextFormEntry<C>(entryProps: TextFormEntryProps<C>) {
+  return createFormEntry<string, C, TextFormProps>(props => <TextForm {...props}/>)(entryProps);
 }

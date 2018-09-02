@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { FormBaseProps, HasLabel } from './Form';
+import { FormProps, HasLabel } from './Form';
 import { ColorType, StyleConfig } from '../../config/StyleConfig';
 import { IconText } from '../IconText';
 import { Icon } from '../Icon';
 import { Text } from '../Text';
 import { StyleContext } from '../../config/StyleContext';
-export type ToggleFormProps = FormBaseProps<boolean> & HasLabel;
+export type ToggleFormProps = FormProps<boolean> & HasLabel;
 
 export function createIconToggle(activeIcon: string, inactiveIcon: string) {
   return class extends React.Component<ToggleFormProps> {

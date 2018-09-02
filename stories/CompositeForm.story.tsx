@@ -3,19 +3,17 @@ import { storiesOf } from '@storybook/react';
 import { withInfo } from '@storybook/addon-info';
 import { CompositeForm } from '../src/components/form/CompositeForm';
 import { TextFormEntry } from '../src/components/form/TextFormEntry';
-import { PasswordFormEntry } from '../src/components/form/PasswordFormEntry';
 import { TextAreaEntry } from '../src/components/form/TextAreaEntry';
-import { RadioButtonsEntry } from '../src/components/form/RadioButtonsEntry';
-import { SelectBoxEntry } from '../src/components/form/SelectBoxEntry';
-import { CheckListEntry } from '../src/components/form/CheckListEntry';
 import { ListFormEntry } from '../src/components/form/ListFormEntry';
 import { Paper } from '../src/components/Paper';
-import { ValueChangeHandler } from '../src/components/form/FormEntry';
 import { TextForm } from '../src/components/form/TextForm';
+import { ValueChangeHandler } from '../src/components/form/Form';
+import { Validation } from '../src/components/form/Validation';
+import { TextFormProps } from '../src/components/form/createTextForm';
 
 const story = storiesOf('CompositeForm', module);
 story.addDecorator(withInfo({ inline: true }));
-const lengthValidator = () => 'Hello!';
+const lengthValidator = (value: string) => value.length > 10 ? 'Value must not be greater than 10 characters' : undefined;
 
 type User = {
   id: number,
@@ -55,7 +53,7 @@ class UserForm extends React.Component<{ user: User, onChange?: ValueChangeHandl
   }
 }
 
-class CompositeFormDemo extends React.Component<{ onChange?: ValueChangeHandler<User> }, { users: User[], names: string[] }> {
+class CompositeFormDemo extends React.Component<{ onChange?: ValueChangeHandler<User> }, { users: User[], user: User, names: string[] }> {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -66,11 +64,17 @@ class CompositeFormDemo extends React.Component<{ onChange?: ValueChangeHandler<
           address: 'string',
         },
       ],
-      names: ['test'],
+      user: {
+        id: 2,
+        name: 'test',
+        address: 'test',
+      },
+      names: ['test', 'test2'],
     };
   }
 
   onChange = (result: { users: User[], names: string[] }) => {
+    console.log(result);
     this.setState(result);
   }
 
@@ -80,21 +84,23 @@ class CompositeFormDemo extends React.Component<{ onChange?: ValueChangeHandler<
     return (
       <CompositeForm value={{ users, names }} onChange={this.onChange}>
         <ListFormEntry
+          addText="Add User"
           id="users"
           label="Users"
           value={users}
           default={{ id: 2, name: '', address: '' }}
           keyParameter="id"
         >
-          {user => <Paper><UserForm user={user}/></Paper>}
+          {props => <Paper><UserForm user={props.value} {...props}/></Paper>}
         </ListFormEntry>
         <ListFormEntry
+          addText="Add name"
           id="names"
           label="Names"
           value={names}
           default="John"
         >
-          {(name, onChange) => <TextForm value={name} onChange={onChange} validator={lengthValidator}/>}
+          {props => <TextForm {...props}/>}
         </ListFormEntry>
       </CompositeForm>
     );

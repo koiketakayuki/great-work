@@ -1,29 +1,10 @@
 import * as React from 'react';
-import { TextArea } from './TextForm';
-import { FormEntryProps, FormEntry, ValueChangeHandler } from './FormEntry';
-import { ContextValue } from './FormContext';
+import { createFormEntry, FormEntryProps } from './createFormEntry';
+import { TextArea } from './TextArea';
+import { TextFormProps } from './createTextForm';
 
-function getTextArea<C>(
-  props: FormEntryProps<string, C>,
-  context: ContextValue<C>,
-  onChange: ValueChangeHandler<string>,
-) {
-  return (
-    <TextArea
-      value={props.value}
-      type={props.type || context.type}
-      validator={props.validator}
-      onChange={onChange}
-      disabled={props.disabled || context.disabled}
-      readonly={props.readonly || context.readonly}
-    />
-  );
-}
+export type TextFormEntryProps<C> = FormEntryProps<string, C, TextFormProps>;
 
-export function TextAreaEntry<C>(props: FormEntryProps<string, C>) {
-  return (
-    <FormEntry<string, C, FormEntryProps<string, C>> {...props}>
-      {(context, onChange) => getTextArea(props, context, onChange)}
-    </FormEntry>
-  );
+export function TextAreaEntry<C>(entryProps: TextFormEntryProps<C>) {
+  return createFormEntry<string, C, TextFormProps>(props => <TextArea {...props}/>)(entryProps);
 }

@@ -1,110 +1,85 @@
 import * as React from 'react';
-import { FormEntryProps, FormEntry, ValueChangeHandler } from './FormEntry';
-import { ContextValue } from './FormContext';
+import { createFormEntry, FormEntryProps } from './createFormEntry';
+import { FormProps, ValueChangeHandler } from './Form';
+import { Container } from '../layout/Container';
 import { Right } from '../layout/Right';
 import { Button } from '../Button';
-import { Container } from '../layout/Container';
-import { IconText } from '../IconText';
-import { ListItem } from './ListItem';
 import { Icon } from '../Icon';
 import { Text } from '../Text';
+import { IconText } from '../IconText';
+import { IconButton } from '../IconButton';
 
 type DefaultValueGenerator<T> = () => T;
 
-interface ListFormEntryProps<T, C> extends FormEntryProps<T[], C> {
+type CreateChildForm<T> = (props: FormProps<T>) => React.ReactNode;
+
+export type ListFormEntryProps<T, C> = FormEntryProps<T[], C, FormProps<T[]>> & {
+  addText: string;
   default: T | DefaultValueGenerator<T>;
-  children: (element: T, onChange: ValueChangeHandler<T>) => React.ReactNode;
   keyParameter?: keyof T;
+  children: CreateChildForm<T>;
+};
+
+export function ListFormEntry<T, C>(entryProps: ListFormEntryProps<T, C>) {
+  return createFormEntry<T[], C, FormProps<T[]>>((listFormProps: FormProps<T[]>) => {
+    return createListForm(listFormProps, entryProps);
+  })(entryProps);
 }
 
-function getListItem<T, C>(
-  index: number,
-  element: T,
-  props: ListFormEntryProps<T, C>,
-  context: ContextValue<C>,
-) {
+function createListForm<T, C>(listFormProps: FormProps<T[]>, entryProps: ListFormEntryProps<T, C>) {
+  const childForms = listFormProps.value.map((childFormValue: T, index: number) => {
+    const childFormProps: FormProps<T> = getChildFormProps<T>(index, childFormValue, listFormProps);
 
-  const newContext: ContextValue<T> = {
-    value: element,
-    update: (newElementValue: T) => {
-      const newValue: T[] = [];
-      for (let i = 0; i < props.value.length; i = i + 1) {
+    return attachDeleteButton(entryProps.children(childFormProps), index, listFormProps);
+  });
+
+  return wrapWithContainer(childForms, listFormProps, entryProps);
+}
+
+function attachDeleteButton<T>(node: React.ReactNode, index: number, listFormProps: FormProps<T[]>) {
+  const deleteChild = () => {
+    if (listFormProps.onChange) {
+      const oldListValue = listFormProps.value;
+      const newListValue: T[] = [];
+      for (let i = 0; i < oldListValue.length; i = i + 1) {
         if (i !== index) {
-          newValue.push(props.value[i]);
-        } else {
-          newValue.push(newElementValue);
+          newListValue.push(oldListValue[i]);
         }
       }
-
-      context.update(Object.assign({}, context.value, { [props.id]: newValue }), true);
-    },
-    disabled: props.disabled || context.disabled,
-    readonly: props.readonly || context.readonly,
-    type:  props.type || context.type,
-  };
-
-  const form =  props.children(element, value => newContext.update(value, true));
-
-  const onDelete = () => {
-    const newValue = [];
-    for (let i = 0; i < props.value.length; i = i + 1) {
-      if (i !== index) {
-        newValue.push(props.value[i]);
-      }
+      listFormProps.onChange(newListValue);
     }
-
-    context.update(Object.assign({}, context.value, { [props.id]: newValue }), true);
   };
-
-  const key = props.keyParameter ? String(element[props.keyParameter]) : String(index);
 
   return (
-    <ListItem key={key} context={newContext} onDelete={onDelete}>
-      {form}
-    </ListItem>
+    <div style={{ position: 'relative' }}>
+      {node}
+      <div style={{ position: 'absolute', top: '12px', right: '12px' }}>
+        <IconButton type="error" icon={<Icon name="highlight_off"/>} onClick={deleteChild}/>
+      </div>
+    </div>
   );
 }
 
-function getListForm<T, C>(
-  props: ListFormEntryProps<T, C>,
-  context: ContextValue<C>,
-  onChange: ValueChangeHandler<T[]>,
-) {
-  const value: T[] = props.value;
-  const length = value.length;
-  const forms: React.ReactNode[] = [];
+function wrapWithContainer<T, C>(node: React.ReactNode, listFormProps: FormProps<T[]>, entryProps: ListFormEntryProps<T, C>) {
+  const addChild = () => {
+    if (listFormProps.onChange && entryProps.default) {
+      const newValue: T = typeof entryProps.default === 'function' ?
+        entryProps.default() : entryProps.default;
 
-  for (let i = 0; i < length; i = i + 1) {
-    const form = getListItem(i, value[i], props, context);
-    forms.push(form);
-  }
-
-  const onAdd = () => {
-    const defaultValue = props.default;
-    if (typeof defaultValue === 'function') {
-      onChange(props.value.concat([defaultValue()]));
-    } else {
-      onChange(props.value.concat([defaultValue]));
+      const newListValue = listFormProps.value.concat([newValue]);
+      listFormProps.onChange(newListValue);
     }
-  };
-
-  const newContext: ContextValue<C> = {
-    value: context.value,
-    update: context.update,
-    disabled: props.disabled || context.disabled,
-    readonly: props.readonly || context.readonly,
-    type:  props.type || context.type,
   };
 
   return (
     <div>
-      {forms}
+      <Container>
+        {node}
+      </Container>
       <Right>
         <Container>
-          <Button
-            onClick={onAdd}
-            disabled={newContext.disabled}
-          ><IconText icon={<Icon name="add"/>} text={<Text>add</Text>}/>
+          <Button type="primary" onClick={addChild}>
+            <IconText icon={<Icon name="add"/>} text={<Text>{entryProps.addText}</Text>}/>
           </Button>
         </Container>
       </Right>
@@ -112,10 +87,31 @@ function getListForm<T, C>(
   );
 }
 
-export function ListFormEntry<T, C>(props: ListFormEntryProps<T, C>) {
-  return (
-    <FormEntry<T[], C, FormEntryProps<T[], C>> {...props}>
-      {(context, onChange) => getListForm(props, context, onChange)}
-    </FormEntry>
-  );
+function getChildFormProps<T>(index: number, value: T, listFormProps: FormProps<T[]>): FormProps<T> {
+  return {
+    value,
+    type: listFormProps.type,
+    disabled: listFormProps.disabled,
+    readonly: listFormProps.readonly,
+    onChange: getChildValueChangeHandler(index, listFormProps),
+  };
+}
+
+function getChildValueChangeHandler<T>(index: number, listFormProps: FormProps<T[]>): ValueChangeHandler<T> {
+  return (newValue: T) => {
+    if (listFormProps.onChange) {
+      const oldListValue = listFormProps.value;
+      const newListValue: T[] = [];
+
+      for (let i = 0; i < oldListValue.length; i = i + 1) {
+        if (i === index) {
+          newListValue.push(newValue);
+        } else {
+          newListValue.push(oldListValue[i]);
+        }
+      }
+
+      listFormProps.onChange(newListValue);
+    }
+  };
 }

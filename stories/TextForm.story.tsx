@@ -14,6 +14,4 @@ story.add('placeholder', () => <TextForm value="" placeholder="Input here..."/>)
 story.add('color', () => <TextForm value="Test" type="primary"/>);
 story.add('disabled', () => <TextForm value="Test" disabled={true}/>);
 story.add('readonly', () => <TextForm value="Test" readonly={true}/>);
-story.add('validation', () => <TextForm value="Test" validator={lengthValidator}/>);
 story.add('onChange', () => <TextForm value="Test" onChange={onChange}/>);
-story.add('OnBlur', () => <TextForm value="Test" onBlur={onBlur}/>);

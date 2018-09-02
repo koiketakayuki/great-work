@@ -3,7 +3,8 @@
   "rules": {
     "variable-name": false,
     "max-line-length": [true, 140],
-    "function-name": false
+    "function-name": false,
+    "jsx-no-multiline-js": false
   },
   "exclude": [
     "node_modules/**"
