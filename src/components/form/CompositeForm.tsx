@@ -27,9 +27,9 @@ export class CompositeForm<T> extends React.Component<CompositeFormProps<T>> {
     return {
       value: this.props.value,
       update: this.getUpdateFunction(context),
-      disabled: this.props.disabled || context.disabled,
-      readonly: this.props.readonly || context.readonly,
-      type: this.props.type || context.type,
+      disabled: this.props.disabled !== undefined ? this.props.disabled : context.disabled,
+      readonly: this.props.readonly !== undefined ? this.props.readonly : context.readonly,
+      type: this.props.type !== undefined ? this.props.type : context.type,
     };
   }
 

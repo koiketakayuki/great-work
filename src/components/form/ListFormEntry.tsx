@@ -14,13 +14,14 @@ type DefaultValueGenerator<T> = () => T;
 type CreateChildForm<T> = (props: FormProps<T>) => React.ReactNode;
 
 export type ListFormEntryProps<T, C> = FormEntryProps<T[], C, FormProps<T[]>> & {
-  addText: string;
-  default: T | DefaultValueGenerator<T>;
+  addText?: string;
+  default?: T | DefaultValueGenerator<T>;
   keyParameter?: keyof T;
+  deletable?: boolean;
   children: CreateChildForm<T>;
 };
 
-export function ListFormEntry<T, C>(entryProps: ListFormEntryProps<T, C>) {
+export function ListFormEntry<C, T>(entryProps: ListFormEntryProps<T, C>) {
   return createFormEntry<T[], C, FormProps<T[]>>((listFormProps: FormProps<T[]>) => {
     return createListForm(listFormProps, entryProps);
   })(entryProps);
@@ -30,7 +31,13 @@ function createListForm<T, C>(listFormProps: FormProps<T[]>, entryProps: ListFor
   const childForms = listFormProps.value.map((childFormValue: T, index: number) => {
     const childFormProps: FormProps<T> = getChildFormProps<T>(index, childFormValue, listFormProps);
 
-    return attachDeleteButton(entryProps.children(childFormProps), index, listFormProps);
+    const hasDeleteButton = entryProps.deletable && !listFormProps.disabled && !listFormProps.readonly;
+
+    if (hasDeleteButton) {
+      return attachDeleteButton(entryProps.children(childFormProps), index, listFormProps);
+    }
+
+    return entryProps.children(childFormProps);
   });
 
   return wrapWithContainer(childForms, listFormProps, entryProps);
@@ -61,6 +68,11 @@ function attachDeleteButton<T>(node: React.ReactNode, index: number, listFormPro
 }
 
 function wrapWithContainer<T, C>(node: React.ReactNode, listFormProps: FormProps<T[]>, entryProps: ListFormEntryProps<T, C>) {
+  const hasAddButton =
+    entryProps.addText !== undefined &&
+    entryProps.default !== undefined &&
+    !listFormProps.readonly && !listFormProps.disabled;
+
   const addChild = () => {
     if (listFormProps.onChange && entryProps.default) {
       const newValue: T = typeof entryProps.default === 'function' ?
@@ -71,18 +83,22 @@ function wrapWithContainer<T, C>(node: React.ReactNode, listFormProps: FormProps
     }
   };
 
+  const addButtonContainer = hasAddButton ? (
+    <Right>
+      <Container>
+        <Button type="primary" onClick={addChild}>
+          <IconText icon={<Icon name="add"/>} text={<Text>{entryProps.addText}</Text>}/>
+        </Button>
+      </Container>
+    </Right>
+  ) : undefined;
+
   return (
     <div>
       <Container>
         {node}
       </Container>
-      <Right>
-        <Container>
-          <Button type="primary" onClick={addChild}>
-            <IconText icon={<Icon name="add"/>} text={<Text>{entryProps.addText}</Text>}/>
-          </Button>
-        </Container>
-      </Right>
+      {addButtonContainer}
     </div>
   );
 }

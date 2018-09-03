@@ -29,8 +29,9 @@ function getNewContext<C, T>(
 ): ContextValue<T> {
   return {
     value: props.value,
-    disabled: props.disabled || currentContext.disabled,
-    readonly: props.readonly || currentContext.readonly,
+    disabled: props.disabled,
+    readonly: props.readonly,
+    type: props.type,
     update: (value: T, hasError: boolean) => {
       const newValue: C = Object.assign({}, currentContext.value, { [entryProps.id]: value });
       currentContext.update(newValue, hasError);

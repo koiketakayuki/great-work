@@ -83,28 +83,26 @@ const TextInput = radium(class extends React.Component<TextFormProps & { textTyp
 });
 
 export const createTextForm = (textType: TextType) =>
-  class extends React.Component<TextFormProps> {
-    render() {
-      if (this.props.readonly) {
-        return <div>{this.props.value}</div>;
-      }
-
-      return (
-        <Paper
-          type={this.props.disabled ? 'disabled' : (this.props.type === 'error' ? 'error' : undefined)}
-          cursor={this.props.disabled ? 'not-allowed' : undefined}
-        >
-          <Container>
-            <TextInput
-              textType={textType}
-              value={this.props.value}
-              onChange={this.props.onChange}
-              type={this.props.type}
-              disabled={this.props.disabled}
-              placeholder={this.props.placeholder}
-            />
-          </Container>
-        </Paper>
-      );
+  (props: TextFormProps) => {
+    if (props.readonly) {
+      return <div>{props.value}</div>;
     }
+
+    return (
+      <Paper
+        type={props.disabled ? 'disabled' : (props.type === 'error' ? 'error' : undefined)}
+        cursor={props.disabled ? 'not-allowed' : undefined}
+      >
+        <Container>
+          <TextInput
+            textType={textType}
+            value={props.value}
+            onChange={props.onChange}
+            type={props.type}
+            disabled={props.disabled}
+            placeholder={props.placeholder}
+          />
+        </Container>
+      </Paper>
+    );
   };
