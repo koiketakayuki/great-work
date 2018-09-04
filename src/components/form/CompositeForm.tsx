@@ -2,10 +2,11 @@ import * as React from 'react';
 import { Container } from '../layout/Container';
 import { ContextValue, UpdateValue, FormContext } from './FormContext';
 import { ColorType } from '../../config/StyleConfig';
+import { ValidationHandler } from './Form';
 
 export type CompositeFormProps<T> = {
   value: T;
-  onChange?: (value: T, hasError: boolean) => void;
+  onChange?: ValidationHandler<T>;
   disabled?: boolean;
   readonly?: boolean;
   type?: ColorType;
@@ -13,17 +14,18 @@ export type CompositeFormProps<T> = {
 
 export class CompositeForm<T> extends React.Component<CompositeFormProps<T>> {
 
-  getUpdateFunction(context: ContextValue<any>): UpdateValue<T> {
-    return (newValue: T, hasError: boolean) => {
+  getUpdateFunction(context: ContextValue<any, any>): UpdateValue<any, any> {
+    return (id: string | number | symbol, childValue: any, errorMessage?: string) => {
+      const newValue = Object.assign({}, this.props.value, { [id]: childValue });
       if (this.props.onChange) {
-        this.props.onChange(newValue, hasError);
+        this.props.onChange(newValue, errorMessage);
       }
 
-      context.update(newValue, hasError);
+      context.update(id, newValue, errorMessage);
     };
   }
 
-  getCurrentContext(context: ContextValue<any>): ContextValue<T> {
+  getNewContext(context: ContextValue<any, any>): ContextValue<any, any> {
     return {
       value: this.props.value,
       update: this.getUpdateFunction(context),
@@ -33,9 +35,9 @@ export class CompositeForm<T> extends React.Component<CompositeFormProps<T>> {
     };
   }
 
-  getCompositeForm(context: ContextValue<any>) {
+  getCompositeForm(context: ContextValue<any, any>) {
     return (
-      <FormContext.Provider value={this.getCurrentContext(context)}>
+      <FormContext.Provider value={this.getNewContext(context)}>
         <Container>{this.props.children}</Container>
       </FormContext.Provider>
     );

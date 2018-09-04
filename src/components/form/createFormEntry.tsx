@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Validator, FormProps } from './Form';
+import { Validator, FormProps, ValidationHandler } from './Form';
 import { FormItem } from './FormItem';
 import { FormContext, ContextValue } from './FormContext';
 import { Validation } from './Validation';
@@ -8,7 +8,7 @@ export type FormEntryProps<T, C, P extends FormProps<T>> = P & {
   id: keyof C;
   label: string;
   validator?: Validator<T>;
-  onChange?: (value: T, errorMessage?: string) => void;
+  onChange?: ValidationHandler<T>;
 };
 
 export function createFormEntry<T, C, P extends FormProps<T>>(create: (formProps: P) => React.ReactNode) {
@@ -20,8 +20,8 @@ export function createFormEntry<T, C, P extends FormProps<T>>(create: (formProps
             <FormContext.Provider value={getNewContext(context, props)}>
               <Validation<T, P>
                 validator={props.validator}
-                formProps={getFilteredProps<T, C, P>(context, props)}
-                onChange={getChangeValueHander(context, props)}
+                formProps={props}
+                onChange={getChangeValueHander<T, C, P>(context, props)}
               >
                 {(formProps: P) => create(formProps)}
               </Validation>
@@ -34,9 +34,9 @@ export function createFormEntry<T, C, P extends FormProps<T>>(create: (formProps
 }
 
 function getNewContext<T, C, P extends FormProps<T>>(
-  context: ContextValue<C>,
+  context: ContextValue<C, T>,
   formEntryProps: FormEntryProps<T, C, P>,
-): ContextValue<C> {
+): ContextValue<C, any> {
   return {
     value: context.value,
     disabled: formEntryProps.disabled !== undefined ? formEntryProps.disabled : context.disabled,
@@ -46,30 +46,15 @@ function getNewContext<T, C, P extends FormProps<T>>(
   };
 }
 
-function getFilteredProps<T, C, P extends FormProps<T>>(
-  context: ContextValue<C>,
-  props: P,
-): P {
-  const result: any = {};
-
-  for (const key in props) {
-    result[key] = props[key];
-  }
-
-  result['disabled'] = props.disabled !== undefined ? props.disabled : context.disabled;
-  result['readonly'] = props.readonly !== undefined ? props.readonly : context.readonly;
-  result['type'] = props.type !== undefined ? props.type : context.type;
-
-  return result as P;
-}
-
-function getChangeValueHander<T, C, P extends FormProps<T>>(context: ContextValue<C>, props: FormEntryProps<T, C, P>) {
+function getChangeValueHander<T, C, P extends FormProps<T>>(
+  context: ContextValue<C, T>,
+  props: FormEntryProps<T, C, P>,
+): ValidationHandler<T> {
   return (value: T, errorMessage?: string) => {
     if (props.onChange) {
       props.onChange(value, errorMessage);
     }
 
-    const newValue = Object.assign({}, context.value, { [props.id]: value });
-    context.update(newValue, false);
+    context.update(props.id, value, errorMessage);
   };
 }

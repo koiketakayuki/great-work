@@ -8,6 +8,7 @@ import { Icon } from '../Icon';
 import { Text } from '../Text';
 import { IconText } from '../IconText';
 import { IconButton } from '../IconButton';
+import { FormContext } from './FormContext';
 
 type DefaultValueGenerator<T> = () => T;
 
@@ -96,7 +97,9 @@ function wrapWithContainer<T, C>(node: React.ReactNode, listFormProps: FormProps
   return (
     <div>
       <Container>
-        {node}
+        <FormContext.Provider value={{ value: {}, update: () => {} }}>
+          {node}
+        </FormContext.Provider>
       </Container>
       {addButtonContainer}
     </div>

@@ -9,6 +9,7 @@ export interface FormProps<T> {
 }
 
 export type ValueChangeHandler<T> = (value: T) => void;
+export type ValidationHandler<T> = (value: T, errorMessage?: string) => void;
 
 /**
  * Validation function

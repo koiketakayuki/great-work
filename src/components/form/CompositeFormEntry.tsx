@@ -23,18 +23,20 @@ export function CompositeFormEntry<C, T>(entryProps: CompositeFormEntryProps<T, 
 }
 
 function getNewContext<C, T>(
-  currentContext: ContextValue<C>,
+  currentContext: ContextValue<C, T>,
   props: FormProps<T>,
   entryProps: CompositeFormEntryProps<T, C>,
-): ContextValue<T> {
+): ContextValue<T, any> {
   return {
     value: props.value,
     disabled: props.disabled,
     readonly: props.readonly,
     type: props.type,
-    update: (value: T, hasError: boolean) => {
-      const newValue: C = Object.assign({}, currentContext.value, { [entryProps.id]: value });
-      currentContext.update(newValue, hasError);
+    update: (_: keyof T, value: T, errorMessage?: string) => {
+      if (entryProps.onChange) {
+        entryProps.onChange(value, errorMessage);
+      }
+      currentContext.update(entryProps.id, value, errorMessage);
     },
   };
 }
