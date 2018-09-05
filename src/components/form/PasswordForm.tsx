@@ -1,3 +1,13 @@
-import { createTextForm } from './createTextForm';
+import * as React from 'react';
+import { createTextForm, TextFormProps } from './createTextForm';
+import { Validation } from './Validation';
 
-export const PasswordForm = createTextForm('password');
+const _PasswordForm = createTextForm('password');
+
+export function PasswordForm(props: TextFormProps) {
+  return (
+    <Validation validator={props.validator} onChange={props.onChange} formProps={props}>
+      {props => <_PasswordForm {...props}/>}
+    </Validation>
+  );
+}

@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Validator, FormProps, ValueChangeHandler, ValidationHandler } from './Form';
+import { Validator, FormProps, ValueChangeHandler } from './Form';
 import { ErrorMessage } from './ErrorMessage';
 
 export interface ValidationProps<T, P extends FormProps<T>> {
   validator?: Validator<T>;
-  onChange?: ValidationHandler<T>;
+  onChange?: ValueChangeHandler<T>;
   formProps: P;
   children: (props: P) => React.ReactNode;
 }

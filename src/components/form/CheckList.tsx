@@ -3,26 +3,35 @@ import { find } from '../../lib/util';
 import { FormProps, HasSelectOptions, SelectOption } from './Form';
 import { CheckBox } from './CheckBox';
 import { Row } from '../layout/Row';
+import { Validation } from './Validation';
 
 export type CheckListProps<T> = FormProps<T[]> & HasSelectOptions<T>;
 
-export class CheckList<T> extends React.Component<CheckListProps<T>> {
+export function CheckList<T>(props: CheckListProps<T>) {
+  return (
+    <Validation validator={props.validator} onChange={props.onChange} formProps={props}>
+      {props => <_CheckList {...props}/>}
+    </Validation>
+  );
+}
+
+class _CheckList<T> extends React.Component<CheckListProps<T>> {
 
   private onChange = (targetValue: T) => {
-    const currentValue = this.props.value;
-
-    const newValue: T[] = this.props.options.reduce(
-      (acc: T[], o: SelectOption<T>) => {
-        const value = o.value;
-        if ((currentValue.indexOf(value) > -1 && value !== targetValue) || (currentValue.indexOf(value) === -1 && value === targetValue)) {
-          acc.push(value);
-        }
-
-        return acc;
-      },
-      []);
-
     if (this.props.onChange) {
+      const currentValue = this.props.value;
+
+      const newValue: T[] = this.props.options.reduce(
+        (acc: T[], o: SelectOption<T>) => {
+          const value = o.value;
+          if ((currentValue.indexOf(value) > -1 && value !== targetValue) ||
+          (currentValue.indexOf(value) === -1 && value === targetValue)) {
+            acc.push(value);
+          }
+
+          return acc;
+        },
+        []);
       this.props.onChange(newValue);
     }
   }

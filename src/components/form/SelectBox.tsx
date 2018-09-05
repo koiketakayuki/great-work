@@ -1,10 +1,19 @@
 import * as React from 'react';
 import { find } from '../../lib/util';
 import { FormProps, HasSelectOptions, SelectOption } from './Form';
+import { Validation } from './Validation';
 
 export type SelectBoxProps<T> = FormProps<T> & HasSelectOptions<T>;
 
-export class SelectBox<T> extends React.Component<SelectBoxProps<T>> {
+export function SelectBox<T>(props: SelectBoxProps<T>) {
+  return (
+    <Validation validator={props.validator} onChange={props.onChange} formProps={props}>
+      {props => <_SelectBox {...props}/>}
+    </Validation>
+  );
+}
+
+class _SelectBox<T> extends React.Component<SelectBoxProps<T>> {
   private onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const label = e.target.value;
     const selectedOption: SelectOption<T> | undefined = find(this.props.options, o => o.label === label);

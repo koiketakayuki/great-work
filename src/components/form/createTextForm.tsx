@@ -16,9 +16,8 @@ export interface TextFormProps extends FormProps<string> {
 const TextInput = radium(class extends React.Component<TextFormProps & { textType: TextType }> {
 
   onChange = (e: React.ChangeEvent<any>) => {
-    const value: string = e.target.value;
-
-    if (this.props.onChange && !this.props.disabled) {
+    if (this.props.onChange && !this.props.disabled && !this.props.readonly) {
+      const value: string = e.target.value;
       this.props.onChange(value);
     }
   }

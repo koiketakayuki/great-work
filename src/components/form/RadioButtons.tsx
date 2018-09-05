@@ -3,10 +3,19 @@ import { find } from '../../lib/util';
 import { FormProps, HasSelectOptions, SelectOption } from './Form';
 import { RadioButton } from './RadioButton';
 import { Row } from '../layout/Row';
+import { Validation } from './Validation';
 
 export type RadioButtonsProps<T> = FormProps<T> & HasSelectOptions<T>;
 
-export class RadioButtons<T> extends React.Component<RadioButtonsProps<T>> {
+export function RadioButtons<T>(props: RadioButtonsProps<T>) {
+  return (
+    <Validation validator={props.validator} onChange={props.onChange} formProps={props}>
+      {props => <_RadioButtons {...props}/>}
+    </Validation>
+  );
+}
+
+class _RadioButtons<T> extends React.Component<RadioButtonsProps<T>> {
 
   private onChange = (newValue: T) => {
     if (this.props.onChange) {
