@@ -11,11 +11,12 @@ import { IconButton } from '../IconButton';
 export type DefaultValueGenerator<T> = () => T;
 
 export interface ListFormProps<T> extends FormProps<T[]> {
+  createChildForm: (props: FormProps<T>) => React.ReactNode;
   addText?: string;
-  default: T | DefaultValueGenerator<T>;
+  default?: T | DefaultValueGenerator<T>;
   keyParameter?: keyof T;
   deletable?: boolean;
-  children: (element: T) => React.ReactNode;
+  onChange?: (value: T[], errorMessage?: string, childFormErrorMessage?: string) => void;
 }
 
 export function ListForm<T>(props: ListFormProps<T>) {
@@ -24,7 +25,8 @@ export function ListForm<T>(props: ListFormProps<T>) {
 }
 
 function createListForm<T>(element: T, props: ListFormProps<T>, index: number) {
-  const childForm = props.children(element);
+  const childFormProps: FormProps<T> = getChildFormProps(element, props, index);
+  const childForm: React.ReactNode = props.createChildForm(childFormProps);
   const hasDeleteButton = props.deletable && !props.disabled && !props.readonly;
 
   if (hasDeleteButton) {
@@ -32,6 +34,42 @@ function createListForm<T>(element: T, props: ListFormProps<T>, index: number) {
   }
 
   return childForm;
+}
+
+function getChildFormProps<T>(element: T, props: ListFormProps<T>, index: number): FormProps<T> {
+  return {
+    value: element,
+    onChange: getElementValueChangeHandler(props, index),
+    type: props.type,
+    disabled: props.disabled,
+    readonly: props.readonly,
+  };
+}
+
+function getElementValueChangeHandler<T>(props: ListFormProps<T>, index: number): ValueChangeHandler<T> | undefined {
+  const onChange = props.onChange;
+
+  if (!onChange) {
+    return undefined;
+  }
+
+  const currentValue: T[] = props.value;
+
+  return (childValue: T, childFormErrorMessage?: string) => {
+    const newValue: T[] = [];
+
+    for (let i = 0; i < currentValue.length; i = i + 1) {
+      if (i === index) {
+        newValue.push(childValue);
+      } else {
+        newValue.push(currentValue[i]);
+      }
+    }
+
+    const errorMessage = props.validator ? props.validator(newValue) : undefined;
+
+    onChange(newValue, errorMessage, childFormErrorMessage);
+  };
 }
 
 function attachDeleteButton<T>(node: React.ReactNode, index: number, props: FormProps<T[]>) {
@@ -65,7 +103,7 @@ function wrapWithContainer<T>(node: React.ReactNode, props: ListFormProps<T>) {
     !props.readonly && !props.disabled;
 
   const addChild = () => {
-    if (props.onChange && props.default) {
+    if (props.onChange && props.default !== undefined) {
       const newValue: T = typeof props.default === 'function' ?
         props.default() : props.default;
 

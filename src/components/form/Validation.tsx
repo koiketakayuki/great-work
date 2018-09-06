@@ -17,7 +17,9 @@ export class Validation<T, P extends FormProps<T>> extends React.Component<Valid
 
   constructor(props: ValidationProps<T, P>) {
     super(props);
-    this.state = { errorMessage: undefined };
+
+    const initialErrorMessage = this.props.validator ? this.props.validator(this.props.formProps.value) : undefined;
+    this.state = { errorMessage: initialErrorMessage };
   }
 
   getFilteredProps(): P {

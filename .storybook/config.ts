@@ -12,7 +12,7 @@ function loadStories() {
   require('../stories/RadioButtons.story');
   require('../stories/CheckList.story');
   require('../stories/ImageForm.story');
-  require('../stories/CompositeForm.story');
+  require('../stories/FormDemo.story');
 }
 
 configure(loadStories, module);
