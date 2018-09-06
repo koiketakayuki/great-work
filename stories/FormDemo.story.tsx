@@ -86,7 +86,18 @@ class UserForm extends React.Component<FormProps<User> & { actions?: React.React
     };
   }
 
-  createOtherSkillForm = (props: FormProps<string>) => <TextForm {...props}/>;
+  createOtherSkillForm = (props: FormProps<string>, onDelete: () => void) => (
+    <Row>
+      <FlexCell>
+        <TextForm {...props}/>
+      </FlexCell>
+      <FixedCell>
+        <Container padding="0 10px">
+          <Button type="error" onClick={onDelete}>Delete</Button>
+        </Container>
+      </FixedCell>
+    </Row>
+  )
 
   onUserChange = (partial: Partial<User>) => {
     if (this.props.onChange) {
