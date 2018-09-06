@@ -16,9 +16,9 @@ export const DefaultStyleConfig: StyleConfig = {
   heading3: '1.8rem',
   heading4: '1.4rem',
   heading5: '1.0rem',
-  fontSizeLarge: '1.4rem',
-  fontSizeMedium: '1.2rem',
-  fontSizeSmall: '1.0rem',
+  fontSizeLarge: '1.2rem',
+  fontSizeMedium: '1.0rem',
+  fontSizeSmall: '0.8rem',
 
   getColor(type?: ColorType): Color {
     if (type === 'primary') {
