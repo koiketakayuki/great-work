@@ -6,16 +6,14 @@ import { Button } from '../Button';
 import { Icon } from '../Icon';
 import { Text } from '../Text';
 import { IconText } from '../IconText';
-import { IconButton } from '../IconButton';
 
 export type DefaultValueGenerator<T> = () => T;
 
 export interface ListFormProps<T> extends FormProps<T[]> {
-  createChildForm: (props: FormProps<T>) => React.ReactNode;
+  createChildForm: (props: FormProps<T>, onDelete: () => void) => React.ReactNode;
   addText?: string;
   default?: T | DefaultValueGenerator<T>;
   keyParameter?: keyof T;
-  deletable?: boolean;
   onChange?: (value: T[], errorMessage?: string, childFormErrorMessage?: string) => void;
 }
 
@@ -26,12 +24,8 @@ export function ListForm<T>(props: ListFormProps<T>) {
 
 function createListForm<T>(element: T, props: ListFormProps<T>, index: number) {
   const childFormProps: FormProps<T> = getChildFormProps(element, props, index);
-  const childForm: React.ReactNode = props.createChildForm(childFormProps);
-  const hasDeleteButton = props.deletable && !props.disabled && !props.readonly;
-
-  if (hasDeleteButton) {
-    return attachDeleteButton(childForm, index, props);
-  }
+  const onDelete = getDeleteHandler(index, props);
+  const childForm: React.ReactNode = props.createChildForm(childFormProps, onDelete);
 
   return childForm;
 }
@@ -72,8 +66,8 @@ function getElementValueChangeHandler<T>(props: ListFormProps<T>, index: number)
   };
 }
 
-function attachDeleteButton<T>(node: React.ReactNode, index: number, props: FormProps<T[]>) {
-  const deleteChild = () => {
+function getDeleteHandler<T>(index: number, props: FormProps<T[]>) {
+  return () => {
     if (props.onChange) {
       const oldListValue = props.value;
       const newListValue: T[] = [];
@@ -85,15 +79,6 @@ function attachDeleteButton<T>(node: React.ReactNode, index: number, props: Form
       props.onChange(newListValue);
     }
   };
-
-  return (
-    <div style={{ position: 'relative' }}>
-      {node}
-      <div style={{ position: 'absolute', top: '12px', right: '12px' }}>
-        <IconButton type="error" icon={<Icon name="highlight_off"/>} onClick={deleteChild}/>
-      </div>
-    </div>
-  );
 }
 
 function wrapWithContainer<T>(node: React.ReactNode, props: ListFormProps<T>) {

@@ -14,6 +14,10 @@ import { FormProps, SelectOption } from '../src/components/form/Form';
 import { Row } from '../src/components/layout/Row';
 import { Paper } from '../src/components/Paper';
 import { FlexCell, FixedCell } from '../src/components/layout/Cell';
+import { Container } from '../src/components/layout/Container';
+import { Button } from '../src/components/Button';
+import { IconButton } from '../src/components/IconButton';
+import { Icon } from '../src/components/Icon';
 
 const story = storiesOf('FormDemo', module);
 story.addDecorator(withInfo({ inline: true }));
@@ -61,7 +65,26 @@ const ageOptions = [
   },
 ];
 
-class UserForm extends React.Component<FormProps<User>> {
+const booleanOptions: SelectOption<boolean>[] = [
+  {
+    value: true,
+    label: 'true',
+  },
+  {
+    value: false,
+    label: 'false',
+  },
+];
+
+class UserForm extends React.Component<FormProps<User> & { actions?: React.ReactNode }, { readonly: boolean, disabled: boolean }> {
+
+  constructor(props: FormProps<User>) {
+    super(props);
+    this.state = {
+      readonly: false,
+      disabled: false,
+    };
+  }
 
   createOtherSkillForm = (props: FormProps<string>) => <TextForm {...props}/>;
 
@@ -80,52 +103,109 @@ class UserForm extends React.Component<FormProps<User>> {
   onSkillsChange = (skills: Skill[]) => this.onUserChange({ skills });
   onOtherSkillsChange = (otherSkills: string[]) => this.onUserChange({ otherSkills });
 
+  onReadonlyChange = (readonly: boolean) => this.setState({ readonly });
+  onDisabledChange = (disabled: boolean) => this.setState({ disabled });
+
   render() {
+
+    const props = this.props;
+
     return (
       <Paper>
-        <FormContainer>
-          <div>{this.props.value.id}</div>
-          <FormItem label="Image">
-            <ImageForm value={this.props.value.image} onChange={this.onImageChange}/>
-          </FormItem>
-          <FormItem label="Name">
-            <TextForm value={this.props.value.name} onChange={this.onNameChange}/>
-          </FormItem>
-          <FormItem label="Password">
-            <PasswordForm value={this.props.value.password} onChange={this.onPasswordChange}/>
-          </FormItem>
-          <FormItem label="Age">
-            <SelectBox<number>
-              value={this.props.value.age}
-              options={ageOptions}
-              onChange={this.onAgeChange}
-            />
-          </FormItem>
-          <FormItem label="Gender">
-            <RadioButtons<Gender>
-              value={this.props.value.gender}
-              options={genderOptions}
-              onChange={this.onGenderChange}
-            />
-          </FormItem>
-          <FormItem label="Skills">
-            <CheckList<Skill>
-              value={this.props.value.skills}
-              options={skillOptions}
-              onChange={this.onSkillsChange}
-            />
-          </FormItem>
-          <FormItem label="Other Skills">
-            <ListForm<string>
-              value={this.props.value.otherSkills}
-              onChange={this.onOtherSkillsChange}
-              createChildForm={this.createOtherSkillForm}
-              addText="Add Skill"
-              default=""
-              deletable={true}
-            />
-          </FormItem>
-        </FormContainer>
+        <Container>
+          <div style={{ position: 'absolute', right: '12px', top: '12px', zIndex: 1 }}>
+            {props.actions}
+          </div>
+          <FormContainer>
+            <FormItem label="Readonly">
+              <SelectBox<boolean>
+                value={this.state.readonly}
+                options={booleanOptions}
+                onChange={this.onReadonlyChange}
+                disabled={false}
+                readonly={false}
+              />
+            </FormItem>
+            <FormItem label="Disabled">
+              <SelectBox<boolean>
+                value={this.state.disabled}
+                options={booleanOptions}
+                onChange={this.onDisabledChange}
+                disabled={false}
+                readonly={false}
+              />
+            </FormItem>
+            <FormItem label="Image">
+              <ImageForm
+                value={this.props.value.image}
+                onChange={this.onImageChange}
+                type={this.props.type}
+                readonly={this.props.readonly || this.state.readonly}
+                disabled={this.props.disabled || this.state.disabled}
+              />
+            </FormItem>
+            <FormItem label="Name">
+              <TextForm
+                value={this.props.value.name}
+                onChange={this.onNameChange}
+                type={this.props.type}
+                readonly={this.props.readonly || this.state.readonly}
+                disabled={this.props.disabled || this.state.disabled}
+              />
+            </FormItem>
+            <FormItem label="Password">
+              <PasswordForm
+                value={this.props.value.password}
+                onChange={this.onPasswordChange}
+                type={this.props.type}
+                readonly={this.props.readonly || this.state.readonly}
+                disabled={this.props.disabled || this.state.disabled}
+              />
+            </FormItem>
+            <FormItem label="Age">
+              <SelectBox<number>
+                value={this.props.value.age}
+                options={ageOptions}
+                onChange={this.onAgeChange}
+                type={this.props.type}
+                readonly={this.props.readonly || this.state.readonly}
+                disabled={this.props.disabled || this.state.disabled}
+              />
+            </FormItem>
+            <FormItem label="Gender">
+              <RadioButtons<Gender>
+                value={this.props.value.gender}
+                options={genderOptions}
+                onChange={this.onGenderChange}
+                type={this.props.type}
+                readonly={this.props.readonly || this.state.readonly}
+                disabled={this.props.disabled || this.state.disabled}
+              />
+            </FormItem>
+            <FormItem label="Skills">
+              <CheckList<Skill>
+                value={this.props.value.skills}
+                options={skillOptions}
+                onChange={this.onSkillsChange}
+                type={this.props.type}
+                readonly={this.props.readonly || this.state.readonly}
+                disabled={this.props.disabled || this.state.disabled}
+              />
+            </FormItem>
+            <FormItem label="Other Skills">
+              <ListForm<string>
+                value={this.props.value.otherSkills}
+                onChange={this.onOtherSkillsChange}
+                createChildForm={this.createOtherSkillForm}
+                addText="Add Skill"
+                default=""
+                type={this.props.type}
+                readonly={this.props.readonly || this.state.readonly}
+                disabled={this.props.disabled || this.state.disabled}
+              />
+            </FormItem>
+          </FormContainer>
+        </Container>
       </Paper>
     );
   }
@@ -150,7 +230,13 @@ class FormDemo extends React.Component<{}, FormState> {
     };
   }
 
-  createUserForm = (props: FormProps<User>) => <UserForm {...props}/>;
+  createUserForm = (props: FormProps<User>, onDelete: () => void) => (
+    <UserForm
+      {...props}
+      actions={<IconButton icon={<Icon name="highlight_off"/>} onClick={onDelete} type="error"/>}
+    />
+  )
+
   onUsersChange = (users: User[]) => {
     console.log(users);
     this.setState({ users });
@@ -169,7 +255,6 @@ class FormDemo extends React.Component<{}, FormState> {
         createChildForm={this.createUserForm}
         addText="Add User"
         default={this.getDefaultValue}
-        deletable={true}
         keyParameter="id"
       />
     );
