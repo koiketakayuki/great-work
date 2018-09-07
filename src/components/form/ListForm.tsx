@@ -10,10 +10,9 @@ import { IconText } from '../IconText';
 export type DefaultValueGenerator<T> = () => T;
 
 export interface ListFormProps<T> extends FormProps<T[]> {
-  createChildForm: (props: FormProps<T>, onDelete: () => void) => React.ReactNode;
+  createChildForm: (index: number, props: FormProps<T>, onDelete: () => void) => React.ReactNode;
   addText?: string;
   default?: T | DefaultValueGenerator<T>;
-  keyParameter?: keyof T;
   onChange?: (value: T[], errorMessage?: string, childFormErrorMessage?: string) => void;
 }
 
@@ -25,7 +24,7 @@ export function ListForm<T>(props: ListFormProps<T>) {
 function createListForm<T>(element: T, props: ListFormProps<T>, index: number) {
   const childFormProps: FormProps<T> = getChildFormProps(element, props, index);
   const onDelete = getDeleteHandler(index, props);
-  const childForm: React.ReactNode = props.createChildForm(childFormProps, onDelete);
+  const childForm: React.ReactNode = props.createChildForm(index, childFormProps, onDelete);
 
   return childForm;
 }

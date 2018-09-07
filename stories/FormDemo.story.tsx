@@ -86,18 +86,24 @@ class UserForm extends React.Component<FormProps<User> & { actions?: React.React
     };
   }
 
-  createOtherSkillForm = (props: FormProps<string>, onDelete: () => void) => (
-    <Row>
-      <FlexCell>
-        <TextForm {...props}/>
-      </FlexCell>
-      <FixedCell>
-        <Container padding="0 10px">
-          <Button type="error" onClick={onDelete}>Delete</Button>
-        </Container>
-      </FixedCell>
-    </Row>
-  )
+  createOtherSkillForm = (index: number, props: FormProps<string>, onDelete: () => void) => {
+    if (props.disabled || props.readonly) {
+      return <TextForm {...props} key={index}/>;
+    }
+
+    return (
+      <Row key={index}>
+        <FlexCell>
+          <TextForm {...props}/>
+        </FlexCell>
+        <FixedCell>
+          <Container padding="0 10px">
+            <Button type="error" onClick={onDelete}>Delete</Button>
+          </Container>
+        </FixedCell>
+      </Row>
+    );
+  }
 
   onUserChange = (partial: Partial<User>) => {
     if (this.props.onChange) {
@@ -241,8 +247,9 @@ class FormDemo extends React.Component<{}, FormState> {
     };
   }
 
-  createUserForm = (props: FormProps<User>, onDelete: () => void) => (
+  createUserForm = (_: number, props: FormProps<User>, onDelete: () => void) => (
     <UserForm
+      key={props.value.id}
       {...props}
       actions={<IconButton icon={<Icon name="highlight_off"/>} onClick={onDelete} type="error"/>}
     />
@@ -266,7 +273,6 @@ class FormDemo extends React.Component<{}, FormState> {
         createChildForm={this.createUserForm}
         addText="Add User"
         default={this.getDefaultValue}
-        keyParameter="id"
       />
     );
   }
