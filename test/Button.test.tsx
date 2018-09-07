@@ -66,7 +66,7 @@ describe('Button', () => {
     expect(wrapper.find(Paper).props().cursor).toBe('pointer');
   });
 
-  it('cursor becomes "not-allowed" when Button is diabled', () => {
+  it('cursor becomes "not-allowed" when Button is disabled', () => {
     const wrapper = shallow(<Button disabled={true}>test</Button>);
     expect(wrapper.find(Paper).props().cursor).toBe('not-allowed');
   });
