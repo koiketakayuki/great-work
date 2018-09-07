@@ -2,9 +2,15 @@ language: node_js
 node_js:
 - stable
 sudo: false
+after_success:
+- npm install -g codeclimate-test-reporter
+- codeclimate-test-reporter < coverage/lcov.info
 cache:
   directories:
   - node_modules
+addons:
+  code_climate:
+    repo_token: efbab2889b2194dada09a27dfd612a54da990d09873bedbd75f0be4e2417b571
 deploy:
   on:
     tags: true

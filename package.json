@@ -65,6 +65,10 @@
     "react-dom": "^16.4.2"
   },
   "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx}"
+    ],
     "setupTestFrameworkScriptFile": "./setupTests.ts",
     "transform": {
       "\\.(jsx?|tsx?)$": "ts-jest"
@@ -73,7 +77,7 @@
       "/node_modules/",
       "/lib/"
     ],
-    "testRegex": "(/test/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testRegex": "(/test/.*|\\.(test|spec))\\.(ts|tsx)$",
     "moduleFileExtensions": [
       "ts",
       "tsx",
