@@ -83,7 +83,7 @@ const TextInput = radium(class extends React.Component<TextFormProps & { textTyp
 
 export const createTextForm = (textType: TextType) =>
   (props: TextFormProps) => {
-    if (props.readonly) {
+    if (props.readonly && !props.disabled) {
       return <div>{props.value}</div>;
     }
 
