@@ -27,6 +27,7 @@
     "@storybook/addons": "4.0.0-alpha.16",
     "@storybook/cli": "4.0.0-alpha.16",
     "@storybook/react": "4.0.0-alpha.16",
+    "@types/enzyme": "^3.1.13",
     "@types/jest": "^23.3.1",
     "@types/radium": "^0.24.2",
     "@types/react-test-renderer": "^16.0.2",
@@ -40,6 +41,8 @@
     "babel-core": "^6.26.3",
     "babel-plugin-require-context-hook": "^1.0.0",
     "babel-runtime": "^6.26.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "jest": "^23.5.0",
     "radium": "^0.24.1",
     "react-docgen-typescript-loader": "^2.2.0",
@@ -62,6 +65,7 @@
     "react-dom": "^16.4.2"
   },
   "jest": {
+    "setupTestFrameworkScriptFile": "./setupTests.ts",
     "transform": {
       "\\.(jsx?|tsx?)$": "ts-jest"
     },
