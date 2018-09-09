@@ -2589,8 +2589,9 @@ exports[`Storyshots CheckBox color 1`] = `
             "background": undefined,
             "color": "#47c747",
             "cursor": "pointer",
-            "display": "flex",
+            "display": "inline-flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
           }
         }
         tabIndex={0}
@@ -2607,12 +2608,13 @@ exports[`Storyshots CheckBox color 1`] = `
             data-radium={true}
             style={
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
                 "background": undefined,
                 "color": undefined,
                 "cursor": undefined,
                 "display": "flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "flex-start",
               }
             }
           >
@@ -2934,8 +2936,9 @@ exports[`Storyshots CheckBox disabled 1`] = `
             "background": undefined,
             "color": "#888888",
             "cursor": "not-allowed",
-            "display": "flex",
+            "display": "inline-flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
           }
         }
       >
@@ -2951,12 +2954,13 @@ exports[`Storyshots CheckBox disabled 1`] = `
             data-radium={true}
             style={
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
                 "background": undefined,
                 "color": undefined,
                 "cursor": undefined,
                 "display": "flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "flex-start",
               }
             }
           >
@@ -3259,8 +3263,9 @@ exports[`Storyshots CheckBox false 1`] = `
             "background": undefined,
             "color": "#333333",
             "cursor": "pointer",
-            "display": "flex",
+            "display": "inline-flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
           }
         }
         tabIndex={0}
@@ -3277,12 +3282,13 @@ exports[`Storyshots CheckBox false 1`] = `
             data-radium={true}
             style={
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
                 "background": undefined,
                 "color": undefined,
                 "cursor": undefined,
                 "display": "flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "flex-start",
               }
             }
           >
@@ -3595,8 +3601,9 @@ exports[`Storyshots CheckBox onChange 1`] = `
             "background": undefined,
             "color": "#00A5E1",
             "cursor": "pointer",
-            "display": "flex",
+            "display": "inline-flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
           }
         }
         tabIndex={0}
@@ -3613,12 +3620,13 @@ exports[`Storyshots CheckBox onChange 1`] = `
             data-radium={true}
             style={
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
                 "background": undefined,
                 "color": undefined,
                 "cursor": undefined,
                 "display": "flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "flex-start",
               }
             }
           >
@@ -3939,8 +3947,9 @@ exports[`Storyshots CheckBox readonly 1`] = `
             "background": undefined,
             "color": "#333333",
             "cursor": "default",
-            "display": "flex",
+            "display": "inline-flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
           }
         }
         tabIndex={0}
@@ -3957,12 +3966,13 @@ exports[`Storyshots CheckBox readonly 1`] = `
             data-radium={true}
             style={
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
                 "background": undefined,
                 "color": undefined,
                 "cursor": undefined,
                 "display": "flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "flex-start",
               }
             }
           >
@@ -4265,8 +4275,9 @@ exports[`Storyshots CheckBox true 1`] = `
             "background": undefined,
             "color": "#00A5E1",
             "cursor": "pointer",
-            "display": "flex",
+            "display": "inline-flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
           }
         }
         tabIndex={0}
@@ -4283,12 +4294,13 @@ exports[`Storyshots CheckBox true 1`] = `
             data-radium={true}
             style={
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
                 "background": undefined,
                 "color": undefined,
                 "cursor": undefined,
                 "display": "flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "flex-start",
               }
             }
           >
@@ -4569,12 +4581,13 @@ exports[`Storyshots CheckList color 1`] = `
         data-radium={true}
         style={
           Object {
-            "alignItems": "center",
+            "alignItems": "flex-start",
             "background": undefined,
             "color": undefined,
             "cursor": undefined,
             "display": "flex",
             "flexWrap": "wrap",
+            "justifyContent": "flex-start",
           }
         }
       >
@@ -4597,8 +4610,9 @@ exports[`Storyshots CheckList color 1`] = `
                 "background": undefined,
                 "color": "#47c747",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -4615,12 +4629,13 @@ exports[`Storyshots CheckList color 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -4693,8 +4708,9 @@ exports[`Storyshots CheckList color 1`] = `
                 "background": undefined,
                 "color": "#333333",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -4711,12 +4727,13 @@ exports[`Storyshots CheckList color 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -4789,8 +4806,9 @@ exports[`Storyshots CheckList color 1`] = `
                 "background": undefined,
                 "color": "#333333",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -4807,12 +4825,13 @@ exports[`Storyshots CheckList color 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -5326,12 +5345,13 @@ exports[`Storyshots CheckList disabled 1`] = `
         data-radium={true}
         style={
           Object {
-            "alignItems": "center",
+            "alignItems": "flex-start",
             "background": undefined,
             "color": undefined,
             "cursor": undefined,
             "display": "flex",
             "flexWrap": "wrap",
+            "justifyContent": "flex-start",
           }
         }
       >
@@ -5354,8 +5374,9 @@ exports[`Storyshots CheckList disabled 1`] = `
                 "background": undefined,
                 "color": "#888888",
                 "cursor": "not-allowed",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
           >
@@ -5371,12 +5392,13 @@ exports[`Storyshots CheckList disabled 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -5449,8 +5471,9 @@ exports[`Storyshots CheckList disabled 1`] = `
                 "background": undefined,
                 "color": "#888888",
                 "cursor": "not-allowed",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
           >
@@ -5466,12 +5489,13 @@ exports[`Storyshots CheckList disabled 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -5544,8 +5568,9 @@ exports[`Storyshots CheckList disabled 1`] = `
                 "background": undefined,
                 "color": "#888888",
                 "cursor": "not-allowed",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
           >
@@ -5561,12 +5586,13 @@ exports[`Storyshots CheckList disabled 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -6061,12 +6087,13 @@ exports[`Storyshots CheckList normal 1`] = `
         data-radium={true}
         style={
           Object {
-            "alignItems": "center",
+            "alignItems": "flex-start",
             "background": undefined,
             "color": undefined,
             "cursor": undefined,
             "display": "flex",
             "flexWrap": "wrap",
+            "justifyContent": "flex-start",
           }
         }
       >
@@ -6089,8 +6116,9 @@ exports[`Storyshots CheckList normal 1`] = `
                 "background": undefined,
                 "color": "#00A5E1",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -6107,12 +6135,13 @@ exports[`Storyshots CheckList normal 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -6185,8 +6214,9 @@ exports[`Storyshots CheckList normal 1`] = `
                 "background": undefined,
                 "color": "#333333",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -6203,12 +6233,13 @@ exports[`Storyshots CheckList normal 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -6281,8 +6312,9 @@ exports[`Storyshots CheckList normal 1`] = `
                 "background": undefined,
                 "color": "#333333",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -6299,12 +6331,13 @@ exports[`Storyshots CheckList normal 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -6791,12 +6824,13 @@ exports[`Storyshots CheckList onChange 1`] = `
         data-radium={true}
         style={
           Object {
-            "alignItems": "center",
+            "alignItems": "flex-start",
             "background": undefined,
             "color": undefined,
             "cursor": undefined,
             "display": "flex",
             "flexWrap": "wrap",
+            "justifyContent": "flex-start",
           }
         }
       >
@@ -6819,8 +6853,9 @@ exports[`Storyshots CheckList onChange 1`] = `
                 "background": undefined,
                 "color": "#00A5E1",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -6837,12 +6872,13 @@ exports[`Storyshots CheckList onChange 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -6915,8 +6951,9 @@ exports[`Storyshots CheckList onChange 1`] = `
                 "background": undefined,
                 "color": "#333333",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -6933,12 +6970,13 @@ exports[`Storyshots CheckList onChange 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -7011,8 +7049,9 @@ exports[`Storyshots CheckList onChange 1`] = `
                 "background": undefined,
                 "color": "#333333",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -7029,12 +7068,13 @@ exports[`Storyshots CheckList onChange 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -7922,6 +7962,812 @@ exports[`Storyshots CheckList readonly 1`] = `
 </div>
 `;
 
+exports[`Storyshots DatePicker normal 1`] = `
+<div>
+  <div>
+    <div
+      style={
+        Object {
+          "WebkitFontSmoothing": "antialiased",
+          "backgroundColor": "#fff",
+          "border": "1px solid #eee",
+          "borderRadius": "2px",
+          "color": "#444",
+          "fontFamily": "-apple-system, \\".SFNSText-Regular\\", \\"San Francisco\\", BlinkMacSystemFont, \\"Segoe UI\\", \\"Roboto\\", \\"Oxygen\\", \\"Ubuntu\\", \\"Cantarell\\", \\"Fira Sans\\", \\"Droid Sans\\", \\"Helvetica Neue\\", \\"Lucida Grande\\", \\"Arial\\", sans-serif",
+          "fontSize": "15px",
+          "fontWeight": 300,
+          "lineHeight": 1.45,
+          "marginBottom": "20px",
+          "marginTop": "20px",
+          "padding": "20px 40px 40px",
+        }
+      }
+    >
+      <div
+        style={
+          Object {
+            "borderBottom": "1px solid #eee",
+            "marginBottom": 10,
+            "paddingTop": 10,
+          }
+        }
+      >
+        <h1
+          style={
+            Object {
+              "fontSize": "35px",
+              "margin": 0,
+              "padding": 0,
+            }
+          }
+        >
+          DatePicker
+        </h1>
+        <h2
+          style={
+            Object {
+              "fontSize": "22px",
+              "fontWeight": 400,
+              "margin": "0 0 10px 0",
+              "padding": 0,
+            }
+          }
+        >
+          normal
+        </h2>
+      </div>
+    </div>
+  </div>
+  <div
+    style={Object {}}
+  >
+    <div
+      data-radium={true}
+      style={
+        Object {
+          "alignItems": "flex-start",
+          "background": undefined,
+          "color": undefined,
+          "cursor": undefined,
+          "display": "flex",
+          "flexWrap": "nowrap",
+          "justifyContent": "flex-start",
+        }
+      }
+    >
+      <div>
+        <select
+          onChange={[Function]}
+          value="2018"
+        >
+          <option
+            value="2000"
+          >
+            2000
+          </option>
+          <option
+            value="2001"
+          >
+            2001
+          </option>
+          <option
+            value="2002"
+          >
+            2002
+          </option>
+          <option
+            value="2003"
+          >
+            2003
+          </option>
+          <option
+            value="2004"
+          >
+            2004
+          </option>
+          <option
+            value="2005"
+          >
+            2005
+          </option>
+          <option
+            value="2006"
+          >
+            2006
+          </option>
+          <option
+            value="2007"
+          >
+            2007
+          </option>
+          <option
+            value="2008"
+          >
+            2008
+          </option>
+          <option
+            value="2009"
+          >
+            2009
+          </option>
+          <option
+            value="2010"
+          >
+            2010
+          </option>
+          <option
+            value="2011"
+          >
+            2011
+          </option>
+          <option
+            value="2012"
+          >
+            2012
+          </option>
+          <option
+            value="2013"
+          >
+            2013
+          </option>
+          <option
+            value="2014"
+          >
+            2014
+          </option>
+          <option
+            value="2015"
+          >
+            2015
+          </option>
+          <option
+            value="2016"
+          >
+            2016
+          </option>
+          <option
+            value="2017"
+          >
+            2017
+          </option>
+          <option
+            value="2018"
+          >
+            2018
+          </option>
+        </select>
+      </div>
+      <div>
+        <select
+          onChange={[Function]}
+          value="9"
+        >
+          <option
+            value="1"
+          >
+            1
+          </option>
+          <option
+            value="2"
+          >
+            2
+          </option>
+          <option
+            value="3"
+          >
+            3
+          </option>
+          <option
+            value="4"
+          >
+            4
+          </option>
+          <option
+            value="5"
+          >
+            5
+          </option>
+          <option
+            value="6"
+          >
+            6
+          </option>
+          <option
+            value="7"
+          >
+            7
+          </option>
+          <option
+            value="8"
+          >
+            8
+          </option>
+          <option
+            value="9"
+          >
+            9
+          </option>
+          <option
+            value="10"
+          >
+            10
+          </option>
+          <option
+            value="11"
+          >
+            11
+          </option>
+          <option
+            value="12"
+          >
+            12
+          </option>
+        </select>
+      </div>
+      <div>
+        <select
+          onChange={[Function]}
+          value="9"
+        >
+          <option
+            value="1"
+          >
+            1
+          </option>
+          <option
+            value="2"
+          >
+            2
+          </option>
+          <option
+            value="3"
+          >
+            3
+          </option>
+          <option
+            value="4"
+          >
+            4
+          </option>
+          <option
+            value="5"
+          >
+            5
+          </option>
+          <option
+            value="6"
+          >
+            6
+          </option>
+          <option
+            value="7"
+          >
+            7
+          </option>
+          <option
+            value="8"
+          >
+            8
+          </option>
+          <option
+            value="9"
+          >
+            9
+          </option>
+          <option
+            value="10"
+          >
+            10
+          </option>
+          <option
+            value="11"
+          >
+            11
+          </option>
+          <option
+            value="12"
+          >
+            12
+          </option>
+          <option
+            value="13"
+          >
+            13
+          </option>
+          <option
+            value="14"
+          >
+            14
+          </option>
+          <option
+            value="15"
+          >
+            15
+          </option>
+          <option
+            value="16"
+          >
+            16
+          </option>
+          <option
+            value="17"
+          >
+            17
+          </option>
+          <option
+            value="18"
+          >
+            18
+          </option>
+          <option
+            value="19"
+          >
+            19
+          </option>
+          <option
+            value="20"
+          >
+            20
+          </option>
+          <option
+            value="21"
+          >
+            21
+          </option>
+          <option
+            value="22"
+          >
+            22
+          </option>
+          <option
+            value="23"
+          >
+            23
+          </option>
+          <option
+            value="24"
+          >
+            24
+          </option>
+          <option
+            value="25"
+          >
+            25
+          </option>
+          <option
+            value="26"
+          >
+            26
+          </option>
+          <option
+            value="27"
+          >
+            27
+          </option>
+          <option
+            value="28"
+          >
+            28
+          </option>
+          <option
+            value="29"
+          >
+            29
+          </option>
+          <option
+            value="30"
+          >
+            30
+          </option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      style={
+        Object {
+          "WebkitFontSmoothing": "antialiased",
+          "backgroundColor": "#fff",
+          "border": "1px solid #eee",
+          "borderRadius": "2px",
+          "color": "#444",
+          "fontFamily": "-apple-system, \\".SFNSText-Regular\\", \\"San Francisco\\", BlinkMacSystemFont, \\"Segoe UI\\", \\"Roboto\\", \\"Oxygen\\", \\"Ubuntu\\", \\"Cantarell\\", \\"Fira Sans\\", \\"Droid Sans\\", \\"Helvetica Neue\\", \\"Lucida Grande\\", \\"Arial\\", sans-serif",
+          "fontSize": "15px",
+          "fontWeight": 300,
+          "lineHeight": 1.45,
+          "marginBottom": "20px",
+          "marginTop": "20px",
+          "padding": "20px 40px 40px",
+        }
+      }
+    >
+      
+      <div>
+        <h1
+          style={
+            Object {
+              "borderBottom": "1px solid #EEE",
+              "fontSize": "25px",
+              "margin": "20px 0 0 0",
+              "padding": "0 0 5px 0",
+            }
+          }
+        >
+          Story Source
+        </h1>
+        <pre
+          className="css-r8d96o"
+        >
+          <div>
+            <div
+              style={
+                Object {
+                  "paddingLeft": 18,
+                  "paddingRight": 3,
+                }
+              }
+            >
+              <span
+                style={
+                  Object {
+                    "color": "#777",
+                  }
+                }
+              >
+                &lt;
+                DatePicker
+              </span>
+              <span>
+                <span>
+                   
+                  <span
+                    style={Object {}}
+                  >
+                    value
+                  </span>
+                  <span>
+                    =
+                    <span
+                      style={Object {}}
+                    >
+                      {
+                      <span
+                        style={
+                          Object {
+                            "color": "#666",
+                          }
+                        }
+                      >
+                        {
+                        }
+                      </span>
+                      }
+                    </span>
+                  </span>
+                </span>
+                <span>
+                   
+                  <span
+                    style={Object {}}
+                  >
+                    yearOptions
+                  </span>
+                  <span>
+                    =
+                    <span
+                      style={Object {}}
+                    >
+                      {
+                      <span
+                        style={
+                          Object {
+                            "color": "#666",
+                          }
+                        }
+                      >
+                        [
+                        <span>
+                          <span>
+                            <br />
+                              
+                              
+                          </span>
+                          <span
+                            style={
+                              Object {
+                                "color": "#666",
+                              }
+                            }
+                          >
+                            {
+                            <span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                value
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#a11",
+                                }
+                              }
+                            >
+                              2000
+                            </span>
+                            ,
+                            <span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                label
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              '2000'
+                            </span>
+                            }
+                          </span>
+                        </span>
+                        ,
+                        <span>
+                          <span>
+                            <br />
+                              
+                              
+                          </span>
+                          <span
+                            style={
+                              Object {
+                                "color": "#666",
+                              }
+                            }
+                          >
+                            {
+                            <span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                value
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#a11",
+                                }
+                              }
+                            >
+                              2001
+                            </span>
+                            ,
+                            <span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                label
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              '2001'
+                            </span>
+                            }
+                          </span>
+                        </span>
+                        ,
+                        <span>
+                          <span>
+                            <br />
+                              
+                              
+                          </span>
+                          <span
+                            style={
+                              Object {
+                                "color": "#666",
+                              }
+                            }
+                          >
+                            {
+                            <span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                value
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#a11",
+                                }
+                              }
+                            >
+                              2002
+                            </span>
+                            ,
+                            <span>
+                              <span
+                                style={
+                                  Object {
+                                    "color": "#666",
+                                  }
+                                }
+                              >
+                                label
+                              </span>
+                            </span>
+                            : 
+                            <span
+                              style={
+                                Object {
+                                  "color": "#22a",
+                                  "wordBreak": "break-word",
+                                }
+                              }
+                            >
+                              '2002'
+                            </span>
+                            }
+                          </span>
+                        </span>
+                        ,
+                        <span>
+                          <span>
+                            <br />
+                              
+                              
+                          </span>
+                          …
+                        </span>
+                        <span>
+                          <br />
+                            
+                        </span>
+                        ]
+                      </span>
+                      }
+                    </span>
+                  </span>
+                </span>
+                <span>
+                   
+                  <span
+                    style={Object {}}
+                  >
+                    onChange
+                  </span>
+                  <span>
+                    =
+                    <span
+                      style={Object {}}
+                    >
+                      {
+                      <span
+                        style={
+                          Object {
+                            "color": "#170",
+                          }
+                        }
+                      >
+                        onChange
+                      </span>
+                      }
+                    </span>
+                  </span>
+                   
+                </span>
+              </span>
+              <span
+                style={
+                  Object {
+                    "color": "#777",
+                  }
+                }
+              >
+                /&gt;
+              </span>
+            </div>
+          </div>
+          <button
+            className="css-1naocv3"
+            onClick={[Function]}
+          >
+            <div
+              className="css-lvl6aa"
+            >
+              <div
+                style={
+                  Object {
+                    "marginBottom": 6,
+                  }
+                }
+              >
+                Copied!
+              </div>
+              <div>
+                Copy
+              </div>
+            </div>
+          </button>
+        </pre>
+      </div>
+      <div>
+        <h1
+          style={
+            Object {
+              "borderBottom": "1px solid #EEE",
+              "fontSize": "25px",
+              "margin": "20px 0 0 0",
+              "padding": "0 0 5px 0",
+            }
+          }
+        >
+          Prop Types
+        </h1>
+        <div>
+          <h2
+            style={
+              Object {
+                "margin": "20px 0 0 0",
+              }
+            }
+          >
+            "
+            DatePicker
+            " Component
+          </h2>
+          <small>
+            No propTypes defined!
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Storyshots FormDemo disabled 1`] = `
 <div>
   <div>
@@ -8406,6 +9252,382 @@ exports[`Storyshots FormDemo disabled 1`] = `
                     }
                   }
                 >
+                  Birthdate
+                </div>
+                <div
+                  style={
+                    Object {
+                      "padding": "10px 0",
+                      "position": "relative",
+                    }
+                  }
+                >
+                  <div
+                    data-radium={true}
+                    style={
+                      Object {
+                        "alignItems": "flex-start",
+                        "background": undefined,
+                        "color": undefined,
+                        "cursor": undefined,
+                        "display": "flex",
+                        "flexWrap": "nowrap",
+                        "justifyContent": "flex-start",
+                      }
+                    }
+                  >
+                    <div>
+                      <select
+                        onChange={[Function]}
+                        value="2018"
+                      >
+                        <option
+                          value="2000"
+                        >
+                          2000
+                        </option>
+                        <option
+                          value="2001"
+                        >
+                          2001
+                        </option>
+                        <option
+                          value="2002"
+                        >
+                          2002
+                        </option>
+                        <option
+                          value="2003"
+                        >
+                          2003
+                        </option>
+                        <option
+                          value="2004"
+                        >
+                          2004
+                        </option>
+                        <option
+                          value="2005"
+                        >
+                          2005
+                        </option>
+                        <option
+                          value="2006"
+                        >
+                          2006
+                        </option>
+                        <option
+                          value="2007"
+                        >
+                          2007
+                        </option>
+                        <option
+                          value="2008"
+                        >
+                          2008
+                        </option>
+                        <option
+                          value="2009"
+                        >
+                          2009
+                        </option>
+                        <option
+                          value="2010"
+                        >
+                          2010
+                        </option>
+                        <option
+                          value="2011"
+                        >
+                          2011
+                        </option>
+                        <option
+                          value="2012"
+                        >
+                          2012
+                        </option>
+                        <option
+                          value="2013"
+                        >
+                          2013
+                        </option>
+                        <option
+                          value="2014"
+                        >
+                          2014
+                        </option>
+                        <option
+                          value="2015"
+                        >
+                          2015
+                        </option>
+                        <option
+                          value="2016"
+                        >
+                          2016
+                        </option>
+                        <option
+                          value="2017"
+                        >
+                          2017
+                        </option>
+                        <option
+                          value="2018"
+                        >
+                          2018
+                        </option>
+                      </select>
+                    </div>
+                    <div>
+                      <select
+                        onChange={[Function]}
+                        value="9"
+                      >
+                        <option
+                          value="1"
+                        >
+                          1
+                        </option>
+                        <option
+                          value="2"
+                        >
+                          2
+                        </option>
+                        <option
+                          value="3"
+                        >
+                          3
+                        </option>
+                        <option
+                          value="4"
+                        >
+                          4
+                        </option>
+                        <option
+                          value="5"
+                        >
+                          5
+                        </option>
+                        <option
+                          value="6"
+                        >
+                          6
+                        </option>
+                        <option
+                          value="7"
+                        >
+                          7
+                        </option>
+                        <option
+                          value="8"
+                        >
+                          8
+                        </option>
+                        <option
+                          value="9"
+                        >
+                          9
+                        </option>
+                        <option
+                          value="10"
+                        >
+                          10
+                        </option>
+                        <option
+                          value="11"
+                        >
+                          11
+                        </option>
+                        <option
+                          value="12"
+                        >
+                          12
+                        </option>
+                      </select>
+                    </div>
+                    <div>
+                      <select
+                        onChange={[Function]}
+                        value="9"
+                      >
+                        <option
+                          value="1"
+                        >
+                          1
+                        </option>
+                        <option
+                          value="2"
+                        >
+                          2
+                        </option>
+                        <option
+                          value="3"
+                        >
+                          3
+                        </option>
+                        <option
+                          value="4"
+                        >
+                          4
+                        </option>
+                        <option
+                          value="5"
+                        >
+                          5
+                        </option>
+                        <option
+                          value="6"
+                        >
+                          6
+                        </option>
+                        <option
+                          value="7"
+                        >
+                          7
+                        </option>
+                        <option
+                          value="8"
+                        >
+                          8
+                        </option>
+                        <option
+                          value="9"
+                        >
+                          9
+                        </option>
+                        <option
+                          value="10"
+                        >
+                          10
+                        </option>
+                        <option
+                          value="11"
+                        >
+                          11
+                        </option>
+                        <option
+                          value="12"
+                        >
+                          12
+                        </option>
+                        <option
+                          value="13"
+                        >
+                          13
+                        </option>
+                        <option
+                          value="14"
+                        >
+                          14
+                        </option>
+                        <option
+                          value="15"
+                        >
+                          15
+                        </option>
+                        <option
+                          value="16"
+                        >
+                          16
+                        </option>
+                        <option
+                          value="17"
+                        >
+                          17
+                        </option>
+                        <option
+                          value="18"
+                        >
+                          18
+                        </option>
+                        <option
+                          value="19"
+                        >
+                          19
+                        </option>
+                        <option
+                          value="20"
+                        >
+                          20
+                        </option>
+                        <option
+                          value="21"
+                        >
+                          21
+                        </option>
+                        <option
+                          value="22"
+                        >
+                          22
+                        </option>
+                        <option
+                          value="23"
+                        >
+                          23
+                        </option>
+                        <option
+                          value="24"
+                        >
+                          24
+                        </option>
+                        <option
+                          value="25"
+                        >
+                          25
+                        </option>
+                        <option
+                          value="26"
+                        >
+                          26
+                        </option>
+                        <option
+                          value="27"
+                        >
+                          27
+                        </option>
+                        <option
+                          value="28"
+                        >
+                          28
+                        </option>
+                        <option
+                          value="29"
+                        >
+                          29
+                        </option>
+                        <option
+                          value="30"
+                        >
+                          30
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div
+                style={
+                  Object {
+                    "padding": "10px",
+                    "position": "relative",
+                  }
+                }
+              >
+                <div
+                  data-radium={true}
+                  style={
+                    Object {
+                      "color": "inherit",
+                      "cursor": "default",
+                      "display": "block",
+                      "fontSize": "1.0rem",
+                      "fontWeight": "bold",
+                      "lineHeight": 1,
+                      "margin": "0",
+                      "textDecoration": "none",
+                    }
+                  }
+                >
                   Age
                 </div>
                 <div
@@ -8488,12 +9710,13 @@ exports[`Storyshots FormDemo disabled 1`] = `
                       data-radium={true}
                       style={
                         Object {
-                          "alignItems": "center",
+                          "alignItems": "flex-start",
                           "background": undefined,
                           "color": undefined,
                           "cursor": undefined,
                           "display": "flex",
                           "flexWrap": "wrap",
+                          "justifyContent": "flex-start",
                         }
                       }
                     >
@@ -8516,8 +9739,9 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               "background": undefined,
                               "color": "#00A5E1",
                               "cursor": "pointer",
-                              "display": "flex",
+                              "display": "inline-flex",
                               "flexWrap": "nowrap",
+                              "justifyContent": "center",
                             }
                           }
                           tabIndex={0}
@@ -8534,12 +9758,13 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               data-radium={true}
                               style={
                                 Object {
-                                  "alignItems": "center",
+                                  "alignItems": "flex-start",
                                   "background": undefined,
                                   "color": undefined,
                                   "cursor": undefined,
                                   "display": "flex",
                                   "flexWrap": "nowrap",
+                                  "justifyContent": "flex-start",
                                 }
                               }
                             >
@@ -8612,8 +9837,9 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               "background": undefined,
                               "color": "#333333",
                               "cursor": "pointer",
-                              "display": "flex",
+                              "display": "inline-flex",
                               "flexWrap": "nowrap",
+                              "justifyContent": "center",
                             }
                           }
                           tabIndex={0}
@@ -8630,12 +9856,13 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               data-radium={true}
                               style={
                                 Object {
-                                  "alignItems": "center",
+                                  "alignItems": "flex-start",
                                   "background": undefined,
                                   "color": undefined,
                                   "cursor": undefined,
                                   "display": "flex",
                                   "flexWrap": "nowrap",
+                                  "justifyContent": "flex-start",
                                 }
                               }
                             >
@@ -8708,8 +9935,9 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               "background": undefined,
                               "color": "#333333",
                               "cursor": "pointer",
-                              "display": "flex",
+                              "display": "inline-flex",
                               "flexWrap": "nowrap",
+                              "justifyContent": "center",
                             }
                           }
                           tabIndex={0}
@@ -8726,12 +9954,13 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               data-radium={true}
                               style={
                                 Object {
-                                  "alignItems": "center",
+                                  "alignItems": "flex-start",
                                   "background": undefined,
                                   "color": undefined,
                                   "cursor": undefined,
                                   "display": "flex",
                                   "flexWrap": "nowrap",
+                                  "justifyContent": "flex-start",
                                 }
                               }
                             >
@@ -8804,8 +10033,9 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               "background": undefined,
                               "color": "#333333",
                               "cursor": "pointer",
-                              "display": "flex",
+                              "display": "inline-flex",
                               "flexWrap": "nowrap",
+                              "justifyContent": "center",
                             }
                           }
                           tabIndex={0}
@@ -8822,12 +10052,13 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               data-radium={true}
                               style={
                                 Object {
-                                  "alignItems": "center",
+                                  "alignItems": "flex-start",
                                   "background": undefined,
                                   "color": undefined,
                                   "cursor": undefined,
                                   "display": "flex",
                                   "flexWrap": "nowrap",
+                                  "justifyContent": "flex-start",
                                 }
                               }
                             >
@@ -8923,12 +10154,13 @@ exports[`Storyshots FormDemo disabled 1`] = `
                       data-radium={true}
                       style={
                         Object {
-                          "alignItems": "center",
+                          "alignItems": "flex-start",
                           "background": undefined,
                           "color": undefined,
                           "cursor": undefined,
                           "display": "flex",
                           "flexWrap": "wrap",
+                          "justifyContent": "flex-start",
                         }
                       }
                     >
@@ -8951,8 +10183,9 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               "background": undefined,
                               "color": "#333333",
                               "cursor": "pointer",
-                              "display": "flex",
+                              "display": "inline-flex",
                               "flexWrap": "nowrap",
+                              "justifyContent": "center",
                             }
                           }
                           tabIndex={0}
@@ -8969,12 +10202,13 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               data-radium={true}
                               style={
                                 Object {
-                                  "alignItems": "center",
+                                  "alignItems": "flex-start",
                                   "background": undefined,
                                   "color": undefined,
                                   "cursor": undefined,
                                   "display": "flex",
                                   "flexWrap": "nowrap",
+                                  "justifyContent": "flex-start",
                                 }
                               }
                             >
@@ -9047,8 +10281,9 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               "background": undefined,
                               "color": "#333333",
                               "cursor": "pointer",
-                              "display": "flex",
+                              "display": "inline-flex",
                               "flexWrap": "nowrap",
+                              "justifyContent": "center",
                             }
                           }
                           tabIndex={0}
@@ -9065,12 +10300,13 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               data-radium={true}
                               style={
                                 Object {
-                                  "alignItems": "center",
+                                  "alignItems": "flex-start",
                                   "background": undefined,
                                   "color": undefined,
                                   "cursor": undefined,
                                   "display": "flex",
                                   "flexWrap": "nowrap",
+                                  "justifyContent": "flex-start",
                                 }
                               }
                             >
@@ -9143,8 +10379,9 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               "background": undefined,
                               "color": "#333333",
                               "cursor": "pointer",
-                              "display": "flex",
+                              "display": "inline-flex",
                               "flexWrap": "nowrap",
+                              "justifyContent": "center",
                             }
                           }
                           tabIndex={0}
@@ -9161,12 +10398,13 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               data-radium={true}
                               style={
                                 Object {
-                                  "alignItems": "center",
+                                  "alignItems": "flex-start",
                                   "background": undefined,
                                   "color": undefined,
                                   "cursor": undefined,
                                   "display": "flex",
                                   "flexWrap": "nowrap",
+                                  "justifyContent": "flex-start",
                                 }
                               }
                             >
@@ -9239,8 +10477,9 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               "background": undefined,
                               "color": "#333333",
                               "cursor": "pointer",
-                              "display": "flex",
+                              "display": "inline-flex",
                               "flexWrap": "nowrap",
+                              "justifyContent": "center",
                             }
                           }
                           tabIndex={0}
@@ -9257,12 +10496,13 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               data-radium={true}
                               style={
                                 Object {
-                                  "alignItems": "center",
+                                  "alignItems": "flex-start",
                                   "background": undefined,
                                   "color": undefined,
                                   "cursor": undefined,
                                   "display": "flex",
                                   "flexWrap": "nowrap",
+                                  "justifyContent": "flex-start",
                                 }
                               }
                             >
@@ -9335,8 +10575,9 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               "background": undefined,
                               "color": "#333333",
                               "cursor": "pointer",
-                              "display": "flex",
+                              "display": "inline-flex",
                               "flexWrap": "nowrap",
+                              "justifyContent": "center",
                             }
                           }
                           tabIndex={0}
@@ -9353,12 +10594,13 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               data-radium={true}
                               style={
                                 Object {
-                                  "alignItems": "center",
+                                  "alignItems": "flex-start",
                                   "background": undefined,
                                   "color": undefined,
                                   "cursor": undefined,
                                   "display": "flex",
                                   "flexWrap": "nowrap",
+                                  "justifyContent": "flex-start",
                                 }
                               }
                             >
@@ -9431,8 +10673,9 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               "background": undefined,
                               "color": "#333333",
                               "cursor": "pointer",
-                              "display": "flex",
+                              "display": "inline-flex",
                               "flexWrap": "nowrap",
+                              "justifyContent": "center",
                             }
                           }
                           tabIndex={0}
@@ -9449,12 +10692,13 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               data-radium={true}
                               style={
                                 Object {
-                                  "alignItems": "center",
+                                  "alignItems": "flex-start",
                                   "background": undefined,
                                   "color": undefined,
                                   "cursor": undefined,
                                   "display": "flex",
                                   "flexWrap": "nowrap",
+                                  "justifyContent": "flex-start",
                                 }
                               }
                             >
@@ -9527,8 +10771,9 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               "background": undefined,
                               "color": "#333333",
                               "cursor": "pointer",
-                              "display": "flex",
+                              "display": "inline-flex",
                               "flexWrap": "nowrap",
+                              "justifyContent": "center",
                             }
                           }
                           tabIndex={0}
@@ -9545,12 +10790,13 @@ exports[`Storyshots FormDemo disabled 1`] = `
                               data-radium={true}
                               style={
                                 Object {
-                                  "alignItems": "center",
+                                  "alignItems": "flex-start",
                                   "background": undefined,
                                   "color": undefined,
                                   "cursor": undefined,
                                   "display": "flex",
                                   "flexWrap": "nowrap",
+                                  "justifyContent": "flex-start",
                                 }
                               }
                             >
@@ -9696,8 +10942,9 @@ exports[`Storyshots FormDemo disabled 1`] = `
                                   "background": undefined,
                                   "color": "inherit",
                                   "cursor": undefined,
-                                  "display": "flex",
+                                  "display": "inline-flex",
                                   "flexWrap": "nowrap",
+                                  "justifyContent": "center",
                                 }
                               }
                             >
@@ -9713,12 +10960,13 @@ exports[`Storyshots FormDemo disabled 1`] = `
                                   data-radium={true}
                                   style={
                                     Object {
-                                      "alignItems": "center",
+                                      "alignItems": "flex-start",
                                       "background": undefined,
                                       "color": undefined,
                                       "cursor": undefined,
                                       "display": "flex",
                                       "flexWrap": "nowrap",
+                                      "justifyContent": "flex-start",
                                     }
                                   }
                                 >
@@ -9828,8 +11076,9 @@ exports[`Storyshots FormDemo disabled 1`] = `
                     "background": undefined,
                     "color": "inherit",
                     "cursor": undefined,
-                    "display": "flex",
+                    "display": "inline-flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "center",
                   }
                 }
               >
@@ -9845,12 +11094,13 @@ exports[`Storyshots FormDemo disabled 1`] = `
                     data-radium={true}
                     style={
                       Object {
-                        "alignItems": "center",
+                        "alignItems": "flex-start",
                         "background": undefined,
                         "color": undefined,
                         "cursor": undefined,
                         "display": "flex",
                         "flexWrap": "nowrap",
+                        "justifyContent": "flex-start",
                       }
                     }
                   >
@@ -11478,8 +12728,9 @@ exports[`Storyshots IconText color 1`] = `
             "background": undefined,
             "color": "#00A5E1",
             "cursor": undefined,
-            "display": "flex",
+            "display": "inline-flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
           }
         }
       >
@@ -11495,12 +12746,13 @@ exports[`Storyshots IconText color 1`] = `
             data-radium={true}
             style={
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
                 "background": undefined,
                 "color": undefined,
                 "cursor": undefined,
                 "display": "flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "flex-start",
               }
             }
           >
@@ -11561,8 +12813,9 @@ exports[`Storyshots IconText color 1`] = `
             "background": undefined,
             "color": "#47c747",
             "cursor": undefined,
-            "display": "flex",
+            "display": "inline-flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
           }
         }
       >
@@ -11578,12 +12831,13 @@ exports[`Storyshots IconText color 1`] = `
             data-radium={true}
             style={
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
                 "background": undefined,
                 "color": undefined,
                 "cursor": undefined,
                 "display": "flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "flex-start",
               }
             }
           >
@@ -11644,8 +12898,9 @@ exports[`Storyshots IconText color 1`] = `
             "background": undefined,
             "color": "#ff0000",
             "cursor": undefined,
-            "display": "flex",
+            "display": "inline-flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
           }
         }
       >
@@ -11661,12 +12916,13 @@ exports[`Storyshots IconText color 1`] = `
             data-radium={true}
             style={
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
                 "background": undefined,
                 "color": undefined,
                 "cursor": undefined,
                 "display": "flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "flex-start",
               }
             }
           >
@@ -11727,8 +12983,9 @@ exports[`Storyshots IconText color 1`] = `
             "background": undefined,
             "color": "#888888",
             "cursor": undefined,
-            "display": "flex",
+            "display": "inline-flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
           }
         }
       >
@@ -11744,12 +13001,13 @@ exports[`Storyshots IconText color 1`] = `
             data-radium={true}
             style={
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
                 "background": undefined,
                 "color": undefined,
                 "cursor": undefined,
                 "display": "flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "flex-start",
               }
             }
           >
@@ -11810,8 +13068,9 @@ exports[`Storyshots IconText color 1`] = `
             "background": undefined,
             "color": "#333333",
             "cursor": undefined,
-            "display": "flex",
+            "display": "inline-flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
           }
         }
       >
@@ -11827,12 +13086,13 @@ exports[`Storyshots IconText color 1`] = `
             data-radium={true}
             style={
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
                 "background": undefined,
                 "color": undefined,
                 "cursor": undefined,
                 "display": "flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "flex-start",
               }
             }
           >
@@ -12622,8 +13882,9 @@ exports[`Storyshots IconText cursor 1`] = `
             "background": undefined,
             "color": "inherit",
             "cursor": "pointer",
-            "display": "flex",
+            "display": "inline-flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
           }
         }
       >
@@ -12639,12 +13900,13 @@ exports[`Storyshots IconText cursor 1`] = `
             data-radium={true}
             style={
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
                 "background": undefined,
                 "color": undefined,
                 "cursor": undefined,
                 "display": "flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "flex-start",
               }
             }
           >
@@ -12705,8 +13967,9 @@ exports[`Storyshots IconText cursor 1`] = `
             "background": undefined,
             "color": "inherit",
             "cursor": "not-allowed",
-            "display": "flex",
+            "display": "inline-flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
           }
         }
       >
@@ -12722,12 +13985,13 @@ exports[`Storyshots IconText cursor 1`] = `
             data-radium={true}
             style={
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
                 "background": undefined,
                 "color": undefined,
                 "cursor": undefined,
                 "display": "flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "flex-start",
               }
             }
           >
@@ -12788,8 +14052,9 @@ exports[`Storyshots IconText cursor 1`] = `
             "background": undefined,
             "color": "inherit",
             "cursor": "progress",
-            "display": "flex",
+            "display": "inline-flex",
             "flexWrap": "nowrap",
+            "justifyContent": "center",
           }
         }
       >
@@ -12805,12 +14070,13 @@ exports[`Storyshots IconText cursor 1`] = `
             data-radium={true}
             style={
               Object {
-                "alignItems": "center",
+                "alignItems": "flex-start",
                 "background": undefined,
                 "color": undefined,
                 "cursor": undefined,
                 "display": "flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "flex-start",
               }
             }
           >
@@ -13381,8 +14647,9 @@ exports[`Storyshots IconText hover 1`] = `
           "background": undefined,
           "color": "inherit",
           "cursor": undefined,
-          "display": "flex",
+          "display": "inline-flex",
           "flexWrap": "nowrap",
+          "justifyContent": "center",
         }
       }
     >
@@ -13398,12 +14665,13 @@ exports[`Storyshots IconText hover 1`] = `
           data-radium={true}
           style={
             Object {
-              "alignItems": "center",
+              "alignItems": "flex-start",
               "background": undefined,
               "color": undefined,
               "cursor": undefined,
               "display": "flex",
               "flexWrap": "nowrap",
+              "justifyContent": "flex-start",
             }
           }
         >
@@ -13752,8 +15020,9 @@ exports[`Storyshots IconText normal 1`] = `
           "background": undefined,
           "color": "inherit",
           "cursor": undefined,
-          "display": "flex",
+          "display": "inline-flex",
           "flexWrap": "nowrap",
+          "justifyContent": "center",
         }
       }
     >
@@ -13769,12 +15038,13 @@ exports[`Storyshots IconText normal 1`] = `
           data-radium={true}
           style={
             Object {
-              "alignItems": "center",
+              "alignItems": "flex-start",
               "background": undefined,
               "color": undefined,
               "cursor": undefined,
               "display": "flex",
               "flexWrap": "nowrap",
+              "justifyContent": "flex-start",
             }
           }
         >
@@ -14075,8 +15345,9 @@ exports[`Storyshots IconText onClick 1`] = `
           "background": undefined,
           "color": "inherit",
           "cursor": undefined,
-          "display": "flex",
+          "display": "inline-flex",
           "flexWrap": "nowrap",
+          "justifyContent": "center",
         }
       }
     >
@@ -14092,12 +15363,13 @@ exports[`Storyshots IconText onClick 1`] = `
           data-radium={true}
           style={
             Object {
-              "alignItems": "center",
+              "alignItems": "flex-start",
               "background": undefined,
               "color": undefined,
               "cursor": undefined,
               "display": "flex",
               "flexWrap": "nowrap",
+              "justifyContent": "flex-start",
             }
           }
         >
@@ -14424,8 +15696,9 @@ exports[`Storyshots IconText onKeyDown 1`] = `
           "background": undefined,
           "color": "inherit",
           "cursor": undefined,
-          "display": "flex",
+          "display": "inline-flex",
           "flexWrap": "nowrap",
+          "justifyContent": "center",
         }
       }
       tabIndex={0}
@@ -14442,12 +15715,13 @@ exports[`Storyshots IconText onKeyDown 1`] = `
           data-radium={true}
           style={
             Object {
-              "alignItems": "center",
+              "alignItems": "flex-start",
               "background": undefined,
               "color": undefined,
               "cursor": undefined,
               "display": "flex",
               "flexWrap": "nowrap",
+              "justifyContent": "flex-start",
             }
           }
         >
@@ -14811,8 +16085,9 @@ exports[`Storyshots IconText put icon right 1`] = `
           "background": undefined,
           "color": "inherit",
           "cursor": undefined,
-          "display": "flex",
+          "display": "inline-flex",
           "flexWrap": "nowrap",
+          "justifyContent": "center",
         }
       }
     >
@@ -14862,12 +16137,13 @@ exports[`Storyshots IconText put icon right 1`] = `
           data-radium={true}
           style={
             Object {
-              "alignItems": "center",
+              "alignItems": "flex-start",
               "background": undefined,
               "color": undefined,
               "cursor": undefined,
               "display": "flex",
               "flexWrap": "nowrap",
+              "justifyContent": "flex-start",
             }
           }
         >
@@ -20419,12 +21695,13 @@ exports[`Storyshots RadioButtons color 1`] = `
         data-radium={true}
         style={
           Object {
-            "alignItems": "center",
+            "alignItems": "flex-start",
             "background": undefined,
             "color": undefined,
             "cursor": undefined,
             "display": "flex",
             "flexWrap": "wrap",
+            "justifyContent": "flex-start",
           }
         }
       >
@@ -20447,8 +21724,9 @@ exports[`Storyshots RadioButtons color 1`] = `
                 "background": undefined,
                 "color": "#00A5E1",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -20465,12 +21743,13 @@ exports[`Storyshots RadioButtons color 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -20543,8 +21822,9 @@ exports[`Storyshots RadioButtons color 1`] = `
                 "background": undefined,
                 "color": "#333333",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -20561,12 +21841,13 @@ exports[`Storyshots RadioButtons color 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -20639,8 +21920,9 @@ exports[`Storyshots RadioButtons color 1`] = `
                 "background": undefined,
                 "color": "#333333",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -20657,12 +21939,13 @@ exports[`Storyshots RadioButtons color 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -21164,12 +22447,13 @@ exports[`Storyshots RadioButtons disabled 1`] = `
         data-radium={true}
         style={
           Object {
-            "alignItems": "center",
+            "alignItems": "flex-start",
             "background": undefined,
             "color": undefined,
             "cursor": undefined,
             "display": "flex",
             "flexWrap": "wrap",
+            "justifyContent": "flex-start",
           }
         }
       >
@@ -21192,8 +22476,9 @@ exports[`Storyshots RadioButtons disabled 1`] = `
                 "background": undefined,
                 "color": "#888888",
                 "cursor": "not-allowed",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
           >
@@ -21209,12 +22494,13 @@ exports[`Storyshots RadioButtons disabled 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -21287,8 +22573,9 @@ exports[`Storyshots RadioButtons disabled 1`] = `
                 "background": undefined,
                 "color": "#888888",
                 "cursor": "not-allowed",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
           >
@@ -21304,12 +22591,13 @@ exports[`Storyshots RadioButtons disabled 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -21382,8 +22670,9 @@ exports[`Storyshots RadioButtons disabled 1`] = `
                 "background": undefined,
                 "color": "#888888",
                 "cursor": "not-allowed",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
           >
@@ -21399,12 +22688,13 @@ exports[`Storyshots RadioButtons disabled 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -21887,12 +23177,13 @@ exports[`Storyshots RadioButtons normal 1`] = `
         data-radium={true}
         style={
           Object {
-            "alignItems": "center",
+            "alignItems": "flex-start",
             "background": undefined,
             "color": undefined,
             "cursor": undefined,
             "display": "flex",
             "flexWrap": "wrap",
+            "justifyContent": "flex-start",
           }
         }
       >
@@ -21915,8 +23206,9 @@ exports[`Storyshots RadioButtons normal 1`] = `
                 "background": undefined,
                 "color": "#00A5E1",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -21933,12 +23225,13 @@ exports[`Storyshots RadioButtons normal 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -22011,8 +23304,9 @@ exports[`Storyshots RadioButtons normal 1`] = `
                 "background": undefined,
                 "color": "#333333",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -22029,12 +23323,13 @@ exports[`Storyshots RadioButtons normal 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -22107,8 +23402,9 @@ exports[`Storyshots RadioButtons normal 1`] = `
                 "background": undefined,
                 "color": "#333333",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -22125,12 +23421,13 @@ exports[`Storyshots RadioButtons normal 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -22605,12 +23902,13 @@ exports[`Storyshots RadioButtons onChange 1`] = `
         data-radium={true}
         style={
           Object {
-            "alignItems": "center",
+            "alignItems": "flex-start",
             "background": undefined,
             "color": undefined,
             "cursor": undefined,
             "display": "flex",
             "flexWrap": "wrap",
+            "justifyContent": "flex-start",
           }
         }
       >
@@ -22633,8 +23931,9 @@ exports[`Storyshots RadioButtons onChange 1`] = `
                 "background": undefined,
                 "color": "#00A5E1",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -22651,12 +23950,13 @@ exports[`Storyshots RadioButtons onChange 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -22729,8 +24029,9 @@ exports[`Storyshots RadioButtons onChange 1`] = `
                 "background": undefined,
                 "color": "#333333",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -22747,12 +24048,13 @@ exports[`Storyshots RadioButtons onChange 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
@@ -22825,8 +24127,9 @@ exports[`Storyshots RadioButtons onChange 1`] = `
                 "background": undefined,
                 "color": "#333333",
                 "cursor": "pointer",
-                "display": "flex",
+                "display": "inline-flex",
                 "flexWrap": "nowrap",
+                "justifyContent": "center",
               }
             }
             tabIndex={0}
@@ -22843,12 +24146,13 @@ exports[`Storyshots RadioButtons onChange 1`] = `
                 data-radium={true}
                 style={
                   Object {
-                    "alignItems": "center",
+                    "alignItems": "flex-start",
                     "background": undefined,
                     "color": undefined,
                     "cursor": undefined,
                     "display": "flex",
                     "flexWrap": "nowrap",
+                    "justifyContent": "flex-start",
                   }
                 }
               >
