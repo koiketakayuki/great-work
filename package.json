@@ -5,6 +5,7 @@
   "main": "./dist/bundle.js",
   "scripts": {
     "build": "webpack",
+    "lint": "tslint --project .",
     "test": "jest",
     "update-snapshot": "jest --updateSnapshot",
     "storybook": "start-storybook -p 6006",
