@@ -50,6 +50,8 @@ type Skill = 'Lisp' | 'Haskell' | 'C' | 'C++' | 'Java' | 'Ruby' | 'Python';
 const skills: Skill[] = ['Lisp', 'Haskell', 'C', 'C++', 'Java', 'Ruby', 'Python'];
 const skillOptions: SelectOption<Skill>[] = skills.map((s: Skill) => ({ value: s, label: s }));
 
+const lengthValidator = (value: string) => value.length > 10 ? 'Value must not be greater than 10 characters' : undefined;
+
 const ageOptions = [
   {
     value: 10,
@@ -80,9 +82,15 @@ const booleanOptions: SelectOption<boolean>[] = [
   },
 ];
 
-class UserForm extends React.Component<FormProps<User> & { actions?: React.ReactNode }, { readonly: boolean, disabled: boolean }> {
+type UserFormProps = FormProps<User> & { actions?: React.ReactNode };
+type UserFormState = {
+  readonly: boolean;
+  disabled: boolean;
+};
 
-  constructor(props: FormProps<User>) {
+class UserForm extends React.Component<UserFormProps, UserFormState> {
+
+  constructor(props: UserFormProps) {
     super(props);
     this.state = {
       readonly: false,
@@ -98,7 +106,7 @@ class UserForm extends React.Component<FormProps<User> & { actions?: React.React
     return (
       <Row key={index}>
         <FlexCell>
-          <TextForm {...props}/>
+          <TextForm {...props} errorMessage={lengthValidator(props.value)}/>
         </FlexCell>
         <FixedCell>
           <Container padding="0 10px">
@@ -170,6 +178,7 @@ class UserForm extends React.Component<FormProps<User> & { actions?: React.React
               <TextForm
                 value={this.props.value.name}
                 onChange={this.onNameChange}
+                errorMessage={lengthValidator(this.props.value.name)}
                 type={this.props.type}
                 readonly={this.props.readonly || this.state.readonly}
                 disabled={this.props.disabled || this.state.disabled}
@@ -179,6 +188,7 @@ class UserForm extends React.Component<FormProps<User> & { actions?: React.React
               <PasswordForm
                 value={this.props.value.password}
                 onChange={this.onPasswordChange}
+                errorMessage={lengthValidator(this.props.value.password)}
                 type={this.props.type}
                 readonly={this.props.readonly || this.state.readonly}
                 disabled={this.props.disabled || this.state.disabled}
