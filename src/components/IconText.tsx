@@ -31,7 +31,8 @@ function getIconText(config: StyleConfig, props: IconTextProps) {
 
   return (
     <Row
-      display="flex"
+      display="inline-flex"
+      alignItems="center"
       color={config.getColor(props.type)}
       hover={props.hover}
       cursor={props.cursor}
