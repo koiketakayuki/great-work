@@ -18,15 +18,20 @@ import { Container } from '../src/components/layout/Container';
 import { Button } from '../src/components/Button';
 import { IconButton } from '../src/components/IconButton';
 import { Icon } from '../src/components/Icon';
+import { DatePicker } from '../src/components/form/DatePicker';
+import { range } from '../src/lib/util';
 
 const story = storiesOf('FormDemo', module);
 story.addDecorator(withInfo({ inline: true }));
+
+const yearOptions = range(2000, 2018).map(y => ({ value: y, label: String(y) }));
 
 interface User {
   id: number;
   image: string;
   name: string;
   password: string;
+  birthdate: Date;
   age: number;
   gender: Gender;
   skills: Skill[];
@@ -45,7 +50,6 @@ type Skill = 'Lisp' | 'Haskell' | 'C' | 'C++' | 'Java' | 'Ruby' | 'Python';
 const skills: Skill[] = ['Lisp', 'Haskell', 'C', 'C++', 'Java', 'Ruby', 'Python'];
 const skillOptions: SelectOption<Skill>[] = skills.map((s: Skill) => ({ value: s, label: s }));
 
-const lengthValidator = (value: string) => value.length > 10 ? 'error' : undefined;
 const ageOptions = [
   {
     value: 10,
@@ -115,6 +119,7 @@ class UserForm extends React.Component<FormProps<User> & { actions?: React.React
   onImageChange = (image: string) => this.onUserChange({ image });
   onNameChange = (name: string) => this.onUserChange({ name });
   onPasswordChange = (password: string) => this.onUserChange({ password });
+  onBirthdateChange = (birthdate: Date) => this.onUserChange({ birthdate });
   onAgeChange = (age: number) => this.onUserChange({ age });
   onGenderChange = (gender: Gender) => this.onUserChange({ gender });
   onSkillsChange = (skills: Skill[]) => this.onUserChange({ skills });
@@ -179,6 +184,16 @@ class UserForm extends React.Component<FormProps<User> & { actions?: React.React
                 disabled={this.props.disabled || this.state.disabled}
               />
             </FormItem>
+            <FormItem label="Birthdate">
+              <DatePicker
+                value={this.props.value.birthdate}
+                onChange={this.onBirthdateChange}
+                yearOptions={yearOptions}
+                type={this.props.type}
+                readonly={this.props.readonly || this.state.readonly}
+                disabled={this.props.disabled || this.state.disabled}
+              />
+            </FormItem>
             <FormItem label="Age">
               <SelectBox<number>
                 value={this.props.value.age}
@@ -233,6 +248,7 @@ const defaultUserProfile: User = {
   image: 'https://wallpaperbrowse.com/media/images/3848765-wallpaper-images-download.jpg',
   name: 'John',
   password: 'secret',
+  birthdate: new Date(),
   age: 20,
   gender: 'Male',
   skills: [],

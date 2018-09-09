@@ -18,4 +18,5 @@ export { RadioButtons } from './form/RadioButtons';
 export { SelectBox } from './form/SelectBox';
 export { TextArea } from './form/TextArea';
 export { TextForm } from './form/TextForm';
+export { DatePicker } from './form/DatePicker';
 export { Section } from './layout/Section';
