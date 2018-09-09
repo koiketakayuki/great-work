@@ -11,9 +11,9 @@ Simple & Reusable react component library.
 
 ## Etymology
 
-"Great work!" is one of the most favorite english words:)  
+"Great work!" is one of the most my favorite english words:)  
 Sometimes we argue with each other, but we should overcome it to make our product and programmer life better.  
-Do not forget to say "Great work!" to your coleague.  
+Do not forget to say "Great work!" to your coleagues.  
 
 ## Recruitment
 
