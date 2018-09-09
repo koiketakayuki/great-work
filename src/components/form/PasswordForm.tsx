@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { createTextForm, TextFormProps } from './createTextForm';
-import { Validation } from './Validation';
+import { WithErrorMessage } from './WithErrorMessage';
 
 const _PasswordForm = createTextForm('password');
 
 export function PasswordForm(props: TextFormProps) {
   return (
-    <Validation validator={props.validator} onChange={props.onChange} formProps={props}>
+    <WithErrorMessage<string, TextFormProps> {...props}>
       {props => <_PasswordForm {...props}/>}
-    </Validation>
+    </WithErrorMessage>
   );
 }

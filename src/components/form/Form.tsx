@@ -5,13 +5,11 @@ export interface FormProps<T> {
   type?: ColorType;
   disabled?: boolean;
   readonly?: boolean;
-  validator?: Validator<T>;
   onChange?: ValueChangeHandler<T>;
+  errorMessage?: string;
 }
 
-export type ValueChangeHandler<T> = (value: T, errorMessage?: string) => void;
-
-export type Validator<T> = (value: T) => string | undefined;
+export type ValueChangeHandler<T> = (value: T) => void;
 
 export type HasLabel = { label: string };
 

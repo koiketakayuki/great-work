@@ -13,7 +13,6 @@ export interface ListFormProps<T> extends FormProps<T[]> {
   createChildForm: (index: number, props: FormProps<T>, onDelete: () => void) => React.ReactNode;
   addText?: string;
   default?: T | DefaultValueGenerator<T>;
-  onChange?: (value: T[], errorMessage?: string, childFormErrorMessage?: string) => void;
 }
 
 export function ListForm<T>(props: ListFormProps<T>) {
@@ -48,7 +47,7 @@ function getElementValueChangeHandler<T>(props: ListFormProps<T>, index: number)
 
   const currentValue: T[] = props.value;
 
-  return (childValue: T, childFormErrorMessage?: string) => {
+  return (childValue: T) => {
     const newValue: T[] = [];
 
     for (let i = 0; i < currentValue.length; i = i + 1) {
@@ -59,9 +58,7 @@ function getElementValueChangeHandler<T>(props: ListFormProps<T>, index: number)
       }
     }
 
-    const errorMessage = props.validator ? props.validator(newValue) : undefined;
-
-    onChange(newValue, errorMessage, childFormErrorMessage);
+    onChange(newValue);
   };
 }
 

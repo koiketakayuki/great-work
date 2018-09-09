@@ -3,15 +3,15 @@ import { find } from '../../lib/util';
 import { FormProps, HasSelectOptions, SelectOption } from './Form';
 import { CheckBox } from './CheckBox';
 import { Row } from '../layout/Row';
-import { Validation } from './Validation';
+import { WithErrorMessage } from './WithErrorMessage';
 
 export type CheckListProps<T> = FormProps<T[]> & HasSelectOptions<T>;
 
 export function CheckList<T>(props: CheckListProps<T>) {
   return (
-    <Validation validator={props.validator} onChange={props.onChange} formProps={props}>
-      {props => <_CheckList {...props}/>}
-    </Validation>
+    <WithErrorMessage<T[], CheckListProps<T>> {...props}>
+      {(props: CheckListProps<T>) => <_CheckList {...props}/>}
+    </WithErrorMessage>
   );
 }
 

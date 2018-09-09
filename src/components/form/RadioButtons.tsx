@@ -3,15 +3,15 @@ import { find } from '../../lib/util';
 import { FormProps, HasSelectOptions, SelectOption } from './Form';
 import { RadioButton } from './RadioButton';
 import { Row } from '../layout/Row';
-import { Validation } from './Validation';
+import { WithErrorMessage } from './WithErrorMessage';
 
 export type RadioButtonsProps<T> = FormProps<T> & HasSelectOptions<T>;
 
 export function RadioButtons<T>(props: RadioButtonsProps<T>) {
   return (
-    <Validation validator={props.validator} onChange={props.onChange} formProps={props}>
+    <WithErrorMessage<T, RadioButtonsProps<T>> {...props}>
       {props => <_RadioButtons {...props}/>}
-    </Validation>
+    </WithErrorMessage>
   );
 }
 

@@ -1,15 +1,15 @@
 import * as React from 'react';
 import { find } from '../../lib/util';
 import { FormProps, HasSelectOptions, SelectOption } from './Form';
-import { Validation } from './Validation';
+import { WithErrorMessage } from './WithErrorMessage';
 
 export type SelectBoxProps<T> = FormProps<T> & HasSelectOptions<T>;
 
 export function SelectBox<T>(props: SelectBoxProps<T>) {
   return (
-    <Validation validator={props.validator} onChange={props.onChange} formProps={props}>
+    <WithErrorMessage<T, SelectBoxProps<T>> {...props}>
       {props => <_SelectBox {...props}/>}
-    </Validation>
+    </WithErrorMessage>
   );
 }
 
