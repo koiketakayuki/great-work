@@ -1,10 +1,11 @@
 import * as React from 'react';
 import radium from 'radium';
-import { CursorProperty, FlexWrapProperty, Color } from 'csstype';
-import { ColorType, StyleConfig } from '../../config/StyleConfig';
+import { CursorProperty, FlexWrapProperty, Color, AlignItemsProperty, JustifyContentProperty } from 'csstype';
 
 export interface RowProps {
   display?: 'flex' | 'inline-flex';
+  alignItems?: AlignItemsProperty;
+  justifyContent?: JustifyContentProperty;
   color?: Color;
   background?: Color;
   children: React.ReactNode;
@@ -21,7 +22,8 @@ function getStyle(props: RowProps) {
     color: props.color,
     background: props.background,
     display: props.display || 'flex',
-    alignItems: 'center',
+    alignItems: props.alignItems || 'flex-start',
+    justifyContent: props.alignItems || 'flex-start',
     cursor: props.cursor,
     flexWrap: props.wrap || 'nowrap',
     ':hover': props.hover,
