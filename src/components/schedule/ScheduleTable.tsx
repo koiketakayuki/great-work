@@ -1,11 +1,10 @@
 import * as React from 'react';
-import { WidthProperty, HeightProperty } from 'csstype';
 import { range } from '../../lib/util';
 
 export interface ScheduleTableProps {
-  baseWidth: WidthProperty<string>;
-  baseHeight: HeightProperty<string>;
-  headerHeight: HeightProperty<string>;
+  baseWidth: number;
+  baseHeight: number;
+  headerHeight: number;
   children: React.ReactNode;
   from: number;
   to: number;
@@ -23,9 +22,9 @@ export function ScheduleTable(props: ScheduleTableProps) {
       }}
     >
       <div style={{ display: 'flex', boxSizing: 'border-box' }}>
-        <div style={{ marginTop: props.headerHeight }}>
+        <div style={{ marginTop: `${props.headerHeight}px` }}>
           {range(props.from, props.to).map(hour => (
-            <div key={hour} style={{ height: props.baseHeight }}>{hour}:00</div>
+            <div key={hour} style={{ height: `${props.baseHeight}px` }}>{hour}:00</div>
           ))}
         </div>
         {props.children}
@@ -35,17 +34,17 @@ export function ScheduleTable(props: ScheduleTableProps) {
 }
 
 export interface ScheduleTableContextValue {
-  baseWidth: WidthProperty<string>;
-  baseHeight: HeightProperty<string>;
-  headerHeight: HeightProperty<string>;
+  baseWidth: number;
+  baseHeight: number;
+  headerHeight: number;
   from: number;
   to: number;
 }
 
 export const ScheduleTableContext = React.createContext<ScheduleTableContextValue>({
-  baseWidth: '200px',
-  baseHeight: '100px',
-  headerHeight: '40px',
+  baseWidth: 200,
+  baseHeight: 100,
+  headerHeight: 40,
   from: 9,
   to: 18,
 });
