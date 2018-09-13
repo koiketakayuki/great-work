@@ -43,7 +43,7 @@ export class ScheduleCell<T extends Schedule = Schedule> extends React.Component
     const sign: number = Math.sign(pixelDiff);
     const absolutePixelDiff = Math.abs(pixelDiff);
     const baseHeight = scheduleTableContext.baseHeight;
-    const absoluteDiff = (absolutePixelDiff + baseHeight * 1 / 4) / baseHeight;
+    const absoluteDiff = (absolutePixelDiff + baseHeight * 1 / 2) / baseHeight;
 
     const hourDiff = Math.floor(absoluteDiff);
     const minutesDiff = absoluteDiff - hourDiff > 0.5 ? 30 : 0;
