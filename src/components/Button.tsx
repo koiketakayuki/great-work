@@ -4,6 +4,7 @@ import { Paper } from './Paper';
 import { Container } from './layout/Container';
 import { PaddingProperty } from 'csstype';
 import { ElevationLevel } from './wrapper/Elevation';
+import { Ripple } from './wrapper/Ripple';
 
 export interface ButtonProps {
   padding?: PaddingProperty<string>;
@@ -29,19 +30,20 @@ export class Button extends React.Component<ButtonProps> {
 
   render() {
     return (
-      <Paper
-        display="inline-block"
-        elevation={this.props.elevation}
-        onClick={this.onClick}
-        onKeyDown={this.onKeyDown}
-        cursor={this.props.disabled ? 'not-allowed' : 'pointer'}
-        type={this.props.disabled ? 'disabled' : (this.props.type || 'primary')}
-        tabIndex={0}
-      >
-        <Container padding={this.props.padding}>
-          {this.props.children}
-        </Container>
-      </Paper>
+      <Ripple onClick={this.onClick} initialRadius={20}>
+        <Paper
+          display="inline-block"
+          elevation={this.props.elevation}
+          onKeyDown={this.onKeyDown}
+          cursor={this.props.disabled ? 'not-allowed' : 'pointer'}
+          type={this.props.disabled ? 'disabled' : (this.props.type || 'primary')}
+          tabIndex={0}
+        >
+          <Container padding={this.props.padding}>
+            {this.props.children}
+          </Container>
+        </Paper>
+      </Ripple>
     );
   }
 }
