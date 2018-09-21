@@ -14,6 +14,7 @@ function loadStories() {
   require('../stories/ImageForm.story');
   require('../stories/DatePicker.story');
   require('../stories/FormDemo.story');
+  require('../stories/ScheduleTable.story');
 }
 
 configure(loadStories, module);

@@ -24,7 +24,7 @@ export function ScheduleTable(props: ScheduleTableProps) {
       <div style={{ display: 'flex', boxSizing: 'border-box' }}>
         <div style={{ marginTop: `${props.headerHeight - 10}px` }}>
           {range(props.from, props.to).map(hour => (
-            <div key={hour} style={{ height: `${props.baseHeight}px` }}>{hour}:00</div>
+            <div key={hour} style={{ height: `${props.baseHeight}px`, textAlign: 'right' }}>{hour}:00</div>
           ))}
         </div>
         {props.children}

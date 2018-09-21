@@ -5,7 +5,7 @@ import { ScheduleTable, Timeline, ScheduleCell, Button } from '../src/components
 import { Schedule } from '../src/components/schedule/Schedule';
 import { range, findIndex, replace } from '../src/lib/util';
 
-const story = storiesOf('RadioButtons', module);
+const story = storiesOf('ScheduleTable', module);
 
 story.addDecorator(withInfo({ inline: true }));
 
@@ -63,7 +63,7 @@ class ScheduleTableDemo extends React.Component<{}, { schedules: MySchedule[], r
     return (
       <div>
         <Button onClick={this.addTimeline}>Add Timeline</Button>
-        <ScheduleTable baseWidth={100} baseHeight={80} headerHeight={30} from={9} to={18}>
+        <ScheduleTable baseWidth={100} baseHeight={120} headerHeight={80} from={9} to={18}>
           {range(1, this.state.rangeLimit).map((timelineId) => {
             return (
               <Timeline label={`Timeline${timelineId}`} key={timelineId}>
