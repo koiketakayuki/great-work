@@ -1,13 +1,13 @@
 import * as React from 'react';
-import { getFloatStyle, FloatLevel } from '../lib/getFloatStyle';
 import { DisplayProperty, CursorProperty } from 'csstype';
 import { StyleConfig, ColorType } from '../config/StyleConfig';
 import { StyleContext } from '../config/StyleContext';
+import { ElevationLevel, Elevation } from './wrapper/Elevation';
 
 export interface PaperProps {
   display?: DisplayProperty;
   children?: React.ReactNode;
-  float?: FloatLevel;
+  elevation?: ElevationLevel;
   cursor?: CursorProperty;
   type?: ColorType;
   onClick?: React.MouseEventHandler;
@@ -20,10 +20,12 @@ function getPaper(config: StyleConfig, props: PaperProps) {
     config.getColorContext(props.type || 'default'),
     {
       cursor: props.cursor,
-      display: props.display || 'block',
-    },
-    getFloatStyle(props.float === undefined ? 2 : props.float));
-  return <div style={style} tabIndex={props.tabIndex} onClick={props.onClick} onKeyDown={props.onKeyDown}>{props.children}</div>;
+    });
+  return (
+    <Elevation level={props.elevation || 2} display={props.display}>
+      <div style={style} tabIndex={props.tabIndex} onClick={props.onClick} onKeyDown={props.onKeyDown}>{props.children}</div>
+    </Elevation>
+  );
 }
 
 export const Paper = (props: PaperProps) => (

@@ -1,4 +1,27 @@
-export type FloatLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
+import * as React from 'react';
+import { DisplayProperty } from 'csstype';
+
+export interface ElevationProps {
+  level: ElevationLevel;
+  children: React.ReactNode;
+  display?: DisplayProperty;
+}
+
+export const Elevation = (props: ElevationProps) => {
+  const style = Object.assign(
+    {
+      display: props.display,
+    },
+    getStyle(props.level));
+
+  return (
+    <div style={style}>
+      {props.children}
+    </div>
+  );
+};
+
+export type ElevationLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
 const LEVEL1_STYLE = {
   boxShadow: '0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12)',
@@ -32,7 +55,7 @@ const LEVEL8_STYLE = {
   boxShadow: '0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12)',
 };
 
-export function getFloatStyle(level: FloatLevel): object {
+function getStyle(level: ElevationLevel): object {
   if (level === 1) {
     return LEVEL1_STYLE;
   }

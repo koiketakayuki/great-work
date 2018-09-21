@@ -17,17 +17,17 @@ story.add('color', () => (
     <Paper type="disabled">disabled</Paper>
   </div>
 ));
-story.add('float', () => (
+story.add('elevation', () => (
   <div>
-    <Paper float={0}>Float0</Paper>
-    <Paper float={1}>Float1</Paper>
-    <Paper float={2}>Float2</Paper>
-    <Paper float={3}>Float3</Paper>
-    <Paper float={4}>Float4</Paper>
-    <Paper float={5}>Float5</Paper>
-    <Paper float={6}>Float6</Paper>
-    <Paper float={7}>Float7</Paper>
-    <Paper float={8}>Float8</Paper>
+    <Paper elevation={0}>Float0</Paper>
+    <Paper elevation={1}>Float1</Paper>
+    <Paper elevation={2}>Float2</Paper>
+    <Paper elevation={3}>Float3</Paper>
+    <Paper elevation={4}>Float4</Paper>
+    <Paper elevation={5}>Float5</Paper>
+    <Paper elevation={6}>Float6</Paper>
+    <Paper elevation={7}>Float7</Paper>
+    <Paper elevation={8}>Float8</Paper>
   </div>
 ));
 story.add('cursor', () => (

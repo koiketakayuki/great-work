@@ -15,17 +15,17 @@ story.add('color', () => (
     <Button type="default">Default</Button>
   </div>
 ));
-story.add('float', () => (
+story.add('elevation', () => (
   <div>
-    <Button float={0}>Float0</Button>
-    <Button float={1}>Float1</Button>
-    <Button float={2}>Float2</Button>
-    <Button float={3}>Float3</Button>
-    <Button float={4}>Float4</Button>
-    <Button float={5}>Float5</Button>
-    <Button float={6}>Float6</Button>
-    <Button float={7}>Float7</Button>
-    <Button float={8}>Float8</Button>
+    <Button elevation={0}>Float0</Button>
+    <Button elevation={1}>Float1</Button>
+    <Button elevation={2}>Float2</Button>
+    <Button elevation={3}>Float3</Button>
+    <Button elevation={4}>Float4</Button>
+    <Button elevation={5}>Float5</Button>
+    <Button elevation={6}>Float6</Button>
+    <Button elevation={7}>Float7</Button>
+    <Button elevation={8}>Float8</Button>
   </div>
 ));
 story.add('disabled', () => <Button disabled={true} onClick={sayHello}>Hello</Button>);

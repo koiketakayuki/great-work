@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 
 import { Button, Paper } from '../src/components/GreatWork';
 import { Container } from '../src/components/layout/Container';
-import { FloatLevel } from '../src/lib/getFloatStyle';
+import { ElevationLevel } from '../src/components/wrapper/Elevation';
 
 describe('Button', () => {
   it('child element is rendered', () => {
@@ -55,10 +55,10 @@ describe('Button', () => {
     expect(wrapper.find(Paper).props().type).toBe('disabled');
   });
 
-  it('float is passed to Paper', () => {
-    const floatLevel: FloatLevel = 4;
-    const wrapper = shallow(<Button float={floatLevel}>test</Button>);
-    expect(wrapper.find(Paper).props().float).toBe(floatLevel);
+  it('elevation is passed to Paper', () => {
+    const elevationLevel: ElevationLevel = 4;
+    const wrapper = shallow(<Button elevation={elevationLevel}>test</Button>);
+    expect(wrapper.find(Paper).props().elevation).toBe(elevationLevel);
   });
 
   it('cursor is pointer', () => {
